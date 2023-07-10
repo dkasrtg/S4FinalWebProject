@@ -1,24 +1,48 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-class MDA_repas extends CI_Model{
 
-    public function insert_repas($data)    {
+<?php
+
+class MDA_Repas extends CI_Model 
+{
+
+    public function __construct() 
+    {
+        parent::__construct();
+    }
+
+    // CREATE
+    public function insert_repas($data)
+    {
         $this->db->insert('repas', $data);
+        $insert_id = $this->db->insert_id();
+        return $this->get_repas($insert_id);
     }
-    public function get_repas() {
-        $this->db->select('repas.*, categorie_repas.nom_categorie');
-        $this->db->from('repas');
-        $this->db->join('categorie_repas', 'repas.id_categorie_repas = categorie_repas.id_categorie_repas');
-        $query = $this->db->get();
-        return $query->result();
-    }    
-    public function get_repas_prix($data){
-        $query = $this->db->get_where('repas', array('prix' => $prix), array('categ' => $categ));
-        return $query->row();
+
+    // READ
+    public function get_repas($id_repas = NULL) 
+    {
+        if ($id_repas !== NULL) {
+            $query = $this->db->get_where('repas', array('id_repas' => $id_repas));
+            return $query->row_array();
+        } else {
+            $query = $this->db->get('repas');
+            return $query->result_array();
+        }
     }
-    public function get_repas_cp(){
-        $query = $this->db->get_where('repas', array('prix' => $prix), array('categ' => $categ) , array('poids' => $poids));
-        return $query->row();
+
+    // UPDATE
+    public function update_repas($id_repas, $data) 
+    {
+        $this->db->where('id_repas', $id_repas);
+        $this->db->update('repas', $data);
+        return $this->db->affected_rows();
     }
+
+    // DELETE
+    public function delete_repas($id_repas) 
+    {
+        $this->db->where('id_repas', $id_repas);
+        $this->db->delete('repas');
+        return $this->db->affected_rows();
+    }
+    
 }
-?>
