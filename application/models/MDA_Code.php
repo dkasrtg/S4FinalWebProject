@@ -38,5 +38,15 @@ class MDA_Code extends CI_Model
             $this->db->insert('code_argent',$data);
         }
     }
+
+    public function vendre($id_code_argent)
+    {
+        $this->db->query('update code_argent set etat=1 where id_code_argent='.$id_code_argent);
+    }
+
+    public function supprimer($id_code_argent)
+    {
+        $this->db->query('delete from code_argent where id_code_argent='.$id_code_argent);
+    }
 }
 ?>

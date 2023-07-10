@@ -20,24 +20,18 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td> 1 </td>
-                                        <td> 101232141041 </td>
-                                        <td> 20 </td>
-                                        <td><i class="mdi mdi-check">Vendre</i></td>
+                                    <?php
+                                    for ($i=0; $i < count($liste_code_crees); $i++) { 
+                                        ?>
+                                        <tr>
+                                        <td> <?= $liste_code_crees[$i]['id_code_argent']?> </td>
+                                        <td> <?= $liste_code_crees[$i]['code']?> </td>
+                                        <td> <?= $liste_code_crees[$i]['argent']?> </td>
+                                        <td><a href="<?php bu('CTA_Code/vendre?id_code_argent='.$liste_code_crees[$i]['id_code_argent'])?>"><i class="mdi mdi-check">Vendre</i></a></td>
                                     </tr>
-                                    <tr>
-                                        <td> 1 </td>
-                                        <td> 101232141041 </td>
-                                        <td> 20 </td>
-                                        <td><i class="mdi mdi-check">Vendre</i></td>
-                                    </tr>
-                                    <tr>
-                                        <td> 1 </td>
-                                        <td> 101232141041 </td>
-                                        <td> 20 </td>
-                                        <td><i class="mdi mdi-check">Vendre</i></td>
-                                    </tr>
+                                        <?php
+                                    }
+                                    ?>
                                 </tbody>
                             </table>
                         </div>
@@ -60,24 +54,18 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td> 1 </td>
-                                        <td> 101232141041 </td>
-                                        <td> 20 </td>
-                                        <td><i class="mdi mdi-delete-forever">Supprimer</i></td>
+                                    <?php
+                                    for ($i=0; $i < count($liste_code_valables); $i++) { 
+                                        ?>
+                                        <tr>
+                                        <td> <?= $liste_code_valables[$i]['id_code_argent']?> </td>
+                                        <td> <?= $liste_code_valables[$i]['code']?> </td>
+                                        <td> <?= $liste_code_valables[$i]['argent']?> </td>
+                                        <td><a href="<?php bu('CTA_Code/supprimer?id_code_argent='.$liste_code_valables[$i]['id_code_argent'])?>"><i class="mdi mdi-delete-forever">Supprimer</i></a></td>
                                     </tr>
-                                    <tr>
-                                        <td> 1 </td>
-                                        <td> 101232141041 </td>
-                                        <td> 20 </td>
-                                        <td><i class="mdi mdi-delete-forever">Supprimer</i></td>
-                                    </tr>
-                                    <tr>
-                                        <td> 1 </td>
-                                        <td> 101232141041 </td>
-                                        <td> 20 </td>
-                                        <td><i class="mdi mdi-delete-forever">Supprimer</i></td>
-                                    </tr>
+                                        <?php
+                                    }
+                                    ?>
                                 </tbody>
                             </table>
                         </div>

@@ -126,3 +126,68 @@ create table code_argent(
     argent decimal,
     etat int
 );
+
+-- clients
+
+
+create table client(
+    id_client int primary key auto_increment,
+    nom varchar(30),
+    prenom varchar(30),
+    date_de_naissance date,
+    mail varchar(30),
+    tel varchar(30),
+    mot_de_passe varchar(30)
+);
+
+INSERT INTO client (nom, prenom, date_de_naissance, mail, tel, mot_de_passe)
+VALUES ('Doe', 'John', '1990-05-15', 'johndoe@example.com', '123456789', 'password123');
+INSERT INTO client (nom, prenom, date_de_naissance, mail, tel, mot_de_passe)
+VALUES ('Smith', 'Alice', '1985-09-20', 'alice.smith@example.com', '987654321', 'secret123');
+
+create table donnees_client(
+    id_donnees_client int primary key auto_increment,
+    id_client int,
+    genre int,
+    taille decimal(3,2),
+    poids decimal(3,2),
+    date_donnees date,
+    foreign key(id_client) references client(id_client)
+);
+
+
+create table compte_client(
+    id_compte_client int primary key auto_increment,
+    id_client int,
+    montant decimal(10,2),
+    foreign key(id_client) references client(id_client)
+);
+INSERT INTO compte_client (id_client, montant)
+VALUES (1, 0);
+INSERT INTO compte_client (id_client, montant)
+VALUES (2, 0);
+
+
+create table transactions_client(
+    id_transactions_client int primary key auto_increment,
+    id_client int,
+    description varchar(40),
+    montant decimal(10,2),
+    foreign key(id_client) references client(id_client)
+);
+
+create table recharge_client(
+    id_recharge_client int primary key auto_increment,
+    id_client int,
+    id_code_argent int,
+    date_demande date,
+    date_acceptation date
+);
+
+INSERT INTO recharge_client (id_client, id_code_argent, date_demande)
+VALUES (1, 5, '2023-07-01');
+INSERT INTO recharge_client (id_client, id_code_argent, date_demande)
+VALUES (2, 8, '2023-07-03');
+
+
+
