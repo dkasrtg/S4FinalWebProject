@@ -22,7 +22,7 @@ class CTA_Code extends CI_Controller {
 			'liste_code_valables'=>$this->MDA_Code->liste_code_valable(),
 			'liste_code_client'=>$this->MDA_Code->liste_code_client()
 		);
-       $this->viewer('admin/pages/code',$data);
+       $this->viewer('/code',$data);
     }
 
 	public function creer()

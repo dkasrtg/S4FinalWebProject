@@ -13,7 +13,8 @@ class MDA_Code extends CI_Model
     }
 
     public function liste_code_valable(){
-        return $this->liste_code(1);
+        $results = $this->db->query("select * from code_argent where etat=1 and id_code_argent not in (select id_code_argent from recharge_client)");
+        return $results->result_array();
     }
 
     public function liste_code_client()
@@ -28,7 +29,7 @@ class MDA_Code extends CI_Model
                         0, 7);
         $results = $this->db->query("select * from code_argent where code='".$uniqueId."'");
         $results = $results->row_array();
-        if($results!==null){
+        if($results!=null){
             $this->generer();
         }
         return $uniqueId;
