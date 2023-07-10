@@ -9,6 +9,20 @@ class MDC_Client extends CI_Model
     }
 
 
+    public function getRepasByCategorieAndObjectif() 
+    {
+        $this->db->select('*');
+        $this->db->from('repas');
+        $this->db->join('categorie_repas', 'repas.id_categorie_repas = categorie_repas.id_categorie_repas');
+        $this->db->where('categorie_repas.objectif <', 0);
+        $this->db->order_by('RAND()');
+        $this->db->limit(1);
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+
+
+
     public function getLastWeightByUser($id_client) 
     {
         $this->db->select('poids');
