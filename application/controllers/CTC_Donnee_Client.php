@@ -55,5 +55,6 @@ class CTC_Donnee_Client extends CI_Controller
 		$this->MDC_Donnee_Client->update_donnee_client($_POST['update'],$data);
 		redirect('CTC_Donnee_Client/display_donnee');
 	}
+	
    
 }
