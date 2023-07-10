@@ -9,12 +9,10 @@ create table categorie_repas(
     nom_categorie varchar,
     ordre int
 );
-insert into categorie_repas values('petit dejeuner',10);
-insert into categorie_repas values('collation matinee',20);
-insert into categorie_repas values('dejeuner',30);
-insert into categorie_repas values('collation apres midi',40);
-insert into categorie_repas values('diner',50);
-insert into categorie_repas values('collation soiree',60);
+insert into categorie_repas(nom_categorie,ordre) values('petit dejeuner',10);
+insert into categorie_repas(nom_categorie,ordre) values('dejeuner',20);
+insert into categorie_repas(nom_categorie,ordre) values('collation',30);
+insert into categorie_repas(nom_categorie,ordre) values('diner',40);
 
 
 create table repas(
@@ -27,153 +25,79 @@ create table repas(
     foreign key(id_categorie_repas) references categorie_repas(id_categorie_repas)
 );
 
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (1, 'Smoothie aux fruits + tranche de pain complet avec beurre d''amande', 5.99, 1);
 
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (2, 'Yaourt grec avec baies', 2.99, 1);
+insert into repas (id_categorie_repas, description, prix, objectif, affectation_poids)
+values (1, 'Smoothie protéiné', 5.99, -1, 0.2);
 
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (3, 'Salade de quinoa aux légumes avec poulet grillé', 9.99, 1);
+insert into repas (id_categorie_repas, description, prix, objectif, affectation_poids)
+values (2, 'Salade de lentilles avec légumes', 7.99, -1, 0.3);
 
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (4, 'Poignée d''amandes', 1.99, 1);
+insert into repas (id_categorie_repas, description, prix, objectif, affectation_poids)
+values (3, 'Yaourt grec nature avec amandes', 3.49, -1, 0.1);
 
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (5, 'Filet de saumon cuit au four avec légumes vapeur et riz brun', 12.99, 1);
+insert into repas (id_categorie_repas, description, prix, objectif, affectation_poids)
+values (4, 'Poisson blanc cuit au four avec haricots verts et quinoa', 9.99, -1, 0.4);
 
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (1, 'Omelette aux légumes + tranche de pain complet', 6.99, 1);
+insert into repas (id_categorie_repas, description, prix, objectif, affectation_poids)
+values (1, 'Smoothie aux épinards, avocat et lait d''amande', 6.99, -1, 0.2);
 
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (2, 'Pomme avec cuillerée de beurre d''arachide', 1.99, 1);
+insert into repas (id_categorie_repas, description, prix, objectif, affectation_poids)
+values (2, 'Salade de poulet grillé avec légumes verts', 8.99, -1, 0.4);
 
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (3, 'Salade de poulet avec légumes et vinaigrette légère', 8.99, 1);
+insert into repas (id_categorie_repas, description, prix, objectif, affectation_poids)
+values (3, 'Poignée de baies mixtes', 2.99, -1, 0.2);
 
+insert into repas (id_categorie_repas, description, prix, objectif, affectation_poids)
+values (4, 'Poulet rôti avec légumes rôtis', 10.99, -1, 0.4);
 
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (5, 'Poitrine de poulet grillée avec asperges rôties et patates douces au four', 11.99, 1);
+insert into repas (id_categorie_repas, description, prix, objectif, affectation_poids)
+values (1, 'Omelette aux légumes', 6.49, -1, 0.3);
 
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (6, 'Yaourt grec avec graines de chia', 2.99, 1);
+insert into repas (id_categorie_repas, description, prix, objectif, affectation_poids)
+values (2, 'Salade de thon avec légumes', 7.49, -1, 0.3);
 
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (1, 'Flocons d''avoine avec lait entier, fruits secs et noix', 4.99, 1);
+insert into repas (id_categorie_repas, description, prix, objectif, affectation_poids)
+values (3, 'Smoothie à base de lait d''amande, banane et protéine en poudre', 4.99, -1, 0.1);
 
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (2, 'Smoothie aux fruits (banane, mangue, lait de coco) avec noix de cajou', 3.99, 1);
+insert into repas (id_categorie_repas, description, prix, objectif, affectation_poids)
+values (4, 'Pâtes de blé entier avec sauce tomate et légumes', 9.49, -1, 0.4);
 
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (3, 'Salade de poulet avec légumes, haricots et vinaigrette à l''huile d''olive', 9.99, 1);
+insert into repas (id_categorie_repas, description, prix, objectif, affectation_poids)
+values (1, 'Smoothie aux fruits avec avoine et yaourt', 6.99, 1, 0.3);
 
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (5, 'Poisson grillé avec sauce à la crème, légumes cuits à la vapeur et pommes de terre au four', 13.99, 1);
+insert into repas (id_categorie_repas, description, prix, objectif, affectation_poids)
+values (2, 'Burger de bœuf avec fromage et frites', 10.99, 1, 0.5);
 
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (6, 'Smoothie protéiné (lait d''amande, banane, protéine en poudre)', 4.99, 1);
+insert into repas (id_categorie_repas, description, prix, objectif, affectation_poids)
+values (3, 'Mélange de noix et fruits séchés', 4.49, 1, 0.2);
 
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (1, 'Smoothie protéiné aux fruits (banane, baies, yaourt grec, lait d''amande) avec beurre d''amande', 5.99, 1);
+insert into repas (id_categorie_repas, description, prix, objectif, affectation_poids)
+values (4, 'Steak de saumon avec pommes de terre au four et légumes grillés', 12.99, 1, 0.6);
 
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (2, 'Barre de céréales aux noix et aux fruits', 2.99, 1);
+insert into repas (id_categorie_repas, description, prix, objectif, affectation_poids)
+values (1, 'Pancakes aux pépites de chocolat avec sirop d''érable', 8.99, 1, 0.4);
 
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (3, 'Salade de quinoa avec légumes rôtis (aubergine, courgette) et tofu', 8.99, 1);
+insert into repas (id_categorie_repas, description, prix, objectif, affectation_poids)
+values (2, 'Pâtes à la carbonara avec bacon et fromage', 9.99, 1, 0.5);
 
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (4, 'Yaourt grec avec amandes', 2.99, 1);
+insert into repas (id_categorie_repas, description, prix, objectif, affectation_poids)
+values (3, 'Smoothie protéiné aux amandes et banane', 5.49, 1, 0.3);
 
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (5, 'Steak de bœuf grillé avec légumes rôtis et riz complet', 12.99, 1);
+insert into repas (id_categorie_repas, description, prix, objectif, affectation_poids)
+values (4, 'Riz frit aux légumes et crevettes', 11.99, 1, 0.6);
 
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (1, 'Tartine de pain complet avec beurre d''amande, tranches de banane et verre de lait entier', 5.99, 1);
+insert into repas (id_categorie_repas, description, prix, objectif, affectation_poids)
+values (1, 'Œufs brouillés avec fromage et toasts', 7.49, 1, 0.3);
 
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (2, 'Smoothie aux fruits (mangue, ananas, lait de coco) avec noix de cajou', 4.99, 1);
+insert into repas (id_categorie_repas, description, prix, objectif, affectation_poids)
+values (2, 'Wrap au poulet avec avocat et mayonnaise', 8.99, 1, 0.4);
 
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (3, 'Salade de poulet avec légumes, avocats et vinaigrette légère', 9.99, 1);
+insert into repas (id_categorie_repas, description, prix, objectif, affectation_poids)
+values (3, 'Smoothie aux noix et beurre d''arachide', 5.99, 1, 0.3);
 
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (6, 'Smoothie protéiné (lait d''amande, banane, beurre d''amande, protéine en poudre)', 4.99, 1);
+insert into repas (id_categorie_repas, description, prix, objectif, affectation_poids)
+values (4, 'Lasagnes à la viande avec salade verte', 11.49, 1, 0.5);
 
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (1, 'Smoothie aux fruits (banane, épinards, lait d''amande)', 6.99, 0);
-
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (3, 'Salade de quinoa aux légumes avec poulet grillé', 9.99, 0);
-
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (4, 'Pomme avec une cuillerée de beurre d''amande', 1.99, 0);
-
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (5, 'Filet de saumon cuit au four avec légumes vapeur et riz brun', 12.99, 0);
-
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (1, 'Omelette aux légumes (poivrons, épinards) avec une tranche de pain complet', 6.99, 0);
-
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (2, 'Poignée de baies mélangées', 2.99, 0);
-
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (3, 'Salade de poulet avec légumes variés et vinaigrette légère', 8.99, 0);
-
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (4, 'Bâtonnets de légumes (carottes, céleri) avec houmous', 3.99, 0);
-
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (5, 'Poitrine de poulet grillée avec asperges rôties et patates douces au four', 11.99, 0);
-
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (6, 'Yaourt grec nature avec amandes', 2.99, 0);
-
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (1, 'Flocons d''avoine avec fruits frais et noix', 5.99, 0);
-
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (2, 'Poignée de noix mélangées', 1.99, 0);
-
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (3, 'Salade de quinoa avec légumes (poivrons, concombres) et vinaigrette légère', 9.99, 0);
-
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (4, 'Poire avec une cuillerée de beurre d''amande', 1.99, 0);
-
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (5, 'Filet de saumon cuit au four avec légumes vapeur et riz brun', 12.99, 0);
-
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (1, 'Smoothie protéiné (lait d''amande, banane, protéine en poudre) avec une tranche de pain complet et beurre d''arachide', 7.99, 0);
-
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (2, 'Poignée de baies mélangées', 2.99, 0);
-
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (3, 'Salade de poulet avec légumes (poivrons, carottes) et vinaigrette légère', 8.99, 0);
-
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (4, 'Bâtonnets de légumes avec guacamole', 4.99, 0);
-
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (5, 'Poisson blanc cuit au four avec haricots verts et quinoa', 11.99, 0);
-
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (6, 'Yaourt grec nature avec graines de chia', 2.99, 0);
-
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (1, 'Smoothie aux épinards, banane, beurre d''amande et lait d''amande', 6.99, 0);
-
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (3, 'Soupe aux légumes avec salade verte et quinoa', 8.99, 0);
-
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (4, 'Yaourt grec nature avec baies', 2.99, 0);
-
-INSERT INTO repas (id_categorie_repas, description, prix, objectif)
-VALUES (5, 'Poisson grillé avec légumes vapeur et patates douces', 11.99, 0);
 
 create table activite_sportive(
     id_activite_sportive int primary key auto_increment,
@@ -182,11 +106,11 @@ create table activite_sportive(
 );
 
 INSERT INTO activite_sportive (nom, objectif)
-VALUES ('Course à pied', 0),
-       ('Natation', 0),
-       ('Entraînement en circuit', 0),
-       ('Yoga', 0),
-       ('Aérobic', 0);
+VALUES ('Course à pied', -1),
+       ('Natation', -1),
+       ('Entraînement en circuit', -1),
+       ('Yoga', -1),
+       ('Aérobic', -1);
 
 INSERT INTO activite_sportive (nom, objectif)
 VALUES ('Musculation', 1),
@@ -195,3 +119,10 @@ VALUES ('Musculation', 1),
        ('Rugby', 1),
        ('Basketball', 1);
 
+
+create table code_argent(
+    id_code_argent int primary key auto_increment,
+    code varchar,
+    argent decimal,
+    etat int
+);
