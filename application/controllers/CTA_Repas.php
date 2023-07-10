@@ -6,8 +6,7 @@ class CTA_repas extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-        $this->load->model('MDA_repas');
-        $this->load->model('MDA_sport');
+        $this->load->model('MDA_Repas');
 	}
 	private function viewer($page, $data)
 	{
@@ -19,8 +18,8 @@ class CTA_repas extends CI_Controller
 	}
 
 	public function display_repas()	{ 
-        $data['categ'] = $this->MDA_repas->get_categorie_repas();
-        $data['repas']= $this->MDA_repas->get_repas();
+        $data['categ'] = $this->MDA_Repas->get_categorie_repas();
+        $data['repas']= $this->MDA_Repas->get_repas();
 		$this->viewer('repas/repas',$data);
 	}
     public function insert_repas() {
@@ -31,11 +30,11 @@ class CTA_repas extends CI_Controller
             'objectif' => $this->input->post('obj'),
             'affectation_poids' => $this->input->post('poids')
         );
-        $this->MDA_repas->insert_repas($data);
+        $this->MDA_Repas->insert_repas($data);
 		redirect('CTA_Repas/display_repas');
 	}
     public function delete_repas(){
-        $this->MDA_repas->delete_repas($_GET['repas']);
+        $this->MDA_Repas->delete_repas($_GET['repas']);
         redirect('CTA_Repas/display_repas');
     }
 }
