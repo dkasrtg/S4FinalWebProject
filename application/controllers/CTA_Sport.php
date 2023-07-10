@@ -3,8 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class CTA_Sport extends CI_Controller {
     public function __construct(){
-        $this->load->model('MDA_Sport');
         parent::__construct();
+        $this->load->model('MDA_Sport');
+
     }
     private function viewer($page, $data)
 	{
@@ -16,7 +17,7 @@ class CTA_Sport extends CI_Controller {
 	}
 	public function index()
 	{
-       $this->viewer('sport',array());
+       $this->viewer('admin/pages/sport',array());
     }
 
 }
