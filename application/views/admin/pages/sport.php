@@ -16,28 +16,23 @@
                                         <th> # </th>
                                         <th> Nom </th>
                                         <th> Categorie </th>
+                                        <th> Affectation (poids) </th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td> 1 </td>
-                                        <td> Course a pied </td>
-                                        <td> Diminuant </td>
-                                        <td><i class="mdi mdi-delete-forever">Supprimer</i></td>
-                                    </tr>
-                                    <tr>
-                                        <td> 1 </td>
-                                        <td> Course a pied </td>
-                                        <td> Diminuant </td>
-                                        <td><i class="mdi mdi-delete-forever">Supprimer</i></td>
-                                    </tr>
-                                    <tr>
-                                        <td> 1 </td>
-                                        <td> Course a pied </td>
-                                        <td> Diminuant </td>
-                                        <td><i class="mdi mdi-delete-forever">Supprimer</i></td>
-                                    </tr>
+                                    <?php foreach($activite_sportives as $activite_sportive) { ?>
+                                        <tr>
+                                            <td><?=  $activite_sportive['id_activite_sportive']?></td>
+                                            <td><?=  $activite_sportive['nom']?></td>
+                                            <td><?=  $activite_sportive['objectif_letter']?></td>
+                                            <td><?=  $activite_sportive['affectation_poids']?></td>
+                                            <td>
+                                                <i class="mdi mdi-delete-forever">
+                                                    <a href="<?= bu('CTA_Sport/delete?id_activite_sportive='.$activite_sportive['id_activite_sportive'])?>"> Supprimer</a>
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
                                 </tbody>
                             </table>
                         </div>
@@ -48,17 +43,21 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Nouvelle Activite Sportif</h4>
-                        <form class="forms-sample">
+                        <form action="<?= bu('CTA_Sport/store')?>" method="post" class="forms-sample">
                             <div class="form-group">
                                 <label for="exampleInputName1">Nom</label>
-                                <input type="text" class="form-control" id="exampleInputName1" placeholder="Name">
+                                <input name="nom" type="text" class="form-control" id="exampleInputName1" placeholder="Name">
                             </div>
                             <div class="form-group">
                                 <label for="exampleSelectGender">Categorie</label>
-                                <select class="form-control" id="exampleSelectGender">
+                                <select name="objectif" class="form-control" id="exampleSelectGender">
                                     <option>Augmentant</option>
                                     <option>Diminuant</option>
                                 </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputName1">Affectation sur le poids</label>
+                                <input name="affectation_poids" type="text" class="form-control" id="exampleInputName1" placeholder="Name">
                             </div>
                             <button type="submit" class="btn btn-primary mr-2">Creer</button>
                         </form>

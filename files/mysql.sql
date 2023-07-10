@@ -102,27 +102,28 @@ values (4, 'Lasagnes à la viande avec salade verte', 11.49, 1, 0.5);
 create table activite_sportive(
     id_activite_sportive int primary key auto_increment,
     nom varchar(255),
-    objectif int
+    objectif int,
+    affectation_poids decimal
 );
 
-INSERT INTO activite_sportive (nom, objectif)
-VALUES ('Course à pied', -1),
-       ('Natation', -1),
-       ('Entraînement en circuit', -1),
-       ('Yoga', -1),
-       ('Aérobic', -1);
+INSERT INTO activite_sportive (nom, objectif, affectation_poids)
+VALUES ('Course à pied', -1, 0.5),
+       ('Natation', -1, 0.5),
+       ('Entraînement en circuit', -1, 0.5),
+       ('Yoga', -1, 0.5),
+       ('Aérobic', -1, 0.5);
 
-INSERT INTO activite_sportive (nom, objectif)
-VALUES ('Musculation', 1),
-       ('Haltérophilie', 1),
-       ('CrossFit', 1),
-       ('Rugby', 1),
-       ('Basketball', 1);
+INSERT INTO activite_sportive (nom, objectif, affectation_poids)
+VALUES ('Musculation', 1, 0.5),
+       ('Haltérophilie', 1, 0.5),
+       ('CrossFit', 1, 0.5),
+       ('Rugby', 1, 0.5),
+       ('Basketball', 1, 0.5);
 
 
 create table code_argent(
     id_code_argent int primary key auto_increment,
-    code varchar,
+    code varchar(30),
     argent decimal,
     etat int
 );
