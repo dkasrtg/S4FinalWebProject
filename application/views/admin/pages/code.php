@@ -81,7 +81,6 @@
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th> # </th>
                                         <th> Code </th>
                                         <th> Montant </th>
                                         <th> Client </th>
@@ -89,30 +88,23 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td> 1 </td>
-                                        <td> 101232141041 </td>
-                                        <td> 20 </td>
-                                        <td> Rakoto Koto </td>
-                                        <td> 2022-02-02 </td>
-                                        <td><i class="mdi mdi-check">Valider</i></td>
+                                    <?php
+                                    for ($i=0; $i < count($liste_code_client); $i++) { 
+                                        ?>
+                                        <tr>
+                                        <td> <?= $liste_code_client[$i]['code']?> </td>
+                                        <td> <?= $liste_code_client[$i]['argent']?> </td>
+                                        <td> <?= $liste_code_client[$i]['nom'].' '.$liste_code_client[$i]['prenom']?> </td>
+                                        <td> <?= $liste_code_client[$i]['date_demande']?> </td>
+                                        <td><form action="<?php bu('CTA_Code/recharge')?>" method="get">
+                                            <input type="hidden" name="id_recharge_client" value="<?= $liste_code_client[$i]['id_recharge_client']?>">
+                                            <input type="date" name="date">
+                                            <button type="submit" class="btn btn-primary btn-fw">Charger</button>
+                                        </form></td>
                                     </tr>
-                                    <tr>
-                                        <td> 1 </td>
-                                        <td> 101232141041 </td>
-                                        <td> 20 </td>
-                                        <td> Rakoto Koto </td>
-                                        <td> 2022-02-02 </td>
-                                        <td><i class="mdi mdi-check">Valider</i></td>
-                                    </tr>
-                                    <tr>
-                                        <td> 1 </td>
-                                        <td> 101232141041 </td>
-                                        <td> 20 </td>
-                                        <td> Rakoto Koto </td>
-                                        <td> 2022-02-02 </td>
-                                        <td><i class="mdi mdi-check">Valider</i></td>
-                                    </tr>
+                                        <?php
+                                    }
+                                    ?>
                                 </tbody>
                             </table>
                         </div>

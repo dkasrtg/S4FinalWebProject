@@ -16,6 +16,12 @@ class MDA_Code extends CI_Model
         return $this->liste_code(1);
     }
 
+    public function liste_code_client()
+    {
+        $results = $this->db->query("select * from code_argent join recharge_client on code_argent.id_code_argent=recharge_client.id_code_argent join client on client.id_client = recharge_client.id_client");
+        return $results->result_array();
+    }
+
     public function generer(){
         $str_result = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
         $uniqueId = substr(str_shuffle($str_result),

@@ -19,7 +19,8 @@ class CTA_Code extends CI_Controller {
 	{
 		$data = array(
 			'liste_code_crees'=>$this->MDA_Code->liste_code_crees(),
-			'liste_code_valables'=>$this->MDA_Code->liste_code_valable()
+			'liste_code_valables'=>$this->MDA_Code->liste_code_valable(),
+			'liste_code_client'=>$this->MDA_Code->liste_code_client()
 		);
        $this->viewer('admin/pages/code',$data);
     }

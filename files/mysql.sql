@@ -6,7 +6,7 @@ use S4FinalWebProject;
 
 create table categorie_repas(
     id_categorie_repas int primary key auto_increment,
-    nom_categorie varchar,
+    nom_categorie varchar(30),
     ordre int
 );
 insert into categorie_repas(nom_categorie,ordre) values('petit dejeuner',10);
@@ -18,8 +18,8 @@ insert into categorie_repas(nom_categorie,ordre) values('diner',40);
 create table repas(
     id_repas int primary key auto_increment,
     id_categorie_repas int,
-    description varchar,
-    prix decimal,
+    description varchar(100),
+    prix decimal(2,2),
     objectif int,
     affectation_poids decimal,
     foreign key(id_categorie_repas) references categorie_repas(id_categorie_repas)
@@ -101,7 +101,7 @@ values (4, 'Lasagnes à la viande avec salade verte', 11.49, 1, 0.5);
 
 create table activite_sportive(
     id_activite_sportive int primary key auto_increment,
-    nom varchar,
+    nom varchar(30),
     objectif int
 );
 
@@ -122,10 +122,13 @@ VALUES ('Musculation', 1),
 
 create table code_argent(
     id_code_argent int primary key auto_increment,
-    code varchar,
-    argent decimal,
+    code varchar(30),
+    argent decimal(10,2),
     etat int
 );
+
+insert into code_argent(code,argent,etat) values('ed3e2',10,1);
+insert into code_argent(code,argent,etat) values('ed3a2',20,1);
 
 -- clients
 
@@ -181,13 +184,15 @@ create table recharge_client(
     id_client int,
     id_code_argent int,
     date_demande date,
-    date_acceptation date
+    date_acceptation date,
+    foreign key(id_client) references client(id_client),
+    foreign key(id_code_argent) references code_argent(id_code_argent)
 );
 
 INSERT INTO recharge_client (id_client, id_code_argent, date_demande)
-VALUES (1, 5, '2023-07-01');
+VALUES (1, 1, '2023-07-01');
 INSERT INTO recharge_client (id_client, id_code_argent, date_demande)
-VALUES (2, 8, '2023-07-03');
+VALUES (2, 2, '2023-07-03');
 
 
 
