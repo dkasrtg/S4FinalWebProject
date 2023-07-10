@@ -1,15 +1,17 @@
+<body>
+<div class="container-scroller">
  <!-- partial:partials/_sidebar.html -->
  <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-          <a class="sidebar-brand brand-logo" href="index.html"><img src="<?php echo   base_url("assets/images/logo.svg); ?>"); ?>" alt="logo" /></a>
-          <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="<?php echo   base_url("assets/images/logo-mini.svg"); ?>" alt="logo" /></a>
+          <a class="sidebar-brand brand-logo" href="index.html"><img src="<?=   bu("assets_admin/images/logo.svg"); ?>" alt="logo" /></a>
+          <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="<?=   bu("assets_admin/images/logo-mini.svg"); ?>" alt="logo" /></a>
         </div>
         <ul class="nav">
           <li class="nav-item profile">
             <div class="profile-desc">
               <div class="profile-pic">
                 <div class="count-indicator">
-                  <img class="img-xs rounded-circle " src="<?php echo   base_url("assets/images/faces/face15.jpg"); ?>" alt="">
+                  <img class="img-xs rounded-circle " src="<?=   bu("assets_admin/images/faces/face15.jpg"); ?>" alt="">
                   <span class="count bg-success"></span>
                 </div>
                 <div class="profile-name">
@@ -109,7 +111,7 @@
             <div class="collapse" id="auth">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="consultXT.php">Consultation xt</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo site_url('CT_Stock_Produit/inventory/');?>">xt en stock </a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?= site_url('CT_Stock_Produit/inventory/');?>">xt en stock </a></li>
                 <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Historique </a></li>
               </ul>
             </div>
