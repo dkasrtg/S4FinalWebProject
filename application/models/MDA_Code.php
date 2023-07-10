@@ -62,6 +62,13 @@ class MDA_Code extends CI_Model
         $this->db->query("update recharge_client set date_acceptation='".$date."' where id_recharge_client=".$id_recharge_client);
         $this->db->query("update compte_client set montant=((select montant from compte_client where id_client=".$results['id_client'].")+".$results['argent'].") where id_client=".$results['id_client']);
         $this->db->query("update code_argent set etat=2 where id_code_argent=".$results['id_code_argent']);
+        $dat = array(
+            'id_client'=>$results['id_client'],
+            'description'=>'rechargement',
+            'date_transaction'=>$date,
+            'montant'=>$results['argent']
+        );
+        $this->db->insert('transactions_client',$dat);
     }
 }
 ?>

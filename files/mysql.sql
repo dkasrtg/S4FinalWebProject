@@ -175,6 +175,7 @@ create table transactions_client(
     id_transactions_client int primary key auto_increment,
     id_client int,
     description varchar(40),
+    date_transaction date,
     montant decimal(10,2),
     foreign key(id_client) references client(id_client)
 );
