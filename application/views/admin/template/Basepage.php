@@ -6,7 +6,7 @@
 
     $this->load->view('admin/template/navbar');
 
-    $this->load->view($page,$data);
+    $this->load->view('admin/pages/'.$page,$data);
 
     $this->load->view('admin/template/Footer');
 ?>
