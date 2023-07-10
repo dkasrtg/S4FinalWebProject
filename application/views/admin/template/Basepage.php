@@ -8,5 +8,5 @@
 
     $this->load->view('admin/pages/'.$page,$data);
 
-    $this->load->view('admin/template/Footer');
+    $this->load->view('admin/template/footer');
 ?>
