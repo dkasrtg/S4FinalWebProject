@@ -13,7 +13,7 @@ class CTA_init extends CI_Controller
 			'page' => $page,
 			'data' => $data
 		);
-		$this->load->view('admin/template/BasePage', $v);
+		$this->load->view('admin/template/Basepage', $v);
 	}
 
 	public function tolog()
