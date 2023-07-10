@@ -58,5 +58,6 @@ class MDC_Donnee_Client extends CI_Model
         $this->db->update('donnees_client', $data);
         return $this->db->affected_rows();
     }
+    
 }
 ?>
