@@ -6,7 +6,7 @@ use S4FinalWebProject;
 
 create table categorie_repas(
     id_categorie_repas int primary key auto_increment,
-    nom_categorie varchar,
+    nom_categorie varchar(50),
     ordre int
 );
 insert into categorie_repas(nom_categorie,ordre) values('petit dejeuner',10);
@@ -18,7 +18,7 @@ insert into categorie_repas(nom_categorie,ordre) values('diner',40);
 create table repas(
     id_repas int primary key auto_increment,
     id_categorie_repas int,
-    description varchar,
+    description varchar(255),
     prix decimal,
     objectif int,
     affectation_poids decimal,
@@ -101,7 +101,7 @@ values (4, 'Lasagnes à la viande avec salade verte', 11.49, 1, 0.5);
 
 create table activite_sportive(
     id_activite_sportive int primary key auto_increment,
-    nom varchar,
+    nom varchar(255),
     objectif int
 );
 
