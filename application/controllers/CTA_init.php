@@ -24,14 +24,7 @@ class CTA_init extends CI_Controller
 	{
 		$this->load->view('admin/pages/samples/register');
 	}
-<<<<<<< Updated upstream
 	public function home(){
 		$this->viewer('admin/pages/accueil/index',array());
 	}	
-=======
-	public function home()
-	{
-		$this->viewer('accueil/index', array());
-	}
->>>>>>> Stashed changes
 }
