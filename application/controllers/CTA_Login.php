@@ -30,18 +30,18 @@ class CTA_Login extends CI_Controller
         
         $_Admin = $this->MDA_Admin->verify_login($email, $mdp);
         
-        if ($_Admin) 
+        if ($_Admin)
         {
-            var_dump($_Admin);
             $this->session->set_userdata('admin', $_Admin);
             redirect(bu('CTA_Admin'));
+            return ;
         }
         else 
         {
             $data['error'] = 'Email ou mot de passe invalide';
         }
 
-        $this->load->view('admin/pages/samples/login', $data);
+        redirect(bu('CTA_Login/index?error=' . urlencode($data['error'])));
     }
 
     public function addAdmin()

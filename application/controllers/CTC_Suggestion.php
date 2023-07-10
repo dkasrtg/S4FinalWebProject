@@ -7,6 +7,7 @@ class CTC_Suggestion extends CI_Controller
     {
         parent::__construct();
         $this->load->model('MDC_Client');
+        $this->load->model('MDC_Suggestion');
     }
 
     private function viewer($page,$data)
@@ -25,6 +26,10 @@ class CTC_Suggestion extends CI_Controller
 
     public function new_suggest()
     {
+        $_dateDebut = $this->input->post('date_debut');
+        $_client = $this->session->userdata('client');
+        $_target = floatval($this->input->post('target'));
 
+        $this->MDC_Suggestion->generateListeSuggestion($_dateDebut, $_client, $_target);
     }
 }
