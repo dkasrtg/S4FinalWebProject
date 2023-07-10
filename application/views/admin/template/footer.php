@@ -11,6 +11,9 @@
 <script src="<?= bu("assets_admin/js/settings.js") ?>"></script>
 <script src="<?= bu("assets_admin/js/todolist.js") ?>"></script>
 <script src="<?= bu("assets_admin/js/jquery/jquery.js") ?>"></script>
+<script src="<?= bu("assets_admin/js/chart.js") ?>"></script>
+<script src="<?= bu("assets_admin/vendors/js/vendor.bundle.base.js") ?>"></script>
+<script src="<?= bu("assets_admin/vendors/chart.js/Chart.min.js") ?>"></script>
 <!--endinject-->
 <!--Custom js for this page -->
 <!-- End custom js for this page-->
