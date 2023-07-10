@@ -2,6 +2,8 @@
 
     $this->load->view('admin/template/header');
 
+    $this->load->view('admin/template/menu');
+
     $this->load->view('admin/template/navbar');
 
     $this->load->view($page,$data);
