@@ -41,7 +41,7 @@
                                     <tbody>
                                         <tr>
                                             <th>Genre</th>
-                                            <td><?= $latest ? $latest['genre'] : '' ?></td>
+                                            <td><?= $latest ? ($latest['genre']  == 2 ? 'Femme' : 'Homme') : ''  ?></td>
                                         </tr>
                                         <tr>
                                             <th>Taille ( métre)</th>
