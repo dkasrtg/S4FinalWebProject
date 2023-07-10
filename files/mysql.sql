@@ -126,3 +126,18 @@ create table code_argent(
     argent decimal,
     etat int
 );
+
+
+CREATE TABLE admin (
+    id_admin int primary key auto_increment,
+    nom varchar(100) NOT NULL,
+    prenom varchar(100) NOT NULL,
+    email varchar(100) NOT NULL,
+    mdp varchar(100) NOT NULL
+);
+
+
+INSERT INTO admin (nom, prenom, email, mdp)
+VALUES  ('ANDRIANAIVOSOA', 'Johan', 'johan@gmail.com', 'johan'),
+        ('ANDRIANAIVOSOA', 'Gael', 'gael@gmail.com', 'gael'),
+        ('ANDRIANAIVOSOA', 'Christel', 'christel@gmail.com', 'christel');
