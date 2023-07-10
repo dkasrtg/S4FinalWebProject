@@ -34,7 +34,7 @@ class CTA_Login extends CI_Controller
         {
             var_dump($_Admin);
             $this->session->set_userdata('admin', $_Admin);
-            redirect('CTA_Admin');
+            redirect(bu('CTA_Admin'));
         }
         else 
         {

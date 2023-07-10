@@ -47,7 +47,8 @@
                     <button class="btn btn-google col">
                       <i class="mdi mdi-google-plus"></i> Google plus </button>
                   </div>
-                  <p class="sign-up">Don't have an Account?<a href="<?= bu("CTA_init/insert") ?>"> Sign Up</a></p>
+                    <p class="sign-up">Don't have an Account?<a href="<?= bu("CTA_init/insert") ?>"> Sign Up</a></p>
+                    <p class="sign-up">User` s connecting?<a href="<?= bu("CTC_Login") ?>">Sign in as client</a></p>
                 </form>
               </div>
             </div>
