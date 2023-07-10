@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 if(!function_exists('bu')){
     function bu($url){
-        $rs = base_url().$url;
+        $rs = base_url().'index.php/'.$url;
         echo $rs;
     }
 }
