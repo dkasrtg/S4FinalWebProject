@@ -37,14 +37,6 @@
                 </div>
             </div>    
         </div>
-
-
-      
-
-
-       
-       
-        
     <!-- /#add-category -->
     
     <!-- .animated -->
