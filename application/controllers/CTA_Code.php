@@ -47,4 +47,12 @@ class CTA_Code extends CI_Controller {
 		redirect('CTA_Code/index');
 	}
 
+	public function recharge()
+	{
+		$id_recharge_client = $this->input->get('id_recharge_client');
+		$date = $this->input->get('date');
+		$this->MDA_Code->recharge($id_recharge_client,$date);
+		redirect('CTA_Code/index');
+	}
+
 }

@@ -186,7 +186,7 @@ create table recharge_client(
     date_demande date,
     date_acceptation date,
     foreign key(id_client) references client(id_client),
-    foreign key(id_code_argent) references code_argent(id_code_argent)
+    foreign key(id_code_argent) references code_argent(id_code_argent) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 INSERT INTO recharge_client (id_client, id_code_argent, date_demande)

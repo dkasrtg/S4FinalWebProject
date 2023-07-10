@@ -18,7 +18,7 @@ class MDA_Code extends CI_Model
 
     public function liste_code_client()
     {
-        $results = $this->db->query("select * from code_argent join recharge_client on code_argent.id_code_argent=recharge_client.id_code_argent join client on client.id_client = recharge_client.id_client");
+        $results = $this->db->query("select * from code_argent join recharge_client on code_argent.id_code_argent=recharge_client.id_code_argent join client on client.id_client = recharge_client.id_client where date_acceptation is null");
         return $results->result_array();
     }
 
@@ -53,6 +53,15 @@ class MDA_Code extends CI_Model
     public function supprimer($id_code_argent)
     {
         $this->db->query('delete from code_argent where id_code_argent='.$id_code_argent);
+    }
+
+    public function recharge($id_recharge_client,$date)
+    {
+        $results = $this->db->query("select * from recharge_client join code_argent on code_argent.id_code_argent=recharge_client.id_code_argent where recharge_client.id_recharge_client=".$id_recharge_client);
+        $results = $results->row_array();
+        $this->db->query("update recharge_client set date_acceptation='".$date."' where id_recharge_client=".$id_recharge_client);
+        $this->db->query("update compte_client set montant=((select montant from compte_client where id_client=".$results['id_client'].")+".$results['argent'].") where id_client=".$results['id_client']);
+        $this->db->query("update code_argent set etat=2 where id_code_argent=".$results['id_code_argent']);
     }
 }
 ?>
