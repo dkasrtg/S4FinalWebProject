@@ -8,14 +8,30 @@ class MDC_Client extends CI_Model
         parent::__construct();
     }
 
-  
+    // READ
+    public function get_client($id) { 
+        $query = $this->db->get_where('client', array('id_client' => $id));
+        return $query->row_array();
+    }
+    // READ
+    public function get_client2($id_client = NULL) 
+    {
+        if ($id_client !== NULL) {
+            $query = $this->db->get_where('client', array('id_client' => $id_client));
+            return $query->row_array();
+        } else {
+            $query = $this->db->get('client');
+            return $query->result_array();
+        }
+    }
 
-    public function getRepasByCategorieAndObjectif() 
+    public function getRepasByCategorieAndObjectif($_objectif, $id_categorie_repas)
     {
         $this->db->select('*');
         $this->db->from('repas');
         $this->db->join('categorie_repas', 'repas.id_categorie_repas = categorie_repas.id_categorie_repas');
-        $this->db->where('categorie_repas.objectif <', 0);
+        $this->db->where('repas.objectif =', $_objectif);
+        $this->db->where('repas.id_categorie_repas =', $id_categorie_repas);
         $this->db->order_by('RAND()');
         $this->db->limit(1);
         $query = $this->db->get();
@@ -27,9 +43,9 @@ class MDC_Client extends CI_Model
     public function getLastWeightByUser($id_client) 
     {
         $this->db->select('poids');
-        $this->db->from('client');
+        $this->db->from('donnees_client');
         $this->db->where('id_client', $id_client);
-        $this->db->order_by('date_poids', 'DESC');
+        $this->db->order_by('date_donnees', 'DESC');
         $this->db->limit(1);
         $query = $this->db->get();
         $result = $query->row_array();
@@ -50,18 +66,6 @@ class MDC_Client extends CI_Model
         $this->db->insert('client', $data);
         $insert_id = $this->db->insert_id();
         return $this->get_client($insert_id);
-    }
-
-    // READ
-    public function get_client($id_client = NULL) 
-    {
-        if ($id_client !== NULL) {
-            $query = $this->db->get_where('client', array('id_client' => $id_client));
-            return $query->row_array();
-        } else {
-            $query = $this->db->get('client');
-            return $query->result_array();
-        }
     }
 
     // UPDATE

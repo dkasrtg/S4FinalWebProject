@@ -39,13 +39,14 @@ class CTC_Login extends CI_Controller
         {
             $this->session->set_userdata('client', $_Client);
             redirect(bu('CTC_Suggestion'));
+            return;
         }
         else
         {
             $data['error'] = 'Email ou mot de passe invalide';
         }
 
-        $this->load->view('cient/login/login', $data);
+        redirect(bu('CTC_Login/index?error=' . urlencode($data['error'])));
     }
 
     public function addClient()

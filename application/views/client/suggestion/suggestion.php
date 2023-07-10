@@ -22,7 +22,7 @@
                             <td>80 Kg</td>
                             <td>0.0012</td>
                             <td>
-                                <input class="form-input" type="text" name="poids" placeholder="... Kg">
+                                <input class="form-input" type="text" name="target" placeholder="... Kg">
                             </td>
                             <td>
                                 <input class="form-input" type="date" name="date_debut" placeholder="Date de debut">
