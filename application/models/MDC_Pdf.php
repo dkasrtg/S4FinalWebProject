@@ -12,7 +12,9 @@ class MDC_Pdf extends CI_Model
             'gender' => 'Male',
             'height' => 180,
             'weight' => 80,
-            'desired_weight' => 75
+            'desired_weight' => 75,
+            'duration'=>'3 months',
+            'total'=>4000
         ];
         $this->firstPage($pdf, $profile);
         $this->secondPage($pdf);
@@ -33,6 +35,9 @@ class MDC_Pdf extends CI_Model
         $email = $profile['email'];
         $currentProfile = 'Gender: ' . $profile['gender'] . ', Height: ' . $profile['height'] . ' cm, Weight: ' . $profile['weight'] . ' kg';
         $desiredWeight = 'Desired New Weight: ' . $profile['desired_weight'] . ' kg';
+        $duration = $profile['duration'];
+        $total  = $profile['total'];
+
 
         $pdf->Cell(0, 10, 'Customer Information', 0, 1, 'C');
         $pdf->Ln(10);
@@ -61,6 +66,18 @@ class MDC_Pdf extends CI_Model
         $pdf->Cell(50, 10, 'Desired New Weight:', 0, 0);
         $pdf->SetFont('Arial', '', 12);
         $pdf->Cell(0, 10, $desiredWeight, 0, 1);
+
+        $pdf->Ln(30);
+
+        $pdf->SetFont('Arial', 'B', 15);
+        $pdf->Cell(70, 10, 'Treatment Duration:', 0, 0);
+        $pdf->SetFont('Arial', '', 15);
+        $pdf->Cell(0, 10, $duration, 0, 1);
+
+        $pdf->SetFont('Arial', 'B', 15);
+        $pdf->Cell(70, 10, 'Total Cost:', 0, 0);
+        $pdf->SetFont('Arial', '', 15);
+        $pdf->Cell(0, 10, $total, 0, 1);
     }
     function secondPage($pdf)
     {
