@@ -10,11 +10,11 @@ class MDC_Donnee_Client extends CI_Model
     }
 
     // CREATE
-    public function insert_donnee($data)
+    public function insert_donnee($data,$id)
     {
         $this->db->insert('donnees_client', $data);
         $insert_id = $this->db->insert_id();
-        return $this->get_donnee($insert_id);
+        return $this->get_donnee($insert_id,$id);
     }
 
     //READ

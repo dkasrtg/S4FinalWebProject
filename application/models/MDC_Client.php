@@ -8,11 +8,7 @@ class MDC_Client extends CI_Model
         parent::__construct();
     }
 
-    // READ
-    public function get_client($id) { 
-        $query = $this->db->get_where('client', array('id_client' => $id));
-        return $query->row_array();
-    }
+  
 
     public function getRepasByCategorieAndObjectif() 
     {

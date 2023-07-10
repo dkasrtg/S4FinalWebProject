@@ -78,16 +78,26 @@
                             </div>
 
                             <div class="row form-group">
-                                <div class="col col-md-3"><label class=" form-control-label">Genre</label></div>
-                                        <div class="checkbox">
-                                            <label for="checkbox1" class="form-check-label ">
-                                                <input type="radio" id="checkbox1" name="checkbox1" value="option1" class="form-check-input">Homme
-                                            </label>
-                                            <hr>
-                                            <label for="checkbox2" class="form-check-label ">
-                                                <input type="radio" id="checkbox2" name="checkbox2" value="option2" class="form-check-input">Femme
-                                            </label>
-                                        </div>
+                                <div class="col col-md-3">
+                                    <label class="form-control-label">Genre</label>
+                                </div>
+                                <div class="form-check">
+                                    <div class="radio">
+                                        <label for="radio1" class="form-check-label">
+                                            <input type="radio" id="radio1" name="genre" value="homme" class="form-check-input"> Homme
+                                        </label>
+                                    </div>
+                                    <hr>
+                                    <div class="radio">
+                                        <label for="radio2" class="form-check-label">
+                                            <input type="radio" id="radio2" name="genre" value="femme" class="form-check-input"> Femme
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row form-group">
+                                        <div class="col col-md-6"><label for="hf-email" class=" form-control-label">Taille</label><input type="date" name="date"  id="hf-email" name="hf-email" class="form-control"  placeholder="Entrez votre taille"></div>
                             </div>
 
                             <div class="form-actions form-group"><button type="submit" class="btn btn-secondary btn-sm">Submit</button></div>
@@ -96,6 +106,7 @@
                 </div>
             </div>    
         </div>
+
 
         <div class="row">
 
