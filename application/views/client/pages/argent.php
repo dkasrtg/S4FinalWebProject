@@ -12,7 +12,7 @@
                 <div class="page-header float-right">
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
-                            <li class="active">Solde : 1200</li>
+                            <li class="active">Solde : <?= $solde['montant']?></li>
                         </ol>
                     </div>
                 </div>
@@ -25,26 +25,26 @@
     <div class="animated fadeIn">
         <div class="row">
             <?php
-            for ($i=0; $i < count($liste_code); $i++) { 
-                ?>
+            for ($i = 0; $i < count($liste_code); $i++) {
+            ?>
                 <div class="col-md-2">
-                <div class="card">
-                    <div class="card-header bg-dark">
-                        <strong class="card-title text-light"><?= $liste_code[$i]['code']?></strong>
-                    </div>
-                    <div class="card-body text-white bg-danger">
-                        <p class="card-text text-light"><?= $liste_code[$i]['argent']?></p>
+                    <div class="card">
+                        <div class="card-header bg-dark">
+                            <strong class="card-title text-light"><?= $liste_code[$i]['code'] ?></strong>
+                        </div>
+                        <div class="card-body text-white bg-danger">
+                            <p class="card-text text-light"><?= $liste_code[$i]['argent'] ?></p>
+                        </div>
                     </div>
                 </div>
-            </div>
-                <?php
+            <?php
             }
             ?>
             <div class="col-lg-12">
                 <div class="card">
-                    <div class="card-header">Rechargement <span style="color:red;font-weight:bolder;font-family:Arial;font-size:small"><?= $error?></span></div>
+                    <div class="card-header">Rechargement <span style="color:red;font-weight:bolder;font-family:Arial;font-size:small"><?= $error ?></span></div>
                     <div class="card-body card-block">
-                        <form action="<?php bu('CTC_Argent/recharger')?>" method="get" class="">
+                        <form action="<?php bu('CTC_Argent/recharger') ?>" method="get" class="">
                             <div class="form-group">
                                 <div class="input-group">
                                     <input type="text" id="username" name="code" placeholder="Code" class="form-control">
@@ -67,19 +67,22 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Code</th>
                                     <th scope="col">Montant</th>
+                                    <th scope="col">Date</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                </tr>
+                                <?php
+                                for ($i = 0; $i < count($rechargement_en_attente); $i++) {
+                                ?>
+                                    <tr>
+                                        <th scope="row"><?= $rechargement_en_attente[$i]['id_recharge_client'] ?></th>
+                                        <td><?= $rechargement_en_attente[$i]['code'] ?></td>
+                                        <td><?= $rechargement_en_attente[$i]['argent'] ?></td>
+                                        <td><?= $rechargement_en_attente[$i]['date_demande'] ?></td>
+                                    </tr>
+                                <?php
+                                }
+                                ?>
                             </tbody>
                         </table>
                     </div>
@@ -113,20 +116,21 @@
                                             <tr role="row">
                                                 <th class="sorting_asc" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 152.2px;">Date</th>
                                                 <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 251.2px;">Description</th>
-                                                <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 107.2px;">Montant</th>
+                                                <th class="sorting" tabindex="0" aria-controls="bootstrap-data-table" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 107.2px;">Valeur</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr role="row" class="odd">
-                                                <td class="sorting_1">2022-02-02</td>
-                                                <td>Molex</td>
-                                                <td>20</td>
-                                            </tr>
-                                            <tr role="row" class="even">
-                                                <td class="sorting_1">2022-02-02</td>
-                                                <td>Molex</td>
-                                                <td>20</td>
-                                            </tr>
+                                            <?php
+                                            for ($i = 0; $i < count($transactions); $i++) {
+                                            ?>
+                                                <tr role="row" class="odd">
+                                                    <td class="sorting_1"><?= $transactions[$i]['date_transaction']?></td>
+                                                    <td><?= $transactions[$i]['description']?></td>
+                                                    <td><?= $transactions[$i]['montant']?></td>
+                                                </tr>
+                                            <?php
+                                            }
+                                            ?>
                                         </tbody>
                                     </table>
                                 </div>
