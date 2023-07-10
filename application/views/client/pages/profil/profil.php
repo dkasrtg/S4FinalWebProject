@@ -1,6 +1,7 @@
 
 <?php if(!isset($client)) $client=array(); ?>
 <?php if(!isset($donnee)) $donnee=array(); ?>
+<?php if(!isset($latest)) $latest=array(); ?>
 <!-- Content -->
 <div class="content">
     <!-- Animated -->
@@ -40,20 +41,20 @@
                                     <tbody>
                                         <tr>
                                             <th>Genre</th>
-                                            <td><?= $donnee['nom'] ?></td>
+                                            <td><?= $latest ? $latest['genre'] : '' ?></td>
                                         </tr>
                                         <tr>
-                                            <th>Taille</th>
-                                            <td><?= $donnee['nom'] ?></td>
+                                            <th>Taille ( métre)</th>
+                                            <td><?= $latest ? $latest['taille'] : '' ?></td>
                                             <br>
                                         </tr>
                                         <tr>
-                                            <th>Poids</th>
-                                            <td><?= $donnee['nom'] ?></td>
+                                            <th>Poids (Kilos)</th>
+                                            <td><?= $latest ? $latest['poids'] : '' ?></td>
                                         </tr>
                                         <tr>
                                             <th>Date d'insertion</th>
-                                            <td><?= $donnee['nom'] ?></td>
+                                            <td><?= $latest ? $latest['date_donnees'] : '' ?></td>
                                         </tr>
                                         <br>
                                     </tbody>
@@ -73,33 +74,60 @@
                     <div class="card-body card-block">
                         <form action="<?= bu("CTC_Donnee_Client/insert_donnee") ?>" method="post" class="form-horizontal">
                             <div class="row form-group">
-                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label">Taille</label><input type="email" name="taille"  id="hf-email" name="hf-email" class="form-control"  placeholder="Entrez votre taille"></div>
-                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label">Email</label><input type="email"  name="poids" id="hf-email" name="hf-email" class="form-control"  placeholder="Entrez votre poids"></div>
+                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label">Taille</label><input type="number" name="taille" step="0.01" min="1" id="hf-email" name="hf-email" class="form-control"  placeholder="Entrez votre taille" value="<?= $latest ? $latest['taille'] : '' ?>"></div>
+                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label">Poids</label><input type="number"  name="poids" min="20" id="hf-email" name="hf-email" class="form-control"  placeholder="Entrez votre poids"  value="<?= $latest ? $latest['poids'] : '' ?>"></div>
                             </div>
 
                             <div class="row form-group">
-                                <div class="col col-md-3"><label class=" form-control-label">Genre</label></div>
-                                        <div class="checkbox">
-                                            <label for="checkbox1" class="form-check-label ">
-                                                <input type="radio" id="checkbox1" name="checkbox1" value="option1" class="form-check-input">Homme
-                                            </label>
-                                            <hr>
-                                            <label for="checkbox2" class="form-check-label ">
-                                                <input type="radio" id="checkbox2" name="checkbox2" value="option2" class="form-check-input">Femme
-                                            </label>
-                                        </div>
+                                    <div class="col col-md-6">
+                                            <label for="hf-email" class=" form-control-label">Taille</label>
+                                            <select name="genre" class="form-control" required>
+                                                    <option value="1" <?= ($latest && $latest['genre'] == 1) ? 'selected' : '' ?>>Homme</option>
+                                                    <option value="2" <?= ($latest && $latest['genre'] == 2) ? 'selected' : '' ?>>Femme</option>
+                                            </select>
+                                    </div>
+                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label">Date</label><input type="date" name="date"  id="hf-email" name="hf-email" class="form-control"  value="<?= $latest ? $latest['date_donnees'] : '' ?>"></div>
                             </div>
 
-                            <div class="form-actions form-group"><button type="submit" class="btn btn-secondary btn-sm">Submit</button></div>
+                            <div class="form-actions form-group"><button type="submit" class="btn btn-secondary btn-sm">Inserer</button></div>
                         </form>
                     </div>
                 </div>
             </div>    
         </div>
 
-        <div class="row">
 
-        </div>
+        <div class="row">
+        <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong class="card-title">Table de suivi:</strong>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-bordered">
+                                <thead class="thead-light">
+                                    <tr>
+                                      <th scope="col">Taille</th>
+                                      <th scope="col">Poids</th>
+                                      <th scope="col">Période</th>
+                                      <th></th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                <?php foreach ($donnee as $d) { ?>
+                                    <tr>
+                                        <th scope="row"><?= $d->taille ?></th>
+                                        <td><?= $d->poids ?></td>
+                                        <td><?= $d->date_donnees ?></td>
+                                        <td><a  style="color:blue" href="<?= bu("CTC_Donnee_Client/load_update") ?>?donnee=<?= $d->id_donnees_client ?>" alt="oups!">Modifier</a></td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+        </div>  
 
 
        
