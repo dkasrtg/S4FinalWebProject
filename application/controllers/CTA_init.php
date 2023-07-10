@@ -20,6 +20,6 @@ class CTA_init extends CI_Controller {
 		$this->load->view('admin/pages/samples/register');
 	}
 	public function home(){
-		$this->viewer('admin/pages/accueil/index',array());
+		$this->viewer('accueil/index',array());
 	}	
 }
