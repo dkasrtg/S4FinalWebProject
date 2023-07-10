@@ -19,7 +19,11 @@ class MDC_Pdf extends CI_Model
 
     public function firstPage($pdf, $profile)
     {
-        $pdf->AddPage();
+        $pdf->AddPage('L');
+        $pdf->SetFont('Arial', 'B', 28);
+        $pdf->Cell(0, 100, 'Diet and Sport Activity', 0, 1, 'C');
+
+        $pdf->AddPage('L');
         $pdf->SetFont('Arial', 'B', 16);
 
         $fullName = $profile['full_name'];
@@ -31,11 +35,29 @@ class MDC_Pdf extends CI_Model
         $pdf->Cell(0, 10, 'Customer Information', 0, 1, 'C');
         $pdf->Ln(10);
 
-        $pdf->SetFont('Arial', 'B', 12); // Set font style to bold
-        $pdf->Cell(0, 10, 'Full Name: ' . $fullName, 0, 1);
-        $pdf->Cell(0, 10, 'Telephone: ' . $tel, 0, 1);
-        $pdf->Cell(0, 10, 'Email: ' . $email, 0, 1);
-        $pdf->Cell(0, 10, 'Current Profile: ' . $currentProfile, 0, 1);
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(50, 10, 'Full Name:', 0, 0);
+        $pdf->SetFont('Arial', '', 12);
+        $pdf->Cell(0, 10, $fullName, 0, 1);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(50, 10, 'Telephone:', 0, 0);
+        $pdf->SetFont('Arial', '', 12);
+        $pdf->Cell(0, 10, $tel, 0, 1);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(50, 10, 'Email:', 0, 0);
+        $pdf->SetFont('Arial', '', 12);
+        $pdf->Cell(0, 10, $email, 0, 1);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(50, 10, 'Current Profile:', 0, 0);
+        $pdf->SetFont('Arial', '', 12);
+        $pdf->Cell(0, 10, $currentProfile, 0, 1);
+
+        $pdf->SetFont('Arial', 'B', 12);
+        $pdf->Cell(50, 10, 'Desired New Weight:', 0, 0);
+        $pdf->SetFont('Arial', '', 12);
         $pdf->Cell(0, 10, $desiredWeight, 0, 1);
     }
 }
