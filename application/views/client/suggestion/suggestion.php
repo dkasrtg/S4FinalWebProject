@@ -73,24 +73,26 @@
         dayMaxEvents: true, // allow "more" link when too many events
 
         events: [
-            <?php foreach($suggestions as $suggestion) { ?>
-                <?php foreach($suggestion->_categories_repas as $_categorie_repas) { ?>
-                    {
-                        title: '<?= $_categorie_repas->_repas['description']?>',
-                        start: '<?= $suggestion->_date->format('Y-m-d')?>'
-                    },                    
-                    {
-                        title: '<?= $_categorie_repas->_activite_sportive['nom']?>',
-                        start: '<?= ($suggestion->_date->format('Y-m-d')."T".$_categorie_repas->time_)?>',
-                        backgroundColor: 'green',
-                        borderColor: 'green' // Couleur rouge pour l'activité sportive
-                    },
+            <?php if(isset($suggestions)) { ?>
+                <?php foreach($suggestions as $suggestion) { ?>
+                    <?php foreach($suggestion->_categories_repas as $_categorie_repas) { ?>
+                        {
+                            title: '<?= $_categorie_repas->_repas['description'];?>',
+                            start: '<?= $suggestion->_date->format('Y-m-d');?>T<?= $_categorie_repas->time_;?>',
+                        },                    
+                        {
+                            title: '<?= $_categorie_repas->_activite_sportive['nom'];?>',
+                            start: '<?= $suggestion->_date->format('Y-m-d');?>T<?= $_categorie_repas->time_;?>',
+                            backgroundColor: 'green',
+                            borderColor: 'green'
+                        },
+                    <?php } ?>
                 <?php } ?>
             <?php } ?>
             {
-            title: 'Click for Google',
-            url: 'http://google.com/',
-            start: '2023-01-28'
+                title: 'Click for Google',
+                url: 'http://google.com/',
+                start: '2023-01-28'
             }
         ]
         });
