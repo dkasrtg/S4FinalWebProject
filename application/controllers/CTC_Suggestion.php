@@ -27,7 +27,7 @@ class CTC_Suggestion extends CI_Controller
     public function new_suggest()
     {
         $_dateDebut = $this->input->post('date_debut');
-        $_client = $this->session->userdata('client');
+        $_client = $this->MDC_Client->get_client($this->session->userdata('client'));
         $_target = floatval($this->input->post('target'));
 
         $this->MDC_Suggestion->generateListeSuggestion($_dateDebut, $_client, $_target);

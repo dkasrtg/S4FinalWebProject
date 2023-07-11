@@ -37,7 +37,7 @@ class CTC_Login extends CI_Controller
 
         if ($_Client)
         {
-            $this->session->set_userdata('client', $_Client);
+            $this->session->set_userdata('client', $_Client->id_client);
             redirect(bu('CTC_Suggestion'));
             return;
         }

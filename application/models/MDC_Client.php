@@ -2,6 +2,7 @@
 
 class MDC_Client extends CI_Model
 {
+    public $_id_client;
 
     public function __construct() 
     {
@@ -38,6 +39,17 @@ class MDC_Client extends CI_Model
         return $query->row_array();
     }
 
+    public function getSportByObjectif($_objectif)
+    {
+        $this->db->select('*');
+        $this->db->from('activite_sportive');
+        $this->db->where('activite_sportive.objectif =', $_objectif);
+        $this->db->order_by('RAND()');
+        $this->db->limit(1);
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+
 
 
     public function getLastWeightByUser($id_client) 
@@ -49,7 +61,7 @@ class MDC_Client extends CI_Model
         $this->db->limit(1);
         $query = $this->db->get();
         $result = $query->row_array();
-        return $result['poids'];
+        return floatval($result['poids']);
     }
 
     // LOGIN
