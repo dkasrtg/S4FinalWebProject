@@ -19,7 +19,7 @@ class CTC_Donnee_Client extends CI_Controller
 	}
 
 	public function index()	{ 
-		$idC = $this->session->userdata('client');
+		$idC = 1;
 		$data['client'] =  $this->MDC_Client->get_client($idC);
 		$data['donnee'] =  $this->MDC_Donnee_Client->get_donnee(null,$idC);
 		$data['latest'] =   $this->MDC_Donnee_Client->get_latest_donnee($idC);
@@ -27,7 +27,7 @@ class CTC_Donnee_Client extends CI_Controller
 	}
 
 	public function insert_donnee(){
-		$idC = $this->session->userdata('client');
+		$idC = 1;
 		$data = array(
 			'id_client' => $idC,
             'taille' => $this->input->post('taille'),
@@ -39,12 +39,12 @@ class CTC_Donnee_Client extends CI_Controller
 		redirect("CTC_Donnee_Client/index");
 	}
 	public function load_update(){
-		$idC =  $this->session->userdata('client');
+		$idC =  1;
 		$data['update'] =   $this->MDC_Donnee_Client->get_donnee($_GET['donnee'],$idC);
 		$this->viewer('pages/profil/update',$data);
 	}
 	public function update_donnee(){
-		$idC =  $this->session->userdata('client');
+		$idC =  1;
 		$data = array(
 			'id_client' => $idC,
             'taille' => $this->input->post('taille'),
@@ -56,7 +56,7 @@ class CTC_Donnee_Client extends CI_Controller
 		redirect('CTC_Donnee_Client/index');
 	}
 	public function select_donnee(){
-		$idC =  $this->session->userdata('client');
+		$idC =  1;
 		$data = array(
 			'id_client' => $idC,
             'taille' => $this->input->post('taille'),

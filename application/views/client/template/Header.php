@@ -41,21 +41,17 @@
         <nav class="navbar navbar-expand-sm navbar-default">
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
+                <li class="menu-title">Menu</li>  
                     <li class="active">
                         <a href="<?= bu("CTC_Donnee_Client/index") ?>"><i class="menu-icon fa fa-laptop"></i>Mon Profil </a>
                     </li>
                     <li class="active">
                         <a href="<?= bu("CTC_Proposition/index") ?>"><i class="menu-icon fa fa-laptop"></i>Mon IMC </a>
                     </li>
-                    <li class="menu-title">Detail Code</li><!-- /.menu-title -->
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Code</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-table"></i><a href="tables-basic.html">Achat Code </a></li>
-                            <li><i class="fa fa-table"></i><a href="tables-data.html">Mes codes</a></li>
-                        </ul>
+                    <li class="active">
+                        <a href="<?= bu("CTC_Argent/index") ?>"><i class="menu-icon fa fa-laptop"></i>Detail code</a>
                     </li>
-
+                
                     <li class="menu-title">Extra</li><!-- /.menu-title -->
                     <li>
                         <a href="widgets.html"> <i class="menu-icon ti-email"></i>Suggestion</a>
