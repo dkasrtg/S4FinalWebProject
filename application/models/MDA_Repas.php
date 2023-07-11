@@ -37,6 +37,8 @@ class MDA_Repas extends CI_Model
         }
     }
 
+
+
     //SELECT
     public function select_repas($data){
             $this->db->select('repas.*, categorie_repas.nom_categorie');
@@ -64,5 +66,6 @@ class MDA_Repas extends CI_Model
         $this->db->delete('repas');
         return $this->db->affected_rows();
     }
+
     
 }
