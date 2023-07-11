@@ -69,9 +69,7 @@ class MDC_Donnee_Client extends CI_Model
             $this->db->where('donnees_client.date_donnees <=', $data['date_donnees']);
             $this->db->where('donnees_client.id_client', $id_client);
             $this->db->order_by('date_donnees', 'DESC');
-           
             $query = $this->db->get();
-            echo $this->db->last_query();
             return $query->result();
     }
     

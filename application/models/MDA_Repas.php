@@ -37,6 +37,18 @@ class MDA_Repas extends CI_Model
         }
     }
 
+    //SELECT
+    public function select_repas($data){
+            $this->db->select('repas.*, categorie_repas.nom_categorie');
+            $this->db->from('repas');
+            $this->db->join('categorie_repas', 'repas.id_categorie_repas = categorie_repas.id_categorie_repas');
+            $this->db->where('repas.id_categorie_repas = ', $data['id_categorie_repas']);
+            $this->db->where('repas.objectif = ', $data['objectif']);
+            $this->db->where('repas.prix <= ', $data['prix']);
+            $query = $this->db->get();
+            return $query->result();
+    }
+
     // UPDATE
     public function update_repas($id_repas, $data) 
     {
