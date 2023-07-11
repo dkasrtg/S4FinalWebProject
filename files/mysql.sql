@@ -253,8 +253,12 @@ create table commande_client(
     id_client int,
     prix_total decimal(7,2),
     date_commande date,
+    etat int,
     foreign key(id_client) references client(id_client)
 );
+
+
+insert into commande_client(id_client,prix_total,date_commande,etat) values(1,1000,'2023-01-01',1);
 
 
 create table commande_repas(
@@ -276,7 +280,7 @@ create table option(
     remise decimal(2,2)
 );
 
-insert into option(nom,remise) values('simple',0);
+insert into option(nom,remise) values('standard',0);
 insert into option(nom,remise) values('gold',15);
 
 
@@ -291,3 +295,4 @@ create table option_client(
 
 insert into option_client(id_client,id_option) values(1,1);
 insert into option_client(id_client,id_option) values(2,2);
+
