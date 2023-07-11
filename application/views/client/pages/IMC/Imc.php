@@ -1,5 +1,4 @@
 <?php if(!isset($latest)) $latest=array(); ?>
-<?php if(!isset($imc)) $imc=array(); ?>
 <?php if(!isset($proposition)) $proposition=array(); ?>
 <!-- Content -->
 <div class="content">
@@ -27,10 +26,7 @@
                 </div>
             </div>
         </div>
-        <!-- /Widgets -->
-        <!--  Traffic  -->
         
-       
         <!-- /.orders -->
         <!-- To Do and Live Chat -->
         <div class="row">
@@ -50,9 +46,11 @@
                                     </nav>
                                         <div class="tab-content pl-3 pt-2" id="nav-tabContent">
                                             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                            <?php if (!empty($imc)) { ?>
                                                 <p>Selon votre profil actuel, votre IMC (Indice de Masse Corporelle) est de <?= $imc ? $imc : '' ?>.
                                                 <p>L'IMC IDEAL se situe entre <?= $proposition ? $proposition['min'] : '' ?>   et <?= $proposition ? $proposition['max'] : '' ?>.Selon le calcul de votre indice de masse corporel (IMC) actuel, votre poids est <?= $proposition ? $proposition['position'] : '' ?> par rapport à votre taille. Vous souhaitez néanmoins mincir pour vous sentir plus en forme ou retrouver votre silhouette.
-                                                Le programme COMME JAIME va vous permettre d’adopter de bonnes habitudes : nutrition, activité physique et bien-être adaptées à votre rythme de vie, grâce au suivi régulier de votre coach personnel.</p>
+                                                Notre programme  va vous permettre d’adopter de bonnes habitudes : nutrition, activité physique et bien-être adaptées à votre rythme de vie, grâce au suivi régulier de votre coach personnel.</p>
+                                            <?php } ?>
                                             </div>
                                             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                                                 <p><?= $proposition ? $proposition['conseil'] : '' ?></p>
