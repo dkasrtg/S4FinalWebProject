@@ -136,6 +136,8 @@ CREATE TABLE admin (
     mdp varchar(100) NOT NULL
 );
 
+insert into admin('johan','johan','johan@gmail.com','johan');
+
 
 create table code_argent(
     id_code_argent int primary key auto_increment,
@@ -177,6 +179,8 @@ create table donnees_client(
 
 INSERT INTO donnees_client (id_client, genre, taille, poids, date_donnees)
 VALUES (1, 1, 1.75, 55.00, '2023-07-10');
+INSERT INTO donnees_client (id_client, genre, taille, poids, date_donnees)
+VALUES (2, 1, 1.75, 55.00, '2023-07-10');
 
 
 create table compte_client(
@@ -269,20 +273,6 @@ insert into composition(viande,poisson,volaille) values (10,40,50);
 insert into regime_composition (id_comp,id_repas,date_insertion) values(1,4,'2023-07-15');
 insert into regime_composition (id_comp,id_repas,date_insertion) values(2,2,'2023-07-14');
 insert into regime_composition (id_comp,id_repas,date_insertion) values(3,3,'2023-07-17');
-
-SELECT rp.id_repas, cp.id_comp, rp.description, cp.volaille, cp.viande, cp.poisson, rg.date_insertion
-FROM repas rp
-LEFT JOIN categorie_repas cr ON rp.id_categorie_repas = cr.id_categorie_repas
-LEFT JOIN regime_composition rg ON rp.id_repas = rg.id_repas
-LEFT JOIN composition cp ON rg.id_comp = cp.id_comp
-WHERE rg.date_insertion IS NULL OR rg.date_insertion = (
-    SELECT MAX(date_insertion)
-    FROM regime_composition
-    WHERE id_repas = rp.id_repas
-)
-ORDER BY rg.date_insertion ASC;
-
-
 
 create table but(
     id_but int primary key auto_increment,
