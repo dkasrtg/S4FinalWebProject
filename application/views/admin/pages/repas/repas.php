@@ -124,7 +124,7 @@
                                                     <td><a href="<?= bu("CTA_Repas/delete_repas") ?>?repas=<?= $repas_item->id_repas ?>" alt="oups!">Supprimer</a></td>
                                                 </tr>
                                             <?php } ?>
-                                    
+                                        
                                     </tbody>
                                 </table>
                             </div>

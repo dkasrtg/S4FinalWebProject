@@ -242,3 +242,55 @@ VALUES (26, 30, 'Surpoids', 'Votre IMC indique que vous êtes en surpoids. Il es
   
 INSERT INTO proposition (max, min, position, conseil)
 VALUES  (31,32, ' Obésité sévère', 'Votre IMC indique que vous êtes en situation ,obésité. Il est essentiel de prendre des mesures pour améliorer votre santé et réduire votre poids. Voici quelques conseils du diététicien pour vous aider :Adoptez une alimentation saine et équilibrée en privilégiant les aliments riches en nutriments et en fibres, tels que les fruits, les légumes, les grains entiers et les protéines maigres.,Évitez les aliments transformés, les boissons sucrées et les aliments riches en matières grasses.,Contrôlez vos portions et évitez les excès alimentaires.,Augmentez votre activité physique en pratiquant régulièrement des exercices cardiovasculaires et des exercices de renforcement musculaire.,Consultez un professionnel de la santé ou un diététicien pour obtenir un plan alimentaire personnalisé et un suivi régulier de votre progression.,Cherchez un soutien auprès de groupes de soutien ou de programmes de gestion du poids.');
+
+
+create table composition(
+    id_comp int primary key auto_increment,
+    viande decimal(11,2),
+    poisson decimal(11,2),
+    volaille decimal(11,2)
+)
+
+create table regime_composition(
+    idRC int primary key auto_increment,
+    id_comp int,
+    foreign key(id_comp) references composition(id_comp),
+    id_repas int,
+    foreign key(id_repas) references repas(id_repas),
+    date_insertion datetime
+)
+
+insert into composition(viande,poisson,volaille) values (18,20,60);
+insert into composition(viande,poisson,volaille) values (10,60,20);
+insert into composition(viande,poisson,volaille) values (40,30,20);
+
+
+insert into composition(viande,poisson,volaille) values (10,40,50);
+
+insert into regime_composition (id_comp,id_repas,date_insertion) values(1,4,'2023-07-15');
+insert into regime_composition (id_comp,id_repas,date_insertion) values(2,2,'2023-07-14');
+insert into regime_composition (id_comp,id_repas,date_insertion) values(3,3,'2023-07-17');
+
+SELECT rp.id_repas, cp.id_comp, rp.description, cp.volaille, cp.viande, cp.poisson, rg.date_insertion
+FROM repas rp
+LEFT JOIN categorie_repas cr ON rp.id_categorie_repas = cr.id_categorie_repas
+LEFT JOIN regime_composition rg ON rp.id_repas = rg.id_repas
+LEFT JOIN composition cp ON rg.id_comp = cp.id_comp
+WHERE rg.date_insertion IS NULL OR rg.date_insertion = (
+    SELECT MAX(date_insertion)
+    FROM regime_composition
+    WHERE id_repas = rp.id_repas
+)
+ORDER BY rg.date_insertion ASC;
+
+
+ public function select_composition($categ) {
+        $this->db->select('rp.id_repas , cp.volaille , cp.viande , cp.poisson');
+        $this->db->from('repas rp');
+        $this->db->join('categorie_repas cr', 'rp.id_categorie_repas = cr.id_categorie_repas');
+        $this->db->join('regime_composition rg', 'rg.id_repas = cr.id_repas');
+        $this->db->join('composition cp', 'rg.id_comp = cp.id_comp');
+        $this->db->order_by('date_insertion', 'DESC');
+        $query = $this->db->get();
+        return $query->result();
+    }

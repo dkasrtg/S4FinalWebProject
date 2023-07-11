@@ -67,6 +67,16 @@
           </li>
 
           <li class="nav-item menu-items">
+            <a class="nav-link" href="<?= bu("CTA_Composition/index") ?>">
+              <span class="menu-icon">
+                <i class="mdi mdi-table-large"></i>
+              </span>
+              <span class="menu-title">Composition Régime</span>
+            </a>
+          </li>
+
+
+          <li class="nav-item menu-items">
             <a class="nav-link" href="<?= bu("CTA_Sport/index") ?>">
             <span class="menu-icon">
                   <i class="mdi mdi-laptop"></i>
