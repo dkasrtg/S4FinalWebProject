@@ -30,7 +30,7 @@ class CTC_Argent extends CI_Controller
 			'transactions'=>$this->MDC_Argent->transactions($id_client),
 			'solde'=>$this->MDC_Argent->solde($id_client)
 		);
-		$this->viewer('client/pages/argent', $data);
+		$this->viewer('pages/argent', $data);
 	}
 
 	public function recharger(){
