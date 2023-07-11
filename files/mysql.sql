@@ -19,7 +19,7 @@ create table repas(
     id_repas int primary key auto_increment,
     id_categorie_repas int,
     description varchar(255),
-    prix decimal,
+    prix decimal(10,2),
     objectif int,
     affectation_poids decimal(11,2),
     foreign key(id_categorie_repas) references categorie_repas(id_categorie_repas)
@@ -320,7 +320,12 @@ insert into commande_client(id_client,prix_total,date_commande,etat) values(1,10
 create table commande_repas(
     id_commande_repas int primary key auto_increment,
     id_repas int,
+    id_client int,
+    prix_total decimal(7,2),
+    date_commande date,
+    etat int,
     foreign key(id_repas) references repas(id_repas)
+    foreign key(id_client) references client(id_client)
 );
 
 create table commande_activite_sportive(

@@ -50,6 +50,10 @@ class CTC_Suggestion extends CI_Controller
         $suggestions = $this->MDC_Suggestion->buildEventData($suggestions);
         $data['suggestionsGson'] = $suggestions;
 
+        // 
+        $this->session->set_userdata('data',$data);
+        // 
+
         $this->viewer('suggestion/suggestion',$data);
     }
 }

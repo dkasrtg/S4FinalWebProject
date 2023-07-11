@@ -3,54 +3,37 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class MDC_Pdf extends CI_Model
 {
 
-
-    public function table_data(){
-        $weeks = array();
-        for ($i=0; $i < 2; $i++) { 
-            $week = array(
-                'start'=>'1 Janvier 2022',
-                'end'=>'7 Janvier 2022',
-                'data'=>    [
-                                [['Repas',10],['Repas',20],['Repas',10],['Repas',20]],
-                                [['Repas',10],['Repas',20],['Repas',10],['Repas',20]],
-                                [['Repas',10],['Repas',20],['Repas',10],['Repas',20]],
-                                [['Repas',10],['Repas',20],['Repas',10],['Repas',20]],
-                                [['Repas',10],['Repas',20],['Repas',10],['Repas',20]],
-                                [['Repas',10],['Repas',20],['Repas',10],['Repas',20]],
-                                [['Repas',10],['Repas',20],['Repas',10],['Repas',20]]
-                            ]
-            );
-            array_push($weeks,$week);
-        }
-        return $weeks;
-    }
-
-    public function sport_data(){
-        $weeks = array();
-        for ($i=0; $i < 2; $i++) { 
-            array_push($weeks,['A','A','A','A','A','A','A']);
-        }
-        return $weeks;
-    }
-
-    public function export_facture($pdf)
+    public function dure($date1, $date2)
     {
-        $profile = [
-            'full_name' => 'John Doe',
-            'tel' => '1234567890',
-            'email' => 'johndoe@example.com',
-            'gender' => 'Male',
-            'height' => 180,
-            'weight' => 80,
-            'desired_weight' => 75,
-            'duration'=>'3 months',
-            'total'=>4000
-        ];
+        // $date1 = '2023-07-01'; // Replace with your first date
+        // $date2 = '2023-08-06'; // Replace with your second date
+
+        // Create DateTime objects from the given dates
+        $dateTime1 = new DateTime($date1);
+        $dateTime2 = new DateTime($date2);
+
+        // Calculate the difference between the two dates
+        $interval = $dateTime1->diff($dateTime2);
+
+        // Get the total number of days
+        $days = $interval->days;
+
+        // Calculate the months and remaining days
+        $months = floor($days / 30);
+        $remainingDays = $days % 30;
+
+        // Output the result
+        if ($months > 0) {
+            return $months . " month(s) " . $remainingDays . " day(s)";
+        } 
+        return $days . " day(s)";
+    }
+
+    public function export_facture($pdf,$fin,$fins,$profile)
+    {
         $this->firstPage($pdf, $profile);
-        $weeks = $this->table_data();
-        $sports = $this->sport_data();
-        for ($i=0; $i < count($weeks); $i++) { 
-            $this->secondPage($pdf,$weeks[$i],$sports[$i]);
+        for ($i = 0; $i < count($fin); $i++) {
+            $this->secondPage($pdf, $fin[$i], $fins[$i],$i+1);
         }
     }
 
@@ -112,15 +95,15 @@ class MDC_Pdf extends CI_Model
         $pdf->SetFont('Arial', '', 15);
         $pdf->Cell(0, 10, $total, 0, 1);
     }
-    function secondPage($pdf,$data,$sport)
+    function secondPage($pdf, $data, $sport,$sem)
     {
         $pdf->SetMargins(10, 5, 10);
         $pdf->SetAutoPageBreak(false, 5.4);
         $pdf->AddPage('L');
         $pdf->SetFont('Arial', 'B', 12);
 
-        $pdf->Cell(0, 10, 'Semaine 1', 0, 0, 'L');
-        $pdf->Cell(0, 10, '2 Aout 2013 a 9 Aout 2013', 0, 1, 'R');
+        $pdf->Cell(0, 10, 'Semaine '.$sem, 0, 0, 'L');
+        $pdf->Cell(0, 10, $data['start'].' a '.$data['end'], 0, 1, 'R');
         $pdf->Ln(0);
         $pdf->SetFont('Arial', 'B', 9);
         // Table column headings
@@ -147,7 +130,7 @@ class MDC_Pdf extends CI_Model
 
         // Table rows 2-8
         $days = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
-        $totd = [0,0,0,0];
+        $totd = [0, 0, 0, 0];
         for ($i = 0; $i < 7; $i++) {
             $pdf->Cell(17, 20, $days[$i], 1);
             $totr = 0;
@@ -156,7 +139,7 @@ class MDC_Pdf extends CI_Model
                 $current_y = $pdf->GetY();
                 $current_x = $pdf->GetX();
                 $cell_width = 44;
-                $pdf->MultiCell($cell_width, 6, $data['data'][$i][$j][0],0, false);
+                $pdf->MultiCell($cell_width, 6, $data['data'][$i][$j][0], 0, false);
                 $pdf->SetXY($current_x + $cell_width, $current_y);
                 $pdf->SetFont('Arial', 'B', 9);
                 $pdf->Cell(16, 20, $data['data'][$i][$j][1], 1);
@@ -191,8 +174,8 @@ class MDC_Pdf extends CI_Model
 
         // Second Table row
         $pdf->SetFont('Arial', '', 9);
-        for ($i=0; $i < 7; $i++) { 
-            $pdf->Cell(39.5, 7, $sport[$i], 1);   
+        for ($i = 0; $i < 7; $i++) {
+            $pdf->Cell(39.5, 7, $sport[$i], 1);
         }
     }
 }

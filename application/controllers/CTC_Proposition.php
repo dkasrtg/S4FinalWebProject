@@ -26,7 +26,9 @@ class CTC_Proposition extends CI_Controller
 		$idC = $this->session->userdata('client');
         $lst =   $this->MDC_Donnee_Client->get_latest_donnee($idC);
 		$data['latest'] = $lst;
-        $data['imc'] =  round($lst['poids'] / (($lst['taille'])^2),2);
+        $data['imc'] =  $this->MDC_Proposition->get_imc($lst['poids'],$lst['taille']);
+		$data['idealp'] = $this->MDC_Proposition->get_poids_ideal($lst['taille']);
+		$data['idealc'] = $this->MDC_Proposition->get_imc($data['idealp'],$lst['taille']);
         $data['proposition'] = $this->MDC_Proposition->get_proposition($data['imc']);
 		$this->viewer('pages/IMC/imc',$data);
 	}
