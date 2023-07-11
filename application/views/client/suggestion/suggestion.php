@@ -12,8 +12,28 @@
             <div class="card-body">
                     <div class="stat-content">
                         <div style="margin-left: 1em;" class="text-left dib">
-                            <div class="stat-heading"><p>Taux  d'IMC  : <?= $imc ? $imc : '' ?></p></div>
-                                <div class="stat-heading"><strong>Poids idéal :</strong> <?= $idealp ? $idealp: '' ?> Kg et  <strong>IMC idéal:</strong> <?= $idealc ? $idealc: '' ?> </div>
+                            <div class="stat-heading"><p>Votre taux  d'IMC : <?= $imc ? $imc : '' ?></p></div>
+                            <div class="stat-heading">
+                                <table class="table">
+                                    <tr>
+                                        <th></th>
+                                        <th>Proposition</th>
+                                        <th>Augmentation poids</th>
+                                        <th>Réduction poids</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Poids idéal</th>
+                                        <td><?= $idealp ? $idealp: '' ?> Kg</td>
+                                        <td>Supérieur à <?= $donnees_client['poids'] ?></td>
+                                        <td>Inférieur à <?= $donnees_client['poids'] ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>IMC idéal</th>
+                                        <td><?= $idealc ? $idealc: '' ?></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -60,7 +80,10 @@
             <div class="card-body">
                 <!-- <div class="container mt-5"> -->
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-8">
+                        <p>Cliquez sur le bouton <span style="color:blue">SUGGERER</span> en entrant vos informations, puis vous pourriez exporter les resultats en PDF</p>
+                    </div>
+                    <div class="col-md-4">
                         <form action="<?php bu2('CTC_Pdf') ?>" method="get"><button type="submit" class="btn btn-primary" style="float:right">Exporter en pdf</button></form>
                     </div>
                 </div>

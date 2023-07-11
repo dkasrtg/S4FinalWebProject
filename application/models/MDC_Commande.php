@@ -6,14 +6,31 @@ class MDC_Commande extends CI_Model {
     
     public function __construct() {
         parent::__construct();
+        $this->load->model('MDA_Repas');
         $this->load->database();
     }
+    public function get_all_commande_repas_by_client($_id_client)
+    {
+        $this->db->select('*');
+        $this->db->from('commande_repas');
+        $this->db->where('id_client', $_id_client);
+        $query = $this->db->get();
+        $_commande_repas = $query->result_array();
 
+        foreach($_commande_repas as &$_commande_repa)
+        {
+            $_commande_repa['repas'] = $this->MDA_Repas->get_repas($_commande_repa['id_repas']);
+        }
+        return $_commande_repas;
+    }
+
+    // Nouvelle commande
     public function insert_commande_repas($data) {
         $this->db->insert('commande_repas', $data);
         return $this->db->insert_id();
     }
 
+    // Option du client
     public function getOptionByClient($_idClient)
     {
         $this->db->select('option_.nom, option_.remise');

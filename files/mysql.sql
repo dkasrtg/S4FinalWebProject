@@ -329,6 +329,9 @@ create table commande_repas(
     foreign key(id_client) references client(id_client)
 );
 
+
+insert into commande_repas(id_repas,id_client,prix_total,remise,date_commande,etat) values(1,1,1000,0,'2023-01-01',0);
+
 create table commande_activite_sportive(
     id_commande_sport int primary key auto_increment,
     id_activite_sportive int,
