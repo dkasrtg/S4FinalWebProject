@@ -46,7 +46,7 @@ class CTA_Login extends CI_Controller
     //DECONNEXION
     public function deconnect()	{
         $this->session->unset_userdata('admin');
-        redirect('CTA_Login/login');
+        redirect('CTA_Login/index');
     }
     public function addAdmin()
     {
