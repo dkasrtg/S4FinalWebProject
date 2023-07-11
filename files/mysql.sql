@@ -268,3 +268,26 @@ create table commande_activite_sportive(
     id_activite_sportive int,
     foreign key(id_activite_sportive) references activite_sportive(id_activite_sportive)
 );
+
+
+create table option(
+    id_option int primary key auto_increment,
+    nom varchar(30),
+    remise decimal(2,2)
+);
+
+insert into option(nom,remise) values('simple',0);
+insert into option(nom,remise) values('gold',15);
+
+
+
+create table option_client(
+    id_option_client int primary key auto_increment,
+    id_client int,
+    id_option int,
+    foreign key(id_client) references client(id_client),
+    foreign key(id_option) references option(id_option)
+);
+
+insert into option_client(id_client,id_option) values(1,1);
+insert into option_client(id_client,id_option) values(2,2);
