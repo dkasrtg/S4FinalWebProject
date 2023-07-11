@@ -3,6 +3,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class MDC_Pdf extends CI_Model
 {
 
+
+    public function tabble_data(){
+        
+    }
+
     public function export_facture($pdf)
     {
         $profile = [
