@@ -70,3 +70,5 @@ class CTC_Donnee_Client extends CI_Controller
 	}
    
 }
+
+?>
