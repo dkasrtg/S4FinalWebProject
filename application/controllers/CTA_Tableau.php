@@ -19,6 +19,6 @@ class CTA_Tableau extends CI_Controller
 	public function index()
 	{
         $data = array();
-		$this->viewer('admin/pages/tableau', $data);
+		$this->viewer('/tableau', $data);
 	}
 }
