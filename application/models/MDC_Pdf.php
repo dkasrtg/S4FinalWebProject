@@ -29,55 +29,11 @@ class MDC_Pdf extends CI_Model
         return $days . " day(s)";
     }
 
-    public function table_data()
-    {
-        $weeks = array();
-        for ($i = 0; $i < 2; $i++) {
-            $week = array(
-                'start' => '1 Janvier 2022',
-                'end' => '7 Janvier 2022',
-                'data' =>    [
-                    [['Repas', 10], ['Repas', 20], ['Repas', 10], ['Repas', 20]],
-                    [['Repas', 10], ['Repas', 20], ['Repas', 10], ['Repas', 20]],
-                    [['Repas', 10], ['Repas', 20], ['Repas', 10], ['Repas', 20]],
-                    [['Repas', 10], ['Repas', 20], ['Repas', 10], ['Repas', 20]],
-                    [['Repas', 10], ['Repas', 20], ['Repas', 10], ['Repas', 20]],
-                    [['Repas', 10], ['Repas', 20], ['Repas', 10], ['Repas', 20]],
-                    [['Repas', 10], ['Repas', 20], ['Repas', 10], ['Repas', 20]]
-                ]
-            );
-            array_push($weeks, $week);
-        }
-        return $weeks;
-    }
-
-    public function sport_data()
-    {
-        $weeks = array();
-        for ($i = 0; $i < 2; $i++) {
-            array_push($weeks, ['A', 'A', 'A', 'A', 'A', 'A', 'A']);
-        }
-        return $weeks;
-    }
-
     public function export_facture($pdf,$fin,$fins,$profile)
     {
-        // $profile = [
-        //     'full_name' => 'John Doe',
-        //     'tel' => '1234567890',
-        //     'email' => 'johndoe@example.com',
-        //     'gender' => 'Male',
-        //     'height' => 180,
-        //     'weight' => 80,
-        //     'desired_weight' => 75,
-        //     'duration' => '3 months',
-        //     'total' => 4000
-        // ];
         $this->firstPage($pdf, $profile);
-        $weeks = $this->table_data();
-        $sports = $this->sport_data();
         for ($i = 0; $i < count($fin); $i++) {
-            $this->secondPage($pdf, $fin[$i], $fins[$i]);
+            $this->secondPage($pdf, $fin[$i], $fins[$i],$i+1);
         }
     }
 
@@ -139,15 +95,15 @@ class MDC_Pdf extends CI_Model
         $pdf->SetFont('Arial', '', 15);
         $pdf->Cell(0, 10, $total, 0, 1);
     }
-    function secondPage($pdf, $data, $sport)
+    function secondPage($pdf, $data, $sport,$sem)
     {
         $pdf->SetMargins(10, 5, 10);
         $pdf->SetAutoPageBreak(false, 5.4);
         $pdf->AddPage('L');
         $pdf->SetFont('Arial', 'B', 12);
 
-        $pdf->Cell(0, 10, 'Semaine 1', 0, 0, 'L');
-        $pdf->Cell(0, 10, '2 Aout 2013 a 9 Aout 2013', 0, 1, 'R');
+        $pdf->Cell(0, 10, 'Semaine '.$sem, 0, 0, 'L');
+        $pdf->Cell(0, 10, $data['start'].' a '.$data['end'], 0, 1, 'R');
         $pdf->Ln(0);
         $pdf->SetFont('Arial', 'B', 9);
         // Table column headings
