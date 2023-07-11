@@ -60,7 +60,10 @@
             <div class="card-body">
                 <!-- <div class="container mt-5"> -->
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-8">
+                        <p>Cliquez sur le bouton <span style="color:blue">SUGGERER</span> en entrant vos informations, puis vous pourriez exporter les resultats en PDF</p>
+                    </div>
+                    <div class="col-md-4">
                         <form action="<?php bu2('CTC_Pdf') ?>" method="get"><button type="submit" class="btn btn-primary" style="float:right">Exporter en pdf</button></form>
                     </div>
                 </div>
