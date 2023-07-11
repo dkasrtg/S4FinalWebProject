@@ -2,6 +2,7 @@
 
 <!-- Content -->
 <div class="content">
+
     <!-- Animated -->
     <div class="animated fadeIn">
         <div class="card">
@@ -9,7 +10,15 @@
                 <strong class="card-title pl-2">User information</strong>
             </div>
             <div class="card-body">
-                <form action="<?= bu('CTC_Suggestion/new_suggest') ?>" method="post" class="form-horizontal">
+                    <div class="stat-content">
+                        <div style="margin-left: 1em;" class="text-left dib">
+                            <div class="stat-heading"><p>Taux  d'IMC  : <?= $imc ? $imc : '' ?></p></div>
+                                <div class="stat-heading"><strong>Poids idéal :</strong> <?= $idealp ? $idealp: '' ?> Kg et  <strong>IMC idéal:</strong> <?= $idealc ? $idealc: '' ?> </div>
+                            </div>
+                        </div>
+                    </div>
+            <br>
+                <form action="<?= bu('CTC_Suggestion/new_suggest')?>" method="post" class="form-horizontal">
                     <table class="table my__table">
                         <tr>
                             <th>Taille</th>

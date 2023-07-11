@@ -34,19 +34,22 @@
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                 <li class="menu-title">Menu</li>  
-                    <li class="active">
-                        <a href="<?= bu("CTC_Donnee_Client/index") ?>"><i class="menu-icon fa fa-laptop"></i>Mon Profil </a>
+                    <li>
+                        <a href="<?= bu("CTC_Donnee_Client/index") ?>" class="active"><i class="menu-icon fa fa-laptop"></i>Mon Profil </a>
                     </li>
-                    <li class="active">
-                        <a href="<?= bu("CTC_Proposition/index") ?>"><i class="menu-icon fa fa-laptop"></i>Mon IMC </a>
+                    <li>
+                        <a href="<?= bu("CTC_Proposition/index") ?>" class="active"><i class="menu-icon fa fa-th"></i>Mon IMC </a>
                     </li>
-                    <li class="active">
-                        <a href="<?= bu("CTC_Argent/index") ?>"><i class="menu-icon fa fa-laptop"></i>Detail code</a>
+                    <li>
+                        <a href="<?= bu("CTC_Argent/index") ?>" class="active"><i class="menu-icon fa fa-laptop"></i>Detail code</a>
                     </li>
-                
+                    
                     <li class="menu-title">Extra</li><!-- /.menu-title -->
                     <li>
-                        <a href="<?= bu("CTC_Suggestion/index")?>"> <i class="menu-icon ti-email"></i>Suggestion</a>
+                        <a href="<?= bu("CTC_Suggestion/index")?>" class="active"> <i class="menu-icon ti-email"></i>Suggestion</a>
+                    </li>
+                    <li>
+                        <a href="<?= bu("CTC_Commande/index")?>" class="active"> <i class="menu-icon fa fa-laptop"></i>Commande</a>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
