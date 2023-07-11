@@ -210,3 +210,34 @@ INSERT INTO admin (nom, prenom, email, mdp)
 VALUES  ('ANDRIANAIVOSOA', 'Johan', 'johan@gmail.com', 'johan'),
         ('ANDRIANAIVOSOA', 'Gael', 'gael@gmail.com', 'gael'),
         ('ANDRIANAIVOSOA', 'Christel', 'christel@gmail.com', 'christel');
+
+
+create table but(
+    id_but int primary key auto_increment,
+    nom varchar(100)
+);
+insert into but(nom) values('augmenter');
+insert into but(nom) values('diminuer');
+insert into but(nom) values('atteindre l IMC');
+
+
+
+create table but_client(
+    id_but_client int primary key auto_increment,
+    id_client int,
+    id_but int,
+    foreign key(id_client) references client(id_client),
+    foreign key(id_but) references but(id_but)
+);
+insert into but_client(id_client,id_but) values(1,1);
+insert into but_client(id_client,id_but) values(2,3);
+
+create table commande_client(
+    id_commande_client int primary key auto_increment,
+    id_client int,
+    prix_total decimal(7,2),
+    date_commande date,
+    foreign key(id_client) references client(id_client)
+);
+
+

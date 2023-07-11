@@ -14,7 +14,7 @@
             <div class="col-lg-6 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Nombre d utilisateurs : 100</h4>
+                        <h4 class="card-title">Nombre d utilisateurs : <?= $nombreuser['total']?></h4>
                         <canvas id="user" style="height:250px"></canvas>
                     </div>
                 </div>
@@ -22,7 +22,7 @@
             <div class="col-lg-6 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Solde : 4000</h4>
+                        <h4 class="card-title">Solde : <?= $solde['total']?></h4>
                         <canvas id="solde" style="height:250px"></canvas>
                     </div>
                 </div>
@@ -185,7 +185,7 @@
 <script>
     var userdata = {
         datasets: [{
-            data: [50, 40, 10],
+            data: <?= json_encode($nombreuser['rep'])?>,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.5)',
                 'rgba(54, 162, 235, 0.5)',
@@ -203,11 +203,7 @@
                 'rgba(255, 159, 64, 1)'
             ],
         }],
-        labels: [
-            'Augmentation',
-            'Reduction',
-            'Atteindre IMC'
-        ]
+        labels: <?= json_encode($nombreuser['field'])?>
     };
     var useroption = {
         responsive: true,
@@ -226,7 +222,7 @@
 <script>
     var soldedata = {
         datasets: [{
-            data: [2000, 5000, 1000],
+            data: <?= json_encode($solde['rep']) ?>,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.5)',
                 'rgba(54, 162, 235, 0.5)',
@@ -269,7 +265,7 @@
         labels: ["Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Decembre"],
         datasets: [{
             label: '# of Votes',
-            data: [10, 19, 3, 5, 2, 3, 5, 0, 0, 0, 0, 0],
+            data: <?= json_encode($creditmois)?>,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -327,7 +323,7 @@
         labels: ["Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Decembre"],
         datasets: [{
             label: '# of Votes',
-            data: [5, 4, 2, 5, 1, 2, 1, 0, 0, 0, 0, 0],
+            data: <?= json_encode($commandemois)?>,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',

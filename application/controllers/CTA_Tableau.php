@@ -18,7 +18,12 @@ class CTA_Tableau extends CI_Controller
 	}
 	public function index()
 	{
-        $data = array();
+        $data = array(
+            'nombreuser'=>$this->MDA_Tableau->nombre_utilisateur(),
+            'solde'=>$this->MDA_Tableau->solde(),
+            'creditmois'=>$this->MDA_Tableau->creditmois(2023),
+            'commandemois'=>$this->MDA_Tableau->commandemois(2023)
+        );
 		$this->viewer('/tableau', $data);
 	}
 }
