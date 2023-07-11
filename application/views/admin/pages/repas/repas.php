@@ -1,7 +1,10 @@
 <?php if(!isset($repas)) $repas=array(); ?>
 <?php if(!isset($categ)) $categ=array(); ?>
 <div class="main-panel">
-          <div class="content-wrapper">
+    <div class="content-wrapper">
+          <div class="page-header">
+            <h3 class="page-title"> Régime alimentaire </h3>
+          </div>
           <div class="row">
           <div class="col-12 grid-margin stretch-card">
                     <div class="card">
