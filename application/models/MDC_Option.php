@@ -25,7 +25,7 @@ class MDC_Option extends CI_Model
     }
 
     public function option($id_client){
-        $result = $this->db->query("select * from option_client join option on option.id_option=option_client.id_option where option_client.id_client=".$id_client);
+        $result = $this->db->query("select * from option_client join option_ on option_.id_option=option_client.id_option where option_client.id_client=".$id_client);
         $result = $result->row_array();
         return $result;
     }
