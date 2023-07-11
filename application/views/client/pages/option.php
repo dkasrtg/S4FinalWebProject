@@ -35,8 +35,8 @@
                     <div class="card-body">
                         <blockquote class="blockquote mb-0 text-light">
                             <p class="text-light">L' option Gold permet d' avoir une remose de 15% sur toutes les regimes!!!!</p>
-                            <p class="text-light">Achetez une fois et profiter a jamais!!!!</p>
-                            <footer class="blockquote-footer text-light"><form action="<?php bu('CTC_Option/move')?>" method="get"><button class="btn btn-primary">Acheter l' option gold</button></form></footer>
+                            <p class="text-light">Achetez une fois pour 3000 et profiter a jamais!!!!</p>
+                            <footer class="blockquote-footer text-light"><form action="<?php bu2('CTC_Option/move')?>" method="get"><button class="btn btn-primary">Acheter l' option gold</button></form></footer>
                             <h6 style="color:red"><?=$error ?></h6>
                         </blockquote>
                     </div>
