@@ -49,24 +49,29 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="serial">1.</td>
-                                <td> #5469 </td>
-                                <td>  <span class="name">Louis Stanley</span> </td>
-                                <td> <span class="product">iMax</span> </td>
-                                <td>
-                                    <span class="badge badge-complete">payement</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="serial">2.</td>
-                                <td> #5468 </td>
-                                <td>  <span class="name">Gregory Dixon</span> </td>
-                                <td> <span class="product">iPad</span> </td>
-                                <td>
-                                        <span class="badge badge-pending">En attente</span>
-                                </td>
-                            </tr>
+                            <?php foreach($commande_repass as $commande_repas){ ?>
+                                <?php if($commande_repas['etat'] > 0){ ?>
+                                    <tr>
+                                        <td class="serial"><?= $commande_repas['id_commande_repas']?>.</td>
+                                        <td> ##<?= $commande_repas['id_commande_repas']?> </td>
+                                        <td>  <span class="name"><?= $commande_repas['repas']['description']?></span> </td>
+                                        <td> <span class="product"><?= $commande_repas['date_commande']?></span> </td>
+                                        <td>
+                                            <span class="badge badge-complete">payement</span>
+                                        </td>
+                                    </tr>
+                                <?php }else{ ?>
+                                    <tr>
+                                        <td class="serial"><?= $commande_repas['id_commande_repas']?>.</td>
+                                        <td> ##<?= $commande_repas['id_commande_repas']?> </td>
+                                        <td>  <span class="name"><?= $commande_repas['repas']['description']?></span> </td>
+                                        <td> <span class="product"><?= $commande_repas['date_commande']?></span> </td>
+                                        <td>
+                                                <span class="badge badge-pending">En attente</span>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div> <!-- /.table-stats -->

@@ -25,8 +25,11 @@ class CTC_Commande extends CI_Controller
 	}
 	public function index()
 	{
+		$_client = $this->MDC_Client->get_client($this->session->userdata('client'));
+
 		$data = array(
-			'repass' => $this->MDA_Repas->get_all_repas()
+			'repass' => $this->MDA_Repas->get_all_repas(),
+			'commande_repass' => $this->MDC_Commande->get_all_commande_repas_by_client($_client['id_client'])
 		);
 		$this->viewer('pages/commande/commande', $data);
 	}
