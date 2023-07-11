@@ -41,7 +41,10 @@
                         <a href="<?= bu("CTC_Proposition/index") ?>" class="active"><i class="menu-icon fa fa-th"></i>Mon IMC </a>
                     </li>
                     <li>
-                        <a href="<?= bu("CTC_Argent/index") ?>" class="active"><i class="menu-icon fa fa-laptop"></i>Detail code</a>
+                        <a href="<?= bu("CTC_Argent/index") ?>" class="active"><i class="menu-icon fa fa-laptop"></i>Espace Argent</a>
+                    </li>
+                    <li>
+                        <a href="<?= bu("CTC_Option/index") ?>" class="active"><i class="menu-icon fa fa-laptop"></i>Mon Option</a>
                     </li>
                     
                     <li class="menu-title">Extra</li><!-- /.menu-title -->
