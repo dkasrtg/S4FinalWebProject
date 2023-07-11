@@ -58,7 +58,7 @@
           </li>
 
           <li class="nav-item menu-items">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="<?= bu("CTA_Repas/index") ?>">
               <span class="menu-icon">
                 <i class="mdi mdi-table-large"></i>
               </span>
@@ -67,7 +67,7 @@
           </li>
 
           <li class="nav-item menu-items">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="<?= bu("CTA_Sport/index") ?>">
             <span class="menu-icon">
                   <i class="mdi mdi-laptop"></i>
           </span>
@@ -76,7 +76,7 @@
           </li>
 
           <li class="nav-item menu-items">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="<?= bu("CTA_Code/index") ?>">
               <span class="menu-icon">
                 <i class="mdi mdi-security"></i>
               </span>
