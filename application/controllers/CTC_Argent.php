@@ -42,6 +42,6 @@ class CTC_Argent extends CI_Controller
 		$date = date('Y-m-d');
 		$code = $this->input->get('code');
 		$error = $this->MDC_Argent->recharge($code,$id_client,$date);
-		redirect('CTC_Argent/index?error='.$error);
+		redirect(bu('CTC_Argent/index?error='.$error));
 	}
 }

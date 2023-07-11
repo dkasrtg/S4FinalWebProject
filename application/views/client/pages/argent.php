@@ -44,7 +44,7 @@
                 <div class="card">
                     <div class="card-header">Rechargement <span style="color:red;font-weight:bolder;font-family:Arial;font-size:small"><?= $error ?></span></div>
                     <div class="card-body card-block">
-                        <form action="<?php bu('CTC_Argent/recharger') ?>" method="get" class="">
+                        <form action="<?php bu2('CTC_Argent/recharger') ?>" method="get" class="">
                             <div class="form-group">
                                 <div class="input-group">
                                     <input type="text" id="username" name="code" placeholder="Code" class="form-control">
