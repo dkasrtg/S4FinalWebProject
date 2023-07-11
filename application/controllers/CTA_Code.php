@@ -19,7 +19,7 @@ class CTA_Code extends CI_Controller
 			'page' => $page,
 			'data' => $data
 		);
-		$this->load->view('admin/template/BasePage', $v);
+		$this->load->view('admin/template/Basepage', $v);
 	}
 	public function index()
 	{
@@ -36,21 +36,21 @@ class CTA_Code extends CI_Controller
 		$nombre = $this->input->get('nombre');
 		$montant = $this->input->get('montant');
 		$this->MDA_Code->generer_et_inserer($nombre,$montant);
-		redirect('CTA_Code/index');
+		redirect(bu('CTA_Code/index'));
 	}
 
 	public function vendre()
 	{
 		$id_code_argent = $this->input->get('id_code_argent');
 		$this->MDA_Code->vendre($id_code_argent);
-		redirect('CTA_Code/index');
+		redirect(bu('CTA_Code/index'));
 	}
 
 	public function supprimer()
 	{
 		$id_code_argent = $this->input->get('id_code_argent');
 		$this->MDA_Code->supprimer($id_code_argent);
-		redirect('CTA_Code/index');
+		redirect(bu('CTA_Code/index'));
 	}
 
 	public function recharge()
@@ -58,7 +58,7 @@ class CTA_Code extends CI_Controller
 		$id_recharge_client = $this->input->get('id_recharge_client');
 		$date = $this->input->get('date');
 		$this->MDA_Code->recharge($id_recharge_client,$date);
-		redirect('CTA_Code/index');
+		redirect(bu('CTA_Code/index'));
 	}
 
 }

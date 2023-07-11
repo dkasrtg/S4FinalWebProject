@@ -4,8 +4,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class MDC_Argent extends CI_Model
 {
     public function credits(){
-        $results = $this->db->query("SELECT MIN(id_code_argent) AS id_code_argent, code, argent, etat FROM code_argent WHERE etat = 1 AND id_code_argent NOT IN (SELECT id_code_argent FROM recharge_client) GROUP BY argent");
-        return $results->result_array();
+        $lists = [5,10,20,30,40,50,60,70,80,90,100,200,300,400,500];
+        $results = array();
+        foreach($lists as $list)
+        {
+            $ans1 = $this->db->query("SELECT 
+                id_code_argent, code, argent, etat 
+                FROM code_argent 
+                WHERE etat = 1 
+                AND id_code_argent NOT IN (SELECT id_code_argent FROM recharge_client) 
+                AND argent = ".$list."
+                ORDER BY RAND()
+                LIMIT 1");
+            $ans2 = $ans1->row_array();
+            if ($ans2 != null) {
+                $results[] = $ans2;
+            }
+        }
+        return $results;
+        // $results = $this->db->query("SELECT 
+        // MIN(id_code_argent) AS id_code_argent, code, argent, etat 
+        // FROM code_argent WHERE etat = 1 
+        // AND id_code_argent 
+        // NOT IN (SELECT id_code_argent FROM recharge_client) 
+        // GROUP BY argent");
+        // return $results->result_array();
     }
 
     public function recharge($code,$id_client,$date)

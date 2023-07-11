@@ -27,7 +27,7 @@
                                         <td> <?= $liste_code_crees[$i]['id_code_argent']?> </td>
                                         <td> <?= $liste_code_crees[$i]['code']?> </td>
                                         <td> <?= $liste_code_crees[$i]['argent']?> </td>
-                                        <td><a href="<?php bu('CTA_Code/vendre?id_code_argent='.$liste_code_crees[$i]['id_code_argent'])?>"><i class="mdi mdi-check">Vendre</i></a></td>
+                                        <td><a href="<?= bu('CTA_Code/vendre?id_code_argent='.$liste_code_crees[$i]['id_code_argent'])?>"><i class="mdi mdi-check">Vendre</i></a></td>
                                     </tr>
                                         <?php
                                     }
@@ -61,7 +61,7 @@
                                         <td> <?= $liste_code_valables[$i]['id_code_argent']?> </td>
                                         <td> <?= $liste_code_valables[$i]['code']?> </td>
                                         <td> <?= $liste_code_valables[$i]['argent']?> </td>
-                                        <td><a href="<?php bu('CTA_Code/supprimer?id_code_argent='.$liste_code_valables[$i]['id_code_argent'])?>"><i class="mdi mdi-delete-forever">Supprimer</i></a></td>
+                                        <td><a href="<?php bu2('CTA_Code/supprimer?id_code_argent='.$liste_code_valables[$i]['id_code_argent'])?>"><i class="mdi mdi-delete-forever">Supprimer</i></a></td>
                                     </tr>
                                         <?php
                                     }
@@ -96,7 +96,7 @@
                                         <td> <?= $liste_code_client[$i]['argent']?> </td>
                                         <td> <?= $liste_code_client[$i]['nom'].' '.$liste_code_client[$i]['prenom']?> </td>
                                         <td> <?= $liste_code_client[$i]['date_demande']?> </td>
-                                        <td><form action="<?php bu('CTA_Code/recharge')?>" method="get">
+                                        <td><form action="<?php bu2('CTA_Code/recharge')?>" method="get">
                                             <input type="hidden" name="id_recharge_client" value="<?= $liste_code_client[$i]['id_recharge_client']?>">
                                             <input type="date" name="date">
                                             <button type="submit" class="btn btn-primary btn-fw">Charger</button>
@@ -116,7 +116,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Generer des codes</h4>
-                        <form class="forms-sample" action="<?php bu('CTA_Code/creer')?>" method="get">
+                        <form class="forms-sample" action="<?php bu2('CTA_Code/creer')?>" method="get">
                             <div class="form-group">
                                 <label for="exampleInputName1">Nombre</label>
                                 <input type="text" class="form-control" id="exampleInputName1" placeholder="Nombre" name="nombre">
@@ -124,9 +124,21 @@
                             <div class="form-group">
                                 <label for="exampleSelectGender">Montant</label>
                                 <select class="form-control" id="exampleSelectGender" name="montant">
+                                    <option value="5">5</option>
                                     <option value="10">10</option>
                                     <option value="20">20</option>
                                     <option value="30">30</option>
+                                    <option value="40">40</option>
+                                    <option value="50">50</option>
+                                    <option value="60">60</option>
+                                    <option value="70">70</option>
+                                    <option value="80">80</option>
+                                    <option value="90">90</option>
+                                    <option value="100">100</option>
+                                    <option value="200">200</option>
+                                    <option value="300">300</option>
+                                    <option value="400">400</option>
+                                    <option value="500">500</option>
                                 </select>
                             </div>
                             <button type="submit" class="btn btn-primary mr-2">Generer</button>

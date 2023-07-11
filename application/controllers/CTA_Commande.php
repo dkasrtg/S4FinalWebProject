@@ -19,7 +19,7 @@ class CTA_Commande extends CI_Controller
 			'page' => $page,
 			'data' => $data
 		);
-		$this->load->view('admin/template/BasePage', $v);
+		$this->load->view('admin/template/Basepage', $v);
 	}
 	public function index()
 	{
@@ -33,6 +33,6 @@ class CTA_Commande extends CI_Controller
 		$id_commande_repas = $this->input->get('id_commande_repas');
 		$date = $this->input->get('date');
 		$this->MDA_Commande->valider($id_commande_repas,$date);
-		redirect('CTA_Commande');
+		redirect(bu('CTA_Commande'));
 	}
 }

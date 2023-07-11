@@ -17,7 +17,10 @@ class MDA_Commande extends CI_Model
         $this->db->query("update commande_repas set etat=1 where id_commande_repas=".$id_commande_repas);
         $c = $this->commande($id_commande_repas);
         $prixok = ($c['prix_total']-($c['remise']*$c['prix_total']/100));
-        $this->db->query("update compte_client set montant=((select montant from compte_client where id_client=".$c['id_client'].")-".$prixok.") where id_client=".$c['id_client']);
+        $cc = $this->db->get_where('compte_client', array('id_client' => $c['id_client']));
+        $cc = $cc->row_array();
+        $montant = $cc['montant'] - $prixok;
+        $this->db->query("update compte_client set montant=".$montant." where id_client=".$c['id_client']);
         $dat = array(
             'id_client'=>$c['id_client'],
             'description'=>'paie commande '.$c['description'],

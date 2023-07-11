@@ -43,7 +43,7 @@ class CTA_Composition extends CI_Controller
             'date_insertion' => $this->input->post('date')
         );
         $this->MDA_Composition->insert_regime_composition($data2);
-        redirect("CTA_Composition/index");
+        redirect(bu("CTA_Composition/index"));
     }
    
 }
