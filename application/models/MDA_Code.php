@@ -27,9 +27,9 @@ class MDA_Code extends CI_Model
         $str_result = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
         $uniqueId = substr(str_shuffle($str_result),
                         0, 7);
-        $results = $this->db->query("select * from code_argent where code='".$uniqueId."'");
-        $results = $results->row_array();
-        if($results!=null){
+        $qresults = $this->db->query("select * from code_argent where code='".$uniqueId."'");
+        $results = $qresults->row_array();
+        if($qresults->num_rows()!==0){
             $this->generer();
         }
         return $uniqueId;
