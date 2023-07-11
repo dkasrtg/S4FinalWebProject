@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="<?= base_url('assetsClient/ncss/suggestion.css')?>">
+<link rel="stylesheet" href="<?= base_url('assetsClient/ncss/suggestion.css') ?>">
 
 <!-- Content -->
 <div class="content">
@@ -7,7 +7,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title text-left my__title">User information</h4>
-                <form action="<?= bu('CTC_Suggestion/new_suggest')?>" method="post">
+                <form action="<?= bu('CTC_Suggestion/new_suggest') ?>" method="post">
                     <table class="table my__table">
                         <tr>
                             <th>Taille</th>
@@ -18,8 +18,8 @@
                             <th></th>
                         </tr>
                         <tr>
-                            <td><?= $donnees_client['taille']?> m</td>
-                            <td><?= $donnees_client['poids']?> Kg</td>
+                            <td><?= $donnees_client['taille'] ?> m</td>
+                            <td><?= $donnees_client['poids'] ?> Kg</td>
                             <td>0.0012</td>
                             <td>
                                 <input class="form-input" type="text" name="target" placeholder="... Kg">
@@ -38,51 +38,59 @@
         <div class="card">
             <div class="card-body">
                 <div class="container mt-5">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div id="calendar"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="calendar"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- .animated -->
-</div>
-<!-- /.content -->
+            <div class="card">
+                <div class="card-body">
+                    <!-- <div class="container mt-5"> -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form action="<?php bu2('CTC_Pdf') ?>" method="get"><button type="submit" class="btn btn-primary" style="float:right">Exporter en pdf</button></form>
+                            </div>
+                        </div>
+                    <!-- </div> -->
+                </div>
+            </div>
+            <!-- .animated -->
+        </div>
+        <!-- /.content -->
 
 
-<script src='<?= base_url('assetsClient/dist/index.global.js')?>'></script>
+        <script src='<?= base_url('assetsClient/dist/index.global.js') ?>'></script>
 
-<script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var calendarEl = document.getElementById('calendar');
 
-    document.addEventListener('DOMContentLoaded', function() 
-    {
-        var calendarEl = document.getElementById('calendar');
+                <?php if (isset($suggestionsGson)) { ?>
+                    var event1 = <?= json_encode($suggestionsGson) ?>;
+                <?php } else { ?>
+                    var event1 = [];
+                <?php } ?>
 
-        <?php if(isset($suggestionsGson)){ ?>
-            var event1 = <?= json_encode($suggestionsGson)?>;
-        <?php } else { ?>
-            var event1 = [];
-        <?php } ?>
+                var calendar = new FullCalendar.Calendar(calendarEl, {
+                    headerToolbar: {
+                        left: 'prevYear,prev,next,nextYear today',
+                        center: 'title',
+                        right: 'dayGridMonth,dayGridWeek,dayGridDay'
+                    },
 
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-        headerToolbar: {
-            left: 'prevYear,prev,next,nextYear today',
-            center: 'title',
-            right: 'dayGridMonth,dayGridWeek,dayGridDay'
-        },
+                    <?php if (isset($date_debut)) { ?>
+                        initialDate: '<?= $date_debut; ?>',
+                    <?php } ?>
 
-        <?php if(isset($date_debut)) { ?>
-            initialDate: '<?= $date_debut;?>',
-        <?php } ?>
+                    navLinks: true, // can click day/week names to navigate views
+                    editable: true,
+                    dayMaxEvents: true, // allow "more" link when too many events
 
-        navLinks: true, // can click day/week names to navigate views
-        editable: true,
-        dayMaxEvents: true, // allow "more" link when too many events
-
-        events: event1
-        });
-        calendar.render();
-    });
-
-</script>
+                    events: event1
+                });
+                calendar.render();
+            });
+        </script>

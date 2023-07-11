@@ -123,6 +123,7 @@ class MDC_Suggestion extends CI_Model
             {
                 $event1 = array(
                     'title' => $_categorie_repas->_repas['description'],
+                    'prix' => $_categorie_repas->_repas['prix'],
                     'start' => $suggestion->_date->format('Y-m-d') . 'T' . $_categorie_repas->time_,
                 );
                 $event2 = array(
