@@ -6,6 +6,10 @@ class CTA_Repas extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		if($this->session->userdata('admin') === null) 
+		{
+			redirect(bu('CTA_Login/index?error=' . urlencode('Vous n`êtes pas connectée en tant qu` administrateur')));
+		}
         $this->load->model('MDA_Repas');
 	}
 	private function viewer($page, $data)

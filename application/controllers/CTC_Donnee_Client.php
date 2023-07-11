@@ -6,6 +6,10 @@ class CTC_Donnee_Client extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		if($this->session->userdata('client') === null) 
+		{
+			redirect(bu('CTC_Login/index?error=' . urlencode('Vous n`êtes pas connectée')));
+		}
         $this->load->model('MDC_Client');
         $this->load->model('MDC_Donnee_Client');
 	}
@@ -19,7 +23,7 @@ class CTC_Donnee_Client extends CI_Controller
 	}
 
 	public function index()	{ 
-		$idC = 1;
+		$idC = $this->session->user_data('client');
 		$data['client'] =  $this->MDC_Client->get_client($idC);
 		$data['donnee'] =  $this->MDC_Donnee_Client->get_donnee(null,$idC);
 		$data['latest'] =   $this->MDC_Donnee_Client->get_latest_donnee($idC);
@@ -27,7 +31,7 @@ class CTC_Donnee_Client extends CI_Controller
 	}
 
 	public function insert_donnee(){
-		$idC = 1;
+		$idC = $this->session->user_data('client');
 		$data = array(
 			'id_client' => $idC,
             'taille' => $this->input->post('taille'),

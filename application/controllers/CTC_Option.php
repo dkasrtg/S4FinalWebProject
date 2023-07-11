@@ -6,6 +6,10 @@ class CTC_Option extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		if($this->session->userdata('client') === null) 
+		{
+			redirect(bu('CTC_Login/index?error=' . urlencode('Vous n`êtes pas connectée')));
+		}
 		$this->load->model('MDC_Option');
 	}
 	private function viewer($page, $data)

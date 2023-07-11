@@ -10,7 +10,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                                <strong>Formulaire </strong>d'Insertion
+                                <strong>Formulaire de mise à jour</strong>
                     </div>
                     <div class="card-body card-block">
                         <form action="<?= bu("CTC_Donnee_Client/update_donnee") ?>" method="post" class="form-horizontal">

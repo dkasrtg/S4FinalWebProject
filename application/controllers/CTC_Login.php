@@ -20,7 +20,12 @@ class CTC_Login extends CI_Controller
 
     public function index()
     {
-        $this->load->view('client/login/login');
+        $data = array();
+        if($this->input->get('error') != null)
+        {
+            $data['error'] = $this->input->get('error');
+        }
+        $this->load->view('client/login/login', $data);
     }
 
     public function Register()

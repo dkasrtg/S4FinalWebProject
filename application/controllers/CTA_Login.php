@@ -20,7 +20,12 @@ class CTA_Login extends CI_Controller
 
     public function index()
     {
-        $this->load->view('admin/pages/samples/login');
+        $data = array();
+        if($this->input->get('error') != null)
+        {
+            $data['error'] = $this->input->get('error');
+        }
+        $this->load->view('admin/pages/samples/login', $data);
     }
     
     public function login()
@@ -32,7 +37,7 @@ class CTA_Login extends CI_Controller
         
         if ($_Admin)
         {
-            $this->session->set_userdata('admin', $_Admin);
+            $this->session->set_userdata('admin', $_Admin->id_admin);
             redirect(bu('CTA_Admin'));
             return ;
         }

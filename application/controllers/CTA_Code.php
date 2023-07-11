@@ -1,9 +1,15 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class CTA_Code extends CI_Controller {
-    public function __construct(){
+class CTA_Code extends CI_Controller 
+{
+    public function __construct()
+	{
         parent::__construct();
+		if($this->session->userdata('admin') === null) 
+		{
+			redirect(bu('CTA_Login/index?error=' . urlencode('Vous n`êtes pas connectée en tant qu` administrateur')));
+		}
         $this->load->model('MDA_Code');
 
     }

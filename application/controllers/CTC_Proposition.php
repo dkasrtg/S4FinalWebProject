@@ -6,6 +6,10 @@ class CTC_Proposition extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		if($this->session->userdata('client') === null) 
+		{
+			redirect(bu('CTC_Login/index?error=' . urlencode('Vous n`êtes pas connectée')));
+		}
         $this->load->model('MDC_Client');
         $this->load->model('MDC_Proposition');
         $this->load->model('MDC_Donnee_Client');
@@ -19,7 +23,7 @@ class CTC_Proposition extends CI_Controller
 		$this->load->view('client/template/BasePage', $v);
 	}
 	public function index()	{ 
-		$idC = 1;
+		$idC = $this->session->user_data('client');
         $lst =   $this->MDC_Donnee_Client->get_latest_donnee($idC);
 		$data['latest'] = $lst;
         $data['imc'] =  round($lst['poids'] / (($lst['taille'])^2),2);
