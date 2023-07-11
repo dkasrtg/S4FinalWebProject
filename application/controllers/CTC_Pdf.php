@@ -10,7 +10,7 @@ class CTC_Pdf extends CI_Controller
 			redirect(bu('CTC_Login/index?error=' . urlencode('Vous n`êtes pas connectée')));
 		}
 		$this->load->model('MDC_Pdf');
-		$this->load->library('propositionpdf');
+		$this->load->library('Propositionpdf');
 	}
 	public function index()
 	{

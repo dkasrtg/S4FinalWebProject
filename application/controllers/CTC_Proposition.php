@@ -30,7 +30,7 @@ class CTC_Proposition extends CI_Controller
 		$data['idealp'] = $this->MDC_Proposition->get_poids_ideal($lst['taille']);
 		$data['idealc'] = $this->MDC_Proposition->get_imc($data['idealp'],$lst['taille']);
         $data['proposition'] = $this->MDC_Proposition->get_proposition($data['imc']);
-		$this->viewer('pages/IMC/imc',$data);
+		$this->viewer('pages/IMC/Imc',$data);
 	}
 
 

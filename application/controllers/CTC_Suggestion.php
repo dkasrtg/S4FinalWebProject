@@ -62,6 +62,14 @@ class CTC_Suggestion extends CI_Controller
         $this->session->set_userdata('data',$data);
         // 
 
+        //
+        $lst =   $this->MDC_Donnee_Client->get_latest_donnee($_client['id_client']);
+		$data['latest'] = $lst;
+        $data['imc'] =  $this->MDC_Proposition->get_imc($lst['poids'],$lst['taille']);
+		$data['idealp'] = $this->MDC_Proposition->get_poids_ideal($lst['taille']);
+		$data['idealc'] = $this->MDC_Proposition->get_imc($data['idealp'],$lst['taille']);
+        //
+
         $this->viewer('suggestion/suggestion',$data);
     }
 }

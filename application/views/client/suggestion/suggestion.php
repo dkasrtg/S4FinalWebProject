@@ -43,7 +43,6 @@
                         <tr>
                             <th>Taille</th>
                             <th>Poids</th>
-                            <th>IMC</th>
                             <th>Poids voulus</th>
                             <th>Débuter le</th>
                             <th></th>
@@ -51,7 +50,6 @@
                         <tr>
                             <td><?= $donnees_client['taille'] ?> m</td>
                             <td><?= $donnees_client['poids'] ?> Kg</td>
-                            <td>0.0012</td>
                             <td>
                                 <div class="form-group">
                                     <div class="input-group">

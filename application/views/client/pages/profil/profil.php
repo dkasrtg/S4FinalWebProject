@@ -71,7 +71,7 @@
                                 <strong>Formulaire </strong>d'Insertion
                     </div>
                     <div class="card-body card-block">
-                        <form action="<?= bu("CTC_Donnee_Client/insert_donnee") ?>" method="post" class="form-horizontal">
+                        <form action="<?= bu("CTC_Donnee_Client/insert_donnee")?>" method="post" class="form-horizontal">
                             <div class="row form-group">
                                     <div class="col col-md-6"><label for="hf-email" class=" form-control-label">Taille</label><input type="number" name="taille" step="0.01" min="1" id="hf-email" name="hf-email" class="form-control"  placeholder="Entrez votre taille" value="<?= $latest ? $latest['taille'] : '' ?>"></div>
                                     <div class="col col-md-6"><label for="hf-email" class=" form-control-label">Poids</label><input type="number"  name="poids" step="0.1" min="20" id="hf-email" name="hf-email" class="form-control"  placeholder="Entrez votre poids"  value="<?= $latest ? $latest['poids'] : '' ?>"></div>
