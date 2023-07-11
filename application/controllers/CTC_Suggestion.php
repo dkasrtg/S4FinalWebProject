@@ -12,6 +12,8 @@ class CTC_Suggestion extends CI_Controller
 		}
         $this->load->model('MDC_Client');
         $this->load->model('MDC_Suggestion');
+        $this->load->model('MDC_Proposition');
+        $this->load->model('MDC_Donnee_Client');
     }
 
     private function viewer($page,$data)
@@ -24,11 +26,17 @@ class CTC_Suggestion extends CI_Controller
     }
 
     public function index()
-    {
+    {     
         $data = array(
             'client' => $this->MDC_Client->get_client($this->session->userdata('client')),
             'donnees_client' => $this->MDC_Client->get_donnees_client($this->session->userdata('client')),
         );
+        $idC = $this->session->userdata('client');
+        $lst =   $this->MDC_Donnee_Client->get_latest_donnee($idC);
+		$data['latest'] = $lst;
+        $data['imc'] =  $this->MDC_Proposition->get_imc($lst['poids'],$lst['taille']);
+		$data['idealp'] = $this->MDC_Proposition->get_poids_ideal($lst['taille']);
+		$data['idealc'] = $this->MDC_Proposition->get_imc($data['idealp'],$lst['taille']);
         $this->viewer('suggestion/suggestion', $data);
     }
 
