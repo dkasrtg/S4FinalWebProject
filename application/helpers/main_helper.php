@@ -7,6 +7,12 @@ if(!function_exists('bu')){
         return $rs;
     }
 }
+if(!function_exists('bu2')){
+    function bu2($url){
+        $rs = base_url().'index.php/'.$url;
+        echo $rs;
+    }
+}
 if(!function_exists('su')){
     function su($url){
         $rs = site_url().$url;
