@@ -9,6 +9,12 @@ class MDA_Repas extends CI_Model
         parent::__construct();
     }
 
+    // GET ALl
+    public function get_all_repas(){
+        $query = $this->db->get('repas');
+        return $query->result();
+    }
+
     // CREATE
     public function insert_repas($data)
     {
@@ -21,7 +27,7 @@ class MDA_Repas extends CI_Model
    public function get_categorie_repas(){
         $query = $this->db->get('categorie_repas');
         return $query->result();
-   } 
+   }
 
     // READ
     public function get_repas($id_repas = NULL){

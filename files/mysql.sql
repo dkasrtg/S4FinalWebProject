@@ -322,9 +322,10 @@ create table commande_repas(
     id_repas int,
     id_client int,
     prix_total decimal(7,2),
+    remise decimal(7,2),
     date_commande date,
     etat int,
-    foreign key(id_repas) references repas(id_repas)
+    foreign key(id_repas) references repas(id_repas),
     foreign key(id_client) references client(id_client)
 );
 
@@ -335,14 +336,14 @@ create table commande_activite_sportive(
 );
 
 
-create table option(
+create table option_(
     id_option int primary key auto_increment,
     nom varchar(30),
-    remise decimal(2,2)
+    remise decimal(11,2)
 );
 
-insert into option(nom,remise) values('standard',0);
-insert into option(nom,remise) values('gold',15);
+insert into option_(nom,remise) values('standard',0);
+insert into option_(nom,remise) values('gold',15);
 
 
 
@@ -351,7 +352,7 @@ create table option_client(
     id_client int,
     id_option int,
     foreign key(id_client) references client(id_client),
-    foreign key(id_option) references option(id_option)
+    foreign key(id_option) references option_(id_option)
 );
 
 insert into option_client(id_client,id_option) values(1,1);
