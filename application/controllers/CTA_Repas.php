@@ -18,10 +18,6 @@ class CTA_Repas extends CI_Controller
 	}
 
 	public function index()	{ 
-		$this->viewer('repas/index',array());
-	}
-    
-	public function display_repas()	{ 
         $data['categ'] = $this->MDA_Repas->get_categorie_repas();
         $data['repas']= $this->MDA_Repas->get_repas();
 		$this->viewer('repas/repas',$data);
@@ -35,11 +31,11 @@ class CTA_Repas extends CI_Controller
             'affectation_poids' => $this->input->post('poids')
         );
         $this->MDA_Repas->insert_repas($data);
-		redirect('CTA_Repas/display_repas');
+		redirect('CTA_Repas/index');
 	}
     public function delete_repas(){
         $this->MDA_Repas->delete_repas($_GET['repas']);
-        redirect('CTA_Repas/display_repas');
+        redirect('CTA_Repas/index');
     }
 	public function select_repas() {
         $data = array(
