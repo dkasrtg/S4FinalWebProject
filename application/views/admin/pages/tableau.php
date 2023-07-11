@@ -1,3 +1,9 @@
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
+<style>
+    th {
+        border-bottom: 0.000001cm solid white;
+    }
+</style>
 <!-- partial -->
 <div class="main-panel">
     <div class="content-wrapper">
@@ -40,6 +46,117 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Les utilisateurs</h4>
+                        <table id="myTable" class="display" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Nom</th>
+                                    <th>Prenom</th>
+                                    <th>Type</th>
+                                    <th>Total Credit Achetes</th>
+                                    <th>Nombre de commandes</th>
+                                    <th>Solde</th>
+                                    <th>Poids</th>
+                                    <th>But</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Tiger</td>
+                                    <td>Nixon</td>
+                                    <td>Simple</td>
+                                    <td>3000</td>
+                                    <td>3</td>
+                                    <td>20</td>
+                                    <td>40</td>
+                                    <td>Augmenter de 20</td>
+                                </tr>
+                                <tr>
+                                    <td>Tiger</td>
+                                    <td>Nixon</td>
+                                    <td>Gold</td>
+                                    <td>0</td>
+                                    <td>2</td>
+                                    <td>20</td>
+                                    <td>40</td>
+                                    <td>Diminuer de 20</td>
+                                </tr>
+                                <tr>
+                                    <td>Tiger</td>
+                                    <td>Nixon</td>
+                                    <td>Simple</td>
+                                    <td>300</td>
+                                    <td>0</td>
+                                    <td>20</td>
+                                    <td>40</td>
+                                    <td>Atteindre l' IMC</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Les regimes</h4>
+                        <table id="myTable2" class="display" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Nom</th>
+                                    <th>Nombre de commandes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Soucisse</td>
+                                    <td>1000</td>
+                                </tr>
+                                <tr>
+                                    <td>Molex</td>
+                                    <td>500</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Les activites sportifs</h4>
+                        <table id="myTable3" class="display" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Nom</th>
+                                    <th>Nombre de pratiques</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Velo</td>
+                                    <td>1000</td>
+                                </tr>
+                                <tr>
+                                    <td>Natation</td>
+                                    <td>500</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
         <!-- content-wrapper ends -->
         <!-- partial:../../partials/_footer.html -->
         <footer class="footer">
@@ -54,6 +171,13 @@
 </div>
 <!-- page-body-wrapper ends -->
 </div>
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+<script>
+    new DataTable('#myTable', {});
+    new DataTable('#myTable2', {});
+    new DataTable('#myTable3', {});
+</script>
 <script src="<?= base_url("assets_admin/js/jquery/jquery.js") ?>"></script>
 <script src="<?= base_url("assets_admin/js/chart.js") ?>"></script>
 
@@ -61,23 +185,28 @@
 <script>
     var userdata = {
         datasets: [{
-            data: [60, 40],
+            data: [50, 40, 10],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.5)',
                 'rgba(54, 162, 235, 0.5)',
+                'rgba(255, 206, 86, 0.5)',
                 'rgba(75, 192, 192, 0.5)',
-                'rgba(153, 102, 255, 0.5)'
+                'rgba(153, 102, 255, 0.5)',
+                'rgba(255, 159, 64, 0.5)'
             ],
             borderColor: [
                 'rgba(255,99,132,1)',
                 'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
                 'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)'
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
             ],
         }],
         labels: [
             'Augmentation',
             'Reduction',
+            'Atteindre IMC'
         ]
     };
     var useroption = {
@@ -137,117 +266,117 @@
 </script>
 <script>
     var creditdata = {
-    labels: ["Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin","Juillet","Aout","Septembre","Octobre","Novembre","Decembre"],
-    datasets: [{
-      label: '# of Votes',
-      data: [10, 19, 3, 5, 2, 3,5,0,0,0,0,0],
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)'
-      ],
-      borderColor: [
-        'rgba(255,99,132,1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)',
-        'rgba(255, 159, 64, 1)'
-      ],
-      borderWidth: 1,
-      fill: false
-    }]
-  };
-  var creditoptions = {
-    scales: {
-      yAxes: [{
-        ticks: {
-          beginAtZero: true
+        labels: ["Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Decembre"],
+        datasets: [{
+            label: '# of Votes',
+            data: [10, 19, 3, 5, 2, 3, 5, 0, 0, 0, 0, 0],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1,
+            fill: false
+        }]
+    };
+    var creditoptions = {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                },
+                gridLines: {
+                    color: "rgba(204, 204, 204,0.1)"
+                }
+            }],
+            xAxes: [{
+                gridLines: {
+                    color: "rgba(204, 204, 204,0.1)"
+                }
+            }]
         },
-        gridLines: {
-          color: "rgba(204, 204, 204,0.1)"
+        legend: {
+            display: false
+        },
+        elements: {
+            point: {
+                radius: 0
+            }
         }
-      }],
-      xAxes: [{
-        gridLines: {
-          color: "rgba(204, 204, 204,0.1)"
-        }
-      }]
-    },
-    legend: {
-      display: false
-    },
-    elements: {
-      point: {
-        radius: 0
-      }
-    }
-  };
-  var lineChartCanvas = document.getElementById("credit");
+    };
+    var lineChartCanvas = document.getElementById("credit");
     var lineChart = new Chart(lineChartCanvas, {
-      type: 'line',
-      data: creditdata,
-      options: creditoptions
+        type: 'line',
+        data: creditdata,
+        options: creditoptions
     });
 </script>
 <script>
     var commandedata = {
-    labels: ["Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin","Juillet","Aout","Septembre","Octobre","Novembre","Decembre"],
-    datasets: [{
-      label: '# of Votes',
-      data: [5, 4, 2, 5, 1, 2,1,0,0,0,0,0],
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)'
-      ],
-      borderColor: [
-        'rgba(255,99,132,1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)',
-        'rgba(255, 159, 64, 1)'
-      ],
-      borderWidth: 1,
-      fill: false
-    }]
-  };
-  var commandeoptions = {
-    scales: {
-      yAxes: [{
-        ticks: {
-          beginAtZero: true
+        labels: ["Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Decembre"],
+        datasets: [{
+            label: '# of Votes',
+            data: [5, 4, 2, 5, 1, 2, 1, 0, 0, 0, 0, 0],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1,
+            fill: false
+        }]
+    };
+    var commandeoptions = {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                },
+                gridLines: {
+                    color: "rgba(204, 204, 204,0.1)"
+                }
+            }],
+            xAxes: [{
+                gridLines: {
+                    color: "rgba(204, 204, 204,0.1)"
+                }
+            }]
         },
-        gridLines: {
-          color: "rgba(204, 204, 204,0.1)"
+        legend: {
+            display: false
+        },
+        elements: {
+            point: {
+                radius: 0
+            }
         }
-      }],
-      xAxes: [{
-        gridLines: {
-          color: "rgba(204, 204, 204,0.1)"
-        }
-      }]
-    },
-    legend: {
-      display: false
-    },
-    elements: {
-      point: {
-        radius: 0
-      }
-    }
-  };
-  var lineChartCanvas = document.getElementById("commande");
+    };
+    var lineChartCanvas = document.getElementById("commande");
     var lineChart = new Chart(lineChartCanvas, {
-      type: 'line',
-      data: commandedata,
-      options: commandeoptions
+        type: 'line',
+        data: commandedata,
+        options: commandeoptions
     });
 </script>
