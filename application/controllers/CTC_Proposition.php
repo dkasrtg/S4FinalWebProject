@@ -18,7 +18,7 @@ class CTC_Proposition extends CI_Controller
 		);
 		$this->load->view('client/template/BasePage', $v);
 	}
-	public function display_IMC()	{ 
+	public function index()	{ 
 		$idC = 1;
         $lst =   $this->MDC_Donnee_Client->get_latest_donnee($idC);
 		$data['latest'] = $lst;

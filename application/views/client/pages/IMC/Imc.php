@@ -48,7 +48,7 @@
                                             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                                             <?php if (!empty($imc)) { ?>
                                                 <p>Selon votre profil actuel, votre IMC (Indice de Masse Corporelle) est de <?= $imc ? $imc : '' ?>.
-                                                <p>L'IMC IDEAL se situe entre <?= $proposition ? $proposition['min'] : '' ?>   et <?= $proposition ? $proposition['max'] : '' ?>.Selon le calcul de votre indice de masse corporel (IMC) actuel, votre poids est <?= $proposition ? $proposition['position'] : '' ?> par rapport à votre taille. Vous souhaitez néanmoins mincir pour vous sentir plus en forme ou retrouver votre silhouette.
+                                                <p>L'IMC IDEAL se situe entre <?= $proposition ? $proposition['min'] : '' ?>   et <?= $proposition ? $proposition['max'] : '' ?>.Selon le calcul de votre indice de masse corporel (IMC) actuel, votre poids est <?= $proposition ? $proposition['position'] : '' ?> par rapport à votre taille. Si vous souhaitez  plus vous informer veuiller en parler à votre  diétheticien  .
                                                 Notre programme  va vous permettre d’adopter de bonnes habitudes : nutrition, activité physique et bien-être adaptées à votre rythme de vie, grâce au suivi régulier de votre coach personnel.</p>
                                             <?php } ?>
                                             </div>

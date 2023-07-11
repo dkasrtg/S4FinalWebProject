@@ -18,7 +18,7 @@ class CTC_Donnee_Client extends CI_Controller
 		$this->load->view('client/template/BasePage', $v);
 	}
 
-	public function display_donnee()	{ 
+	public function index()	{ 
 		$idC = 1;
 		$data['client'] =  $this->MDC_Client->get_client($idC);
 		$data['donnee'] =  $this->MDC_Donnee_Client->get_donnee(null,$idC);
@@ -36,7 +36,7 @@ class CTC_Donnee_Client extends CI_Controller
 			'date_donnees' => $this->input->post('date')
         );
 		$this->MDC_Donnee_Client-> insert_donnee($data,null);
-		redirect("CTC_Donnee_Client/display_donnee");
+		redirect("CTC_Donnee_Client/index");
 	}
 	public function load_update(){
 		$idC = 1;
@@ -53,7 +53,7 @@ class CTC_Donnee_Client extends CI_Controller
 			'date_donnees' => $this->input->post('date')
         );
 		$this->MDC_Donnee_Client->update_donnee_client($_POST['update'],$data);
-		redirect('CTC_Donnee_Client/display_donnee');
+		redirect('CTC_Donnee_Client/index');
 	}
 	public function select_donnee(){
 		$idC = 1;
