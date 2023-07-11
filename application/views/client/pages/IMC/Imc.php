@@ -18,8 +18,9 @@
                         <div class="stat-content">
                                 <div style="margin-left: 1em;" class="text-left dib">
                                 <div class="stat-heading">Taux  d'IMC  : <?= $imc ? $imc : '' ?></div>
-                                    <div class="stat-heading">Votre Poids Actuel  : <?= $latest ? $latest['poids'] : '' ?></div>
-                                    <div class="stat-heading">Votre Taille Actuel : <?= $latest ? $latest['taille'] : '' ?></div>
+                                    <div class="stat-heading">Votre Poids Actuel  : <?= $latest ? $latest['poids'] : '' ?>  Kg</div>
+                                    <div class="stat-heading">Votre Taille Actuel : <?= $latest ? $latest['taille'] : '' ?> m</div>
+                                    <div class="stat-heading"><strong>Poids idéal :</strong> <?= $idealp ? $idealp: '' ?> Kg et  <strong>IMC idéal:</strong> <?= $idealc ? $idealc: '' ?></div>
                                 </div>
                             </div>
                     </div>
@@ -48,7 +49,7 @@
                                             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                                             <?php if (!empty($imc)) { ?>
                                                 <p>Selon votre profil actuel, votre IMC (Indice de Masse Corporelle) est de <?= $imc ? $imc : '' ?>.
-                                                <p>L'IMC IDEAL se situe entre <?= $proposition ? $proposition['min'] : '' ?>   et <?= $proposition ? $proposition['max'] : '' ?>.Selon le calcul de votre indice de masse corporel (IMC) actuel, votre poids est <?= $proposition ? $proposition['position'] : '' ?> par rapport à votre taille. Si vous souhaitez  plus vous informer veuiller en parler à votre  diétheticien  .
+                                                <p>L'IMC IDEAL se situe entre <?= $proposition ? $proposition['min'] : '' ?>   et <?= $proposition ? $proposition['max'] : '' ?>.Selon le calcul de votre indice de masse corporel (IMC) actuel, votre poids est <?= $proposition ? $proposition['position'] : '' ?> par rapport à votre taille. Si vous souhaitez  plus vous informer veuiller en parler à un  diétheticien  .
                                                 Notre programme  va vous permettre d’adopter de bonnes habitudes : nutrition, activité physique et bien-être adaptées à votre rythme de vie, grâce au suivi régulier de votre coach personnel.</p>
                                             <?php } ?>
                                             </div>
