@@ -21,7 +21,7 @@ create table repas(
     description varchar(255),
     prix decimal,
     objectif int,
-    affectation_poids decimal,
+    affectation_poids decimal(11,2),
     foreign key(id_categorie_repas) references categorie_repas(id_categorie_repas)
 );
 
@@ -98,12 +98,11 @@ values (3, 'Smoothie aux noix et beurre d''arachide', 5.99, 1, 0.3);
 insert into repas (id_categorie_repas, description, prix, objectif, affectation_poids)
 values (4, 'Lasagnes à la viande avec salade verte', 11.49, 1, 0.5);
 
-
 create table activite_sportive(
     id_activite_sportive int primary key auto_increment,
     nom varchar(255),
     objectif int,
-    affectation_poids decimal
+    affectation_poids decimal(11,2)
 );
 
 INSERT INTO activite_sportive (nom, objectif, affectation_poids)

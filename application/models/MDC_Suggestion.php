@@ -14,6 +14,11 @@ class MDC_Suggestion extends CI_Model
         $this->load->model('MDC_Client');
     }
 
+    public function setDate($date)
+    {
+        $this->_date = $date;
+    }
+
     public function setObjectif($_objectif)
     {
         $this->_objectif = $_objectif;
@@ -37,6 +42,13 @@ class MDC_Suggestion extends CI_Model
             $this->_categories_repas[$i]->_repas = $this->MDC_Client->getRepasByCategorieAndObjectif($this->_objectif, $this->_categories_repas[$i]->id_categorie_repas);
         }
     }
+    public function setActiviteSportiveOfEachCategorie()
+    {
+        for($i = 0 ; $i < count($this->_categories_repas) ; $i++)
+        {
+            $this->_categories_repas[$i]->_activite_sportive = $this->MDC_Client->getSportByObjectif($this->_objectif);
+        }
+    }
 
     public function isReduce($_clientHeight, $_target)
     {
@@ -46,8 +58,9 @@ class MDC_Suggestion extends CI_Model
 
     public function generateListeSuggestion($_dateDebut, $_client, $_target)
     {
-        // $_height = $this->MDC_Client->getLastWeightByUser($_client->id_client);
-        $_height = 1000;
+        $date = new DateTime($_dateDebut);
+
+        $_height = $this->MDC_Client->getLastWeightByUser($_client['id_client']);
 
         $_List = array();
 
@@ -57,17 +70,22 @@ class MDC_Suggestion extends CI_Model
             {
                 $_List[] = new MDC_Suggestion();
                 $_lastList = end($_List);
+                $_lastList->setDate($date);
                 $_lastList->setObjectif(-1);
                 $_lastList->setClient($_client);
                 $_lastList->setAllCategories_repas();
                 $_lastList->setRepasOfEachCategorie();
-                $_height -= 0.2;
+                $_lastList->setActiviteSportiveOfEachCategorie();
 
                 foreach($_lastList->_categories_repas as $_categorie_repas)
-                {    
-                    $_height -= $_categorie_repas->_repas['affectation_poids'];
-                    $_dateDebut = date('Y-m-d', strtotime($_dateDebut . ' +1 day')); // Ajouter un jour à la date de début
+                {   
+                    $_height -= floatval($_categorie_repas->_repas['affectation_poids']);
+                }  
+                foreach($_lastList->_categories_repas as $_categorie_repas)
+                {   
+                    $_height -= floatval($_categorie_repas->_activite_sportive['affectation_poids']);
                 }
+                $date->add(new DateInterval('P1D'));
             }
         }
         else
@@ -76,15 +94,24 @@ class MDC_Suggestion extends CI_Model
             {
                 $_List[] = new MDC_Suggestion();
                 $_lastList = end($_List);
+                $_lastList->setDate($date);
                 $_lastList->setObjectif(1);
                 $_lastList->setClient($_client);
                 $_lastList->setAllCategories_repas();
                 $_lastList->setRepasOfEachCategorie();
-                // $_height += $_lastList->repas->affectation_poids;
-                $_dateDebut = date('Y-m-d', strtotime($_dateDebut . ' +1 day')); // Ajouter un jour à la date de début
+                $_lastList->setActiviteSportiveOfEachCategorie();
+
+                foreach($_lastList->_categories_repas as $_categorie_repas)
+                {   
+                    $_height += floatval($_categorie_repas->_repas['affectation_poids']);
+                }  
+                foreach($_lastList->_categories_repas as $_categorie_repas)
+                {   
+                    $_height += floatval($_categorie_repas->_activite_sportive['affectation_poids']);
+                }
+                $date->add(new DateInterval('P1D'));
             }
         }
-        var_dump($_List);
         return $_List;
     }
 }

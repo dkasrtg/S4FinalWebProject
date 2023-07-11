@@ -18,8 +18,8 @@
                             <th></th>
                         </tr>
                         <tr>
-                            <td>1.70 m</td>
-                            <td>80 Kg</td>
+                            <td><?= $donnees_client['taille']?> m</td>
+                            <td><?= $donnees_client['poids']?> Kg</td>
                             <td>0.0012</td>
                             <td>
                                 <input class="form-input" type="text" name="target" placeholder="... Kg">
@@ -44,41 +44,40 @@
                     </div>
                 </div>
             </div>
-            </div>
         </div>
     </div>
     <!-- .animated -->
 </div>
 <!-- /.content -->
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
 <script>
-$(document).ready(function() {
-    $('#calendar').fullCalendar({
-    // Options du calendrier
-    // Par exemple :
-    header: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'month,agendaWeek,agendaDay'
-    },
-    defaultDate: moment().format('YYYY-MM-DD'),
-    editable: true,
-    eventLimit: true,
-    events: [
-        // Événements du calendrier
-        // Par exemple :
-        {
-        title: 'Réunion',
-        start: '2023-07-15T10:00:00',
-        end: '2023-07-15T12:00:00'
-        },
-        {
-        title: 'Présentation',
-        start: '2023-07-18T14:00:00',
-        end: '2023-07-18T16:00:00'
-        }
-    ]
+    document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            plugins: ['dayGrid'],
+            defaultView: 'dayGridMonth',
+            events: [
+                // Liste des événements
+                {
+                    title: 'Événement 1',
+                    start: '2023-07-11',
+                    end: '2023-07-11'
+                },
+                {
+                    title: 'Événement 2',
+                    start: '2023-07-22',
+                    end: '2023-07-2'
+                },
+                {
+                    title: 'Événement 3',
+                    start: '2023-07-13',
+                    end: '2023-07-13'
+                }
+                // Ajoutez plus d'événements ici
+            ]
+        });
+
+        calendar.render();
     });
-});
 </script>

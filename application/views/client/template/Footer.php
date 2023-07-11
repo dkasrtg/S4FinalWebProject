@@ -38,7 +38,7 @@
     <script src="<?= base_url('assetsClient/tricksjs/jquery.simpleWeather.min.js')?>"></script>
     <script src="<?= base_url('assetsClient/js/init/weather-init.js')?>"></script>
 
-    <script src="<?= base_url('assetsClient/tricksjs/moment@2.22.2/moment.min.js')?>"></script>
+    <script src="<?= base_url('assetsClient/tricksjs/moment.min.js')?>"></script>
     <script src="<?= base_url('assetsClient/tricksjs/fullcalendar.min.js')?>"></script>
     <script src="<?= base_url('assetsClient/js/init/fullcalendar-init.js')?>"></script>
 

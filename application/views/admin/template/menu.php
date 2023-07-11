@@ -11,7 +11,7 @@
             <div class="profile-desc">
               <div class="profile-pic">
                 <div class="count-indicator">
-                  <img class="img-xs rounded-circle " src="<?=   base_url("assets_admin/images/faces/user2.png"); ?>" alt="">
+                  <img class="img-xs rounded-circle " src="<?=   base_url("assets_admin/images/faces/user2.png"); ?>" alt="tsy hita">
                   <span class="count bg-success"></span>
                 </div>
                 <div class="profile-name">

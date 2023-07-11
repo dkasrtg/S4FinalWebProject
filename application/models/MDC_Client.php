@@ -2,6 +2,7 @@
 
 class MDC_Client extends CI_Model
 {
+    public $_id_client;
 
     public function __construct() 
     {
@@ -13,17 +14,13 @@ class MDC_Client extends CI_Model
         $query = $this->db->get_where('client', array('id_client' => $id));
         return $query->row_array();
     }
+
     // READ
-    public function get_client2($id_client = NULL) 
-    {
-        if ($id_client !== NULL) {
-            $query = $this->db->get_where('client', array('id_client' => $id_client));
-            return $query->row_array();
-        } else {
-            $query = $this->db->get('client');
-            return $query->result_array();
-        }
+    public function get_donnees_client($id) {
+        $query = $this->db->get_where('donnees_client', array('id_client' => $id));
+        return $query->row_array();
     }
+    
 
     public function getRepasByCategorieAndObjectif($_objectif, $id_categorie_repas)
     {
@@ -32,6 +29,17 @@ class MDC_Client extends CI_Model
         $this->db->join('categorie_repas', 'repas.id_categorie_repas = categorie_repas.id_categorie_repas');
         $this->db->where('repas.objectif =', $_objectif);
         $this->db->where('repas.id_categorie_repas =', $id_categorie_repas);
+        $this->db->order_by('RAND()');
+        $this->db->limit(1);
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+
+    public function getSportByObjectif($_objectif)
+    {
+        $this->db->select('*');
+        $this->db->from('activite_sportive');
+        $this->db->where('activite_sportive.objectif =', $_objectif);
         $this->db->order_by('RAND()');
         $this->db->limit(1);
         $query = $this->db->get();
@@ -49,7 +57,7 @@ class MDC_Client extends CI_Model
         $this->db->limit(1);
         $query = $this->db->get();
         $result = $query->row_array();
-        return $result['poids'];
+        return floatval($result['poids']);
     }
 
     // LOGIN
