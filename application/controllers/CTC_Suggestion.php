@@ -42,15 +42,9 @@ class CTC_Suggestion extends CI_Controller
             'suggestions' => $this->MDC_Suggestion->generateListeSuggestion($_dateDebut, $_client, $_target)
         );
 
-        // $suggestions = $data['suggestions'];
-        // foreach($suggestions as $suggestion) { 
-        //     foreach($suggestion->_categories_repas as $_categorie_repas) { 
-        //         echo $_categorie_repas->_repas['description'];
-        //         echo $_categorie_repas->_activite_sportive['nom'];
-        //         echo $suggestion->_date->format('Y-m-d')."T".$_categorie_repas->time_;
-        //         echo "<br><br><br>";
-        //     }
-        // }
+        $suggestions = $data['suggestions'];
+        $suggestions = $this->MDC_Suggestion->buildEventData($suggestions);
+        $data['suggestionsGson'] = $suggestions;
 
         $this->viewer('suggestion/suggestion',$data);
     }

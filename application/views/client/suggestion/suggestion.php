@@ -59,42 +59,28 @@
     {
         var calendarEl = document.getElementById('calendar');
 
+        <?php if(isset($suggestionsGson)){ ?>
+            var event1 = <?= json_encode($suggestionsGson)?>;
+        <?php } else { ?>
+            var event1 = [];
+        <?php } ?>
+
         var calendar = new FullCalendar.Calendar(calendarEl, {
         headerToolbar: {
             left: 'prevYear,prev,next,nextYear today',
             center: 'title',
             right: 'dayGridMonth,dayGridWeek,dayGridDay'
         },
+
         <?php if(isset($date_debut)) { ?>
-            initialDate: '<?= $date_debut?>',
+            initialDate: '<?= $date_debut;?>',
         <?php } ?>
+
         navLinks: true, // can click day/week names to navigate views
         editable: true,
         dayMaxEvents: true, // allow "more" link when too many events
 
-        events: [
-            <?php if(isset($suggestions)) { ?>
-                <?php foreach($suggestions as $suggestion) { ?>
-                    <?php foreach($suggestion->_categories_repas as $_categorie_repas) { ?>
-                        {
-                            title: '<?= $_categorie_repas->_repas['description'];?>',
-                            start: '<?= $suggestion->_date->format('Y-m-d');?>T<?= $_categorie_repas->time_;?>',
-                        },                    
-                        {
-                            title: '<?= $_categorie_repas->_activite_sportive['nom'];?>',
-                            start: '<?= $suggestion->_date->format('Y-m-d');?>T<?= $_categorie_repas->time_;?>',
-                            backgroundColor: 'green',
-                            borderColor: 'green'
-                        },
-                    <?php } ?>
-                <?php } ?>
-            <?php } ?>
-            {
-                title: 'Click for Google',
-                url: 'http://google.com/',
-                start: '2023-01-28'
-            }
-        ]
+        events: event1
         });
         calendar.render();
     });

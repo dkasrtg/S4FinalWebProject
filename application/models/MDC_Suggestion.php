@@ -114,4 +114,35 @@ class MDC_Suggestion extends CI_Model
         }
         return $_List;
     }
+    function buildEventData($suggestions) 
+    {
+        $events = array();
+        foreach ($suggestions as $suggestion) 
+        {
+            foreach ($suggestion->_categories_repas as $_categorie_repas) 
+            {
+                $event1 = array(
+                    'title' => $_categorie_repas->_repas['description'],
+                    'start' => $suggestion->_date->format('Y-m-d') . 'T' . $_categorie_repas->time_,
+                );
+                $event2 = array(
+                    'title' => $_categorie_repas->_activite_sportive['nom'],
+                    'start' => $suggestion->_date->format('Y-m-d') . 'T' . $_categorie_repas->time_,
+                    'backgroundColor' => 'green',
+                    'borderColor' => 'green'
+                );
+                $events[] = $event1;
+                $events[] = $event2;
+            }
+        }
+        $event3 = array(
+            'title' => 'Click for Google',
+            'url' => 'http://google.com/',
+            'start' => '2023-01-28'
+        );
+        $events[] = $event3;
+
+        return $events;
+    }
+    
 }
