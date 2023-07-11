@@ -248,7 +248,7 @@ create table composition(
     viande decimal(11,2),
     poisson decimal(11,2),
     volaille decimal(11,2)
-)
+);
 
 create table regime_composition(
     idRC int primary key auto_increment,
@@ -257,7 +257,7 @@ create table regime_composition(
     id_repas int,
     foreign key(id_repas) references repas(id_repas),
     date_insertion datetime
-)
+);
 
 insert into composition(viande,poisson,volaille) values (18,20,60);
 insert into composition(viande,poisson,volaille) values (10,60,20);
@@ -283,13 +283,72 @@ WHERE rg.date_insertion IS NULL OR rg.date_insertion = (
 ORDER BY rg.date_insertion ASC;
 
 
- public function select_composition($categ) {
-        $this->db->select('rp.id_repas , cp.volaille , cp.viande , cp.poisson');
-        $this->db->from('repas rp');
-        $this->db->join('categorie_repas cr', 'rp.id_categorie_repas = cr.id_categorie_repas');
-        $this->db->join('regime_composition rg', 'rg.id_repas = cr.id_repas');
-        $this->db->join('composition cp', 'rg.id_comp = cp.id_comp');
-        $this->db->order_by('date_insertion', 'DESC');
-        $query = $this->db->get();
-        return $query->result();
-    }
+
+create table but(
+    id_but int primary key auto_increment,
+    nom varchar(100)
+);
+insert into but(nom) values('augmenter');
+insert into but(nom) values('diminuer');
+insert into but(nom) values('atteindre l IMC');
+
+
+
+create table but_client(
+    id_but_client int primary key auto_increment,
+    id_client int,
+    id_but int,
+    foreign key(id_client) references client(id_client),
+    foreign key(id_but) references but(id_but)
+);
+insert into but_client(id_client,id_but) values(1,1);
+insert into but_client(id_client,id_but) values(2,3);
+
+create table commande_client(
+    id_commande_client int primary key auto_increment,
+    id_client int,
+    prix_total decimal(7,2),
+    date_commande date,
+    etat int,
+    foreign key(id_client) references client(id_client)
+);
+
+
+insert into commande_client(id_client,prix_total,date_commande,etat) values(1,1000,'2023-01-01',1);
+
+
+create table commande_repas(
+    id_commande_repas int primary key auto_increment,
+    id_repas int,
+    foreign key(id_repas) references repas(id_repas)
+);
+
+create table commande_activite_sportive(
+    id_commande_sport int primary key auto_increment,
+    id_activite_sportive int,
+    foreign key(id_activite_sportive) references activite_sportive(id_activite_sportive)
+);
+
+
+create table option(
+    id_option int primary key auto_increment,
+    nom varchar(30),
+    remise decimal(2,2)
+);
+
+insert into option(nom,remise) values('standard',0);
+insert into option(nom,remise) values('gold',15);
+
+
+
+create table option_client(
+    id_option_client int primary key auto_increment,
+    id_client int,
+    id_option int,
+    foreign key(id_client) references client(id_client),
+    foreign key(id_option) references option(id_option)
+);
+
+insert into option_client(id_client,id_option) values(1,1);
+insert into option_client(id_client,id_option) values(2,2);
+
