@@ -14,17 +14,13 @@ class MDC_Client extends CI_Model
         $query = $this->db->get_where('client', array('id_client' => $id));
         return $query->row_array();
     }
+
     // READ
-    public function get_client2($id_client = NULL) 
-    {
-        if ($id_client !== NULL) {
-            $query = $this->db->get_where('client', array('id_client' => $id_client));
-            return $query->row_array();
-        } else {
-            $query = $this->db->get('client');
-            return $query->result_array();
-        }
+    public function get_donnees_client($id) {
+        $query = $this->db->get_where('donnees_client', array('id_client' => $id));
+        return $query->row_array();
     }
+    
 
     public function getRepasByCategorieAndObjectif($_objectif, $id_categorie_repas)
     {
