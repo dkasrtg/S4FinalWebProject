@@ -22,7 +22,7 @@ class MDC_Argent extends CI_Model
     public function rechargement_en_attente($id_client)
     {
         $results = $this->db->query("select * from code_argent join recharge_client on code_argent.id_code_argent=recharge_client.id_code_argent join client on client.id_client = recharge_client.id_client where date_acceptation is null and client.id_client=".$id_client);
-        echo "select * from code_argent join recharge_client on code_argent.id_code_argent=recharge_client.id_code_argent join client on client.id_client = recharge_client.id_client where date_acceptation is null and client.id_client=".$id_client;
+        // echo "select * from code_argent join recharge_client on code_argent.id_code_argent=recharge_client.id_code_argent join client on client.id_client = recharge_client.id_client where date_acceptation is null and client.id_client=".$id_client;
         return $results->result_array();
     }
 
