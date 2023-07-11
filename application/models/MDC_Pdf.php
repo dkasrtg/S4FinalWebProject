@@ -4,8 +4,33 @@ class MDC_Pdf extends CI_Model
 {
 
 
-    public function tabble_data(){
-        
+    public function table_data(){
+        $weeks = array();
+        for ($i=0; $i < 2; $i++) { 
+            $week = array(
+                'start'=>'1 Janvier 2022',
+                'end'=>'7 Janvier 2022',
+                'data'=>    [
+                                [['Repas',10],['Repas',20],['Repas',10],['Repas',20]],
+                                [['Repas',10],['Repas',20],['Repas',10],['Repas',20]],
+                                [['Repas',10],['Repas',20],['Repas',10],['Repas',20]],
+                                [['Repas',10],['Repas',20],['Repas',10],['Repas',20]],
+                                [['Repas',10],['Repas',20],['Repas',10],['Repas',20]],
+                                [['Repas',10],['Repas',20],['Repas',10],['Repas',20]],
+                                [['Repas',10],['Repas',20],['Repas',10],['Repas',20]]
+                            ]
+            );
+            array_push($weeks,$week);
+        }
+        return $weeks;
+    }
+
+    public function sport_data(){
+        $weeks = array();
+        for ($i=0; $i < 2; $i++) { 
+            array_push($weeks,['A','A','A','A','A','A','A']);
+        }
+        return $weeks;
     }
 
     public function export_facture($pdf)
@@ -22,8 +47,11 @@ class MDC_Pdf extends CI_Model
             'total'=>4000
         ];
         $this->firstPage($pdf, $profile);
-        $this->secondPage($pdf);
-        $this->secondPage($pdf);
+        $weeks = $this->table_data();
+        $sports = $this->sport_data();
+        for ($i=0; $i < count($weeks); $i++) { 
+            $this->secondPage($pdf,$weeks[$i],$sports[$i]);
+        }
     }
 
     public function firstPage($pdf, $profile)
@@ -84,7 +112,7 @@ class MDC_Pdf extends CI_Model
         $pdf->SetFont('Arial', '', 15);
         $pdf->Cell(0, 10, $total, 0, 1);
     }
-    function secondPage($pdf)
+    function secondPage($pdf,$data,$sport)
     {
         $pdf->SetMargins(10, 5, 10);
         $pdf->SetAutoPageBreak(false, 5.4);
@@ -119,29 +147,35 @@ class MDC_Pdf extends CI_Model
 
         // Table rows 2-8
         $days = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
+        $totd = [0,0,0,0];
         for ($i = 0; $i < 7; $i++) {
             $pdf->Cell(17, 20, $days[$i], 1);
+            $totr = 0;
             for ($j = 0; $j < 4; $j++) {
                 $pdf->SetFont('Arial', '', 9);
                 $current_y = $pdf->GetY();
                 $current_x = $pdf->GetX();
                 $cell_width = 44;
-                $pdf->MultiCell($cell_width, 6, "Smoothie aux epinards, avocat et lait d''amande",0, false);
+                $pdf->MultiCell($cell_width, 6, $data['data'][$i][$j][0],0, false);
                 $pdf->SetXY($current_x + $cell_width, $current_y);
                 $pdf->SetFont('Arial', 'B', 9);
-                $pdf->Cell(16, 20, '0', 1);
+                $pdf->Cell(16, 20, $data['data'][$i][$j][1], 1);
+                $totr += $data['data'][$i][$j][1];
+                $totd[$j] += $data['data'][$i][$j][1];
             }
-            $pdf->Cell(20, 20, '0', 1);
+            $pdf->Cell(20, 20, $totr, 1);
             $pdf->Ln();
         }
 
         // Table row for Total
+        $tot = 0;
         $pdf->Cell(17, 7, 'Total', 1);
         for ($i = 0; $i < 4; $i++) {
             $pdf->Cell(44, 7, '', 1);
-            $pdf->Cell(16, 7, '0', 1);
+            $pdf->Cell(16, 7, $totd[$i], 1);
+            $tot += $totd[$i];
         }
-        $pdf->Cell(20, 7, '0', 1);
+        $pdf->Cell(20, 7, $tot, 1);
 
 
         $pdf->Ln(15);
@@ -157,12 +191,8 @@ class MDC_Pdf extends CI_Model
 
         // Second Table row
         $pdf->SetFont('Arial', '', 9);
-        $pdf->Cell(39.5, 7, 'Course', 1);
-        $pdf->Cell(39.5, 7, 'Natation', 1);
-        $pdf->Cell(39.5, 7, 'Velo', 1);
-        $pdf->Cell(39.5, 7, 'Natation', 1);
-        $pdf->Cell(39.5, 7, 'Repos', 1);
-        $pdf->Cell(39.5, 7, 'Velo', 1);
-        $pdf->Cell(39.5, 7, 'Repos', 1);
+        for ($i=0; $i < 7; $i++) { 
+            $pdf->Cell(39.5, 7, $sport[$i], 1);   
+        }
     }
 }
