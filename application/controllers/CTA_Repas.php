@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class CTA_repas extends CI_Controller
+class CTA_Repas extends CI_Controller
 {
 	public function __construct()
 	{
@@ -17,6 +17,10 @@ class CTA_repas extends CI_Controller
 		$this->load->view('admin/template/Basepage', $v);
 	}
 
+	public function index()	{ 
+		$this->viewer('repas/index',array());
+	}
+    
 	public function display_repas()	{ 
         $data['categ'] = $this->MDA_Repas->get_categorie_repas();
         $data['repas']= $this->MDA_Repas->get_repas();

@@ -58,63 +58,47 @@
           </li>
 
           <li class="nav-item menu-items">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+            <a class="nav-link" href="#">
               <span class="menu-icon">
-                <i class="mdi mdi-laptop"></i>
+                <i class="mdi mdi-table-large"></i>
               </span>
-              <span class="menu-title">Consultation Repas</span>
-              <i class="menu-arrow"></i>
+              <span class="menu-title">Consultation Régime</span>
             </a>
-            <div class="collapse" id="ui-basic">
-              <ul class="nav flex-column sub-menu">
-                <!-- Tatamo -->
-                <li class="nav-item"> <a class="nav-link" href="#.php">Journal</a></li>
-                <li class="nav-item"> <a class="nav-link" href="gdLivre.php">Grand  Livre</a></li>
-                <li class="nav-item"> <a class="nav-link" href="balance.php ">Balance</a></li>
-              </ul>
-            </div>
           </li>
 
-
           <li class="nav-item menu-items">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-              <span class="menu-icon">
-                <i class="mdi mdi-laptop"></i>
-              </span>
+            <a class="nav-link" href="#">
+            <span class="menu-icon">
+                  <i class="mdi mdi-laptop"></i>
+          </span>
               <span class="menu-title">Consultation Activité</span>
-              <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="ui-basic">
-              <ul class="nav flex-column sub-menu">
-                <!-- Tatamo -->
-                <li class="nav-item"> <a class="nav-link" href="#.php">Journal</a></li>
-                <li class="nav-item"> <a class="nav-link" href="gdLivre.php">Grand  Livre</a></li>
-                <li class="nav-item"> <a class="nav-link" href="balance.php ">Balance</a></li>
-              </ul>
-            </div>
           </li>
+
           <li class="nav-item menu-items">
-            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+            <a class="nav-link" href="#">
               <span class="menu-icon">
                 <i class="mdi mdi-security"></i>
               </span>
               <span class="menu-title">Consultation Code</span>
-              <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="auth">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="consultXT.php">Consultation xt</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?= site_url('CT_Stock_Produit/inventory/');?>">xt en stock </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Historique </a></li>
-              </ul>
-            </div>
           </li>
+
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="#">
+              <span class="menu-icon">
+                <i class="mdi mdi-chart-bar"></i>
+              </span>
+              <span class="menu-title">Statistique de Base</span>
+            </a>
+          </li>
+      
           <li class="nav-item menu-items">
             <a class="nav-link" href="#">
               <span class="menu-icon">
                 <i class="mdi mdi-file-document-box"></i>
               </span>
-              <span class="menu-title">Optimistation</span>
+              <span class="menu-title">Déconnexion</span>
             </a>
           </li>
         </ul>
