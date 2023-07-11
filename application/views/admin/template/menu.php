@@ -11,7 +11,7 @@
             <div class="profile-desc">
               <div class="profile-pic">
                 <div class="count-indicator">
-                  <img class="img-xs rounded-circle " src="<?=   base_url("assets_admin/images/faces/face15.jpg"); ?>" alt="">
+                  <img class="img-xs rounded-circle " src="<?=   base_url("assets_admin/images/faces/user2.png"); ?>" alt="tsy hita">
                   <span class="count bg-success"></span>
                 </div>
                 <div class="profile-name">
@@ -65,6 +65,16 @@
               <span class="menu-title">Consultation Régime</span>
             </a>
           </li>
+
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="<?= bu("CTA_Composition/index") ?>">
+              <span class="menu-icon">
+                <i class="mdi mdi-table-large"></i>
+              </span>
+              <span class="menu-title">Composition Régime</span>
+            </a>
+          </li>
+
 
           <li class="nav-item menu-items">
             <a class="nav-link" href="<?= bu("CTA_Sport/index") ?>">

@@ -11,7 +11,7 @@
             <ul class="navbar-nav w-100">
               <li class="nav-item w-100">
                 <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-                  <input type="text" class="form-control" placeholder="">
+                  <input type="text" class="form-control" placeholder="search">
                 </form>
               </li>
             </ul>
@@ -153,7 +153,7 @@
               <li class="nav-item dropdown">
                 <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
                   <div class="navbar-profile">
-                    <img class="img-xs rounded-circle" src="<?=   base_url("assets_admin/images/faces/face15.jpg"); ?>" alt="">
+                    <img class="img-xs rounded-circle" src="<?=   base_url("assets_admin/images/faces/user2.png"); ?>" alt="">
                     <p class="mb-0 d-none d-sm-block navbar-profile-name">Henry Klein</p>
                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                   </div>
