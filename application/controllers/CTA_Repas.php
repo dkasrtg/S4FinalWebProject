@@ -37,4 +37,14 @@ class CTA_repas extends CI_Controller
         $this->MDA_Repas->delete_repas($_GET['repas']);
         redirect('CTA_Repas/display_repas');
     }
+	public function select_repas() {
+        $data = array(
+            'id_categorie_repas' => $this->input->post('categ'),
+            'prix' => $this->input->post('prix'),
+            'objectif' => $this->input->post('obj')
+        );
+		$data['categ'] = $this->MDA_Repas->get_categorie_repas();
+		$data['repas'] =$this->MDA_Repas->select_repas($data);
+		$this->viewer('repas/repas',$data);
+	}
 }
