@@ -10,11 +10,11 @@ class MDC_Donnee_Client extends CI_Model
     }
 
     // CREATE
-    public function insert_donnee($data)
+    public function insert_donnee($data,$id)
     {
         $this->db->insert('donnees_client', $data);
         $insert_id = $this->db->insert_id();
-        return $this->get_donnee($insert_id);
+        return $this->get_donnee($insert_id,$id);
     }
 
     //READ
@@ -27,17 +27,51 @@ class MDC_Donnee_Client extends CI_Model
             $this->db->from('donnees_client');
             $this->db->join('client', 'donnees_client.id_client = client.id_client');
             $this->db->where('donnees_client.id_client', $id_client);
+            $this->db->order_by('date_donnees', 'DESC');
             $query = $this->db->get();
-            return $query->row_array();
+            return $query->result();
         }
     }
-
+    //LATEST
+    public function get_latest_donnee($id_client) {
+        $this->db->select('*');
+        $this->db->from('donnees_client');
+        $this->db->where('id_client', $id_client);
+        $this->db->order_by('id_donnees_client', 'DESC');
+        $this->db->limit(1);
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+    
+    //ONE
+    public function get_one_donnee($id_donnees_client) {
+        $this->db->select('*');
+        $this->db->from('donnees_client');
+        $this->db->where('id_donnees_client', $id_donnees_client);
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+    
     // UPDATE
     public function update_donnee_client($id_donnees_client, $data) 
     {
-        $this->db->where('donnees_client', $id_donnees_client);
+        $this->db->where('id_donnees_client', $id_donnees_client);
         $this->db->update('donnees_client', $data);
         return $this->db->affected_rows();
     }
+    //SELECT
+    public function select_donnee($id_client, $data) {
+            $this->db->select('donnees_client.*, client.nom');
+            $this->db->from('donnees_client');
+            $this->db->join('client', 'donnees_client.id_client = client.id_client');
+            $this->db->where('donnees_client.taille <=', $data['taille']);
+            $this->db->where('donnees_client.poids <=', $data['poids']);
+            $this->db->where('donnees_client.date_donnees <=', $data['date_donnees']);
+            $this->db->where('donnees_client.id_client', $id_client);
+            $this->db->order_by('date_donnees', 'DESC');
+            $query = $this->db->get();
+            return $query->result();
+    }
+    
 }
 ?>

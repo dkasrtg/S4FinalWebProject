@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class CTA_repas extends CI_Controller
+class CTA_Repas extends CI_Controller
 {
 	public function __construct()
 	{
@@ -17,7 +17,7 @@ class CTA_repas extends CI_Controller
 		$this->load->view('admin/template/Basepage', $v);
 	}
 
-	public function display_repas()	{ 
+	public function index()	{ 
         $data['categ'] = $this->MDA_Repas->get_categorie_repas();
         $data['repas']= $this->MDA_Repas->get_repas();
 		$this->viewer('repas/repas',$data);
@@ -31,10 +31,20 @@ class CTA_repas extends CI_Controller
             'affectation_poids' => $this->input->post('poids')
         );
         $this->MDA_Repas->insert_repas($data);
-		redirect('CTA_Repas/display_repas');
+		redirect('CTA_Repas/index');
 	}
     public function delete_repas(){
         $this->MDA_Repas->delete_repas($_GET['repas']);
-        redirect('CTA_Repas/display_repas');
+        redirect('CTA_Repas/index');
     }
+	public function select_repas() {
+        $data = array(
+            'id_categorie_repas' => $this->input->post('categ'),
+            'prix' => $this->input->post('prix'),
+            'objectif' => $this->input->post('obj')
+        );
+		$data['categ'] = $this->MDA_Repas->get_categorie_repas();
+		$data['repas'] =$this->MDA_Repas->select_repas($data);
+		$this->viewer('repas/repas',$data);
+	}
 }

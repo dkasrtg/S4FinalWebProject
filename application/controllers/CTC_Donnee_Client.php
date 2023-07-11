@@ -18,21 +18,57 @@ class CTC_Donnee_Client extends CI_Controller
 		$this->load->view('client/template/BasePage', $v);
 	}
 
-	public function display_donnee()	{ 
+	public function index()	{ 
 		$idC = 1;
 		$data['client'] =  $this->MDC_Client->get_client($idC);
 		$data['donnee'] =  $this->MDC_Donnee_Client->get_donnee(null,$idC);
-		$this->viewer('client/pages/profil/profil',$data);
+		$data['latest'] =   $this->MDC_Donnee_Client->get_latest_donnee($idC);
+		$this->viewer('pages/profil/profil',$data);
 	}
 
 	public function insert_donnee(){
+		$idC = 1;
 		$data = array(
-            'taille' => $this->input->post('categ'),
-            'poids' => $this->input->post('desc'),
-            'prix' => $this->input->post('prix'),
-            'objectif' => $this->input->post('obj'),
-            'affectation_poids' => $this->input->post('poids')
+			'id_client' => $idC,
+            'taille' => $this->input->post('taille'),
+            'poids' => $this->input->post('poids'),
+            'genre' => $this->input->post('genre'),
+			'date_donnees' => $this->input->post('date')
         );
+		$this->MDC_Donnee_Client-> insert_donnee($data,null);
+		redirect("CTC_Donnee_Client/index");
+	}
+	public function load_update(){
+		$idC = 1;
+		$data['update'] =   $this->MDC_Donnee_Client->get_donnee($_GET['donnee'],$idC);
+		$this->viewer('pages/profil/update',$data);
+	}
+	public function update_donnee(){
+		$idC = 1;
+		$data = array(
+			'id_client' => $idC,
+            'taille' => $this->input->post('taille'),
+            'poids' => $this->input->post('poids'),
+            'genre' => $this->input->post('genre'),
+			'date_donnees' => $this->input->post('date')
+        );
+		$this->MDC_Donnee_Client->update_donnee_client($_POST['update'],$data);
+		redirect('CTC_Donnee_Client/index');
+	}
+	public function select_donnee(){
+		$idC = 1;
+		$data = array(
+			'id_client' => $idC,
+            'taille' => $this->input->post('taille'),
+            'poids' => $this->input->post('poids'),
+			'date_donnees' => $this->input->post('date')
+        );
+		$data['client'] =  $this->MDC_Client->get_client($idC);
+		$data['latest'] =   $this->MDC_Donnee_Client->get_latest_donnee($idC);
+		$data['donnee'] = $this->MDC_Donnee_Client->select_donnee($idC,$data);
+		$this->viewer('pages/profil/profil',$data);
 	}
    
 }
+
+?>

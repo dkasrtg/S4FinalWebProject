@@ -220,3 +220,24 @@ INSERT INTO admin (nom, prenom, email, mdp)
 VALUES  ('ANDRIANAIVOSOA', 'Johan', 'johan@gmail.com', 'johan'),
         ('ANDRIANAIVOSOA', 'Gael', 'gael@gmail.com', 'gael'),
         ('ANDRIANAIVOSOA', 'Christel', 'christel@gmail.com', 'christel');
+
+create table proposition(
+    id_proposition int primary key auto_increment,
+    min decimal(11,2),
+    max decimal(11,2),
+    position varchar(255),
+    conseil text
+);
+
+INSERT INTO proposition (min, max,position, conseil)
+VALUES  (0,18.5, 'Insuffisance pondérale (maigreur)', 'Il est recommandé de faire  une alimentation équilibrée pour augmenter votre poids de manière saine. Consultez un nutritionniste pour obtenir des conseils personnalisés.Vue que Vous êtes en situation ,insuffisance pondérale, ce qui peut avoir des conséquences sur votre santé. Il est important de consulter un diététicien ou un professionnel de la santé pour obtenir un plan alimentaire adapté et équilibré. Un diététicien pourra vous aider à augmenter votre apport calorique de manière saine en choisissant des aliments riches en nutriments et en vous proposant des stratégies pour favoriser une prise de poids progressive. Demander conseil à un spécialiste afin de bénéficier un suivi personnalisé et atteindre un poids santé.');
+ 
+INSERT INTO proposition (max, min, position, conseil)
+VALUES  (19, 25, 'Corpulence normale ou poids normal', 'Félicitations, votre IMC se situe dans la plage de poids normal. Un bon indicateur de votre santé. Pour maintenir votre poids idéal, il est important de continuer à adopter une alimentation équilibrée et une activité physique régulière. Veillez à consommer une variété ,aliments nutritifs, notamment des fruits, des légumes, des protéines maigres et des grains entiers. Évitez les excès de sucre, de sel et de matières grasses. Buvez suffisamment ,eau, et  rester actif tout au long de la journée. Un mode de vie sain contribuera à maintenir votre poids et votre bien-être général.Ainsi un oids normal : Continuez à maintenir une alimentation équilibrée et une activité physique régulière pour préserver votre poids idéal.');
+
+
+INSERT INTO proposition (max, min, position, conseil)
+VALUES (26, 30, 'Surpoids', 'Votre IMC indique que vous êtes en surpoids. Il est important de prendre des mesures pour améliorer votre santé et réduire votre poids. Un plan alimentaire équilibré et une activité physique régulière seront essentiels: Contrôlez vos portions et évitez les excès alimentaires,Augmentez votre activité physique en pratiquant régulièrement des exercices cardiovasculaires et des exercices de renforcement musculaire.En adoptant ces conseils et en apportant des changements progressifs à votre mode de vie, vous pourrez atteindre un poids plus sain et améliorer votre bien-être général.Sinon,Consultez un professionnel de la santé ou un diététicien pour obtenir un plan personnalisé et un suivi régulier de votre progression');
+  
+INSERT INTO proposition (max, min, position, conseil)
+VALUES  (31,32, ' Obésité sévère', 'Votre IMC indique que vous êtes en situation ,obésité. Il est essentiel de prendre des mesures pour améliorer votre santé et réduire votre poids. Voici quelques conseils du diététicien pour vous aider :Adoptez une alimentation saine et équilibrée en privilégiant les aliments riches en nutriments et en fibres, tels que les fruits, les légumes, les grains entiers et les protéines maigres.,Évitez les aliments transformés, les boissons sucrées et les aliments riches en matières grasses.,Contrôlez vos portions et évitez les excès alimentaires.,Augmentez votre activité physique en pratiquant régulièrement des exercices cardiovasculaires et des exercices de renforcement musculaire.,Consultez un professionnel de la santé ou un diététicien pour obtenir un plan alimentaire personnalisé et un suivi régulier de votre progression.,Cherchez un soutien auprès de groupes de soutien ou de programmes de gestion du poids.');
