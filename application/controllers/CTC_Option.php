@@ -40,7 +40,7 @@ class CTC_Option extends CI_Controller
 			'class'=>$class,
 			'error'=>$error
 		);
-		$this->viewer('client/pages/option', $data);
+		$this->viewer('pages/option', $data);
 	}
 
 	public function move(){

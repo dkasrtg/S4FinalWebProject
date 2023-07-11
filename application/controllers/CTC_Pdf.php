@@ -14,6 +14,9 @@ class CTC_Pdf extends CI_Controller
 	}
 	public function index()
 	{
+		if ($this->session->has_userdata('data') == false) {
+			redirect("CTC_Suggestion");
+		}
 		$pdf = new Propositionpdf();
 		$data = $this->session->userdata('data');
 		$fin = array();
@@ -31,7 +34,9 @@ class CTC_Pdf extends CI_Controller
 		$tables = ['', '', '', '', '', '', ''];
 		$tableuse = $table;
 		$tableuses = $tables;
-		for ($i = 0; $i < count($data['suggestionsGson']) - 1; $i += 8) {
+		$ff = count($data['suggestionsGson']) - 1;
+		$i=0;
+		for ($i; $i < count($data['suggestionsGson']) - 1; $i += 8) {
 			$dateTime = new DateTime((explode('T', $data['suggestionsGson'][$i]['start']))[0]);
 			$dayOfWeek = $dateTime->format('N') - 1;
 			$tableuse[$dayOfWeek][0][0] = $data['suggestionsGson'][$i]['title'];
@@ -42,7 +47,7 @@ class CTC_Pdf extends CI_Controller
 			$tableuse[$dayOfWeek][2][1] = $data['suggestionsGson'][$i + 4]['prix'];
 			$tableuse[$dayOfWeek][3][0] = $data['suggestionsGson'][$i + 6]['title'];
 			$tableuse[$dayOfWeek][3][1] = $data['suggestionsGson'][$i + 6]['prix'];
-			for ($q=0; $q < 4; $q++) { 
+			for ($q = 0; $q < 4; $q++) {
 				$tot += $tableuse[$dayOfWeek][$q][1];
 			}
 			$tableuses[$dayOfWeek] = $data['suggestionsGson'][$i + 1]['title'];
@@ -61,12 +66,36 @@ class CTC_Pdf extends CI_Controller
 				$tableuse = $table;
 				$tableuses = $tables;
 			}
+			// echo $i;
 		}
+		$last =  $i-8;
+		$j = 0;
+		// 
+		for ($i=$last; $i < $ff; $i+=2) { 
+			$tableuse[$i][$j][0] = $data['suggestionsGson'][$i]['title'];
+			$tableuse[$i][$j][1] = $data['suggestionsGson'][$i]['prix'];
+			$tot += $tableuse[$i][$j][1];
+			$tableuses[$i] = $data['suggestionsGson'][$i + 1]['title'];
+			$j++;
+		}
+		$dateTime = new DateTime((explode('T', $data['suggestionsGson'][$last]['start']))[0]);
+		$dateTime->modify('this week');
+				$weekStart = $dateTime->format('Y-m-d');
+				$dateTime->modify('this week +6 days');
+				$weekEnd = $dateTime->format('Y-m-d');
+				$ok = array(
+					'start' => $weekStart,
+					'end' => $weekEnd,
+					'data' => $tableuse
+				);
+				array_push($fin, $ok);
+				array_push($fins, $tableuses);
+		// 
 		$a = $fin[0]['start'];
-		$b = $fin[count($fin)-1]['end'];
-		$dure = $this->MDC_Pdf->dure($a,$b);
+		$b = $fin[count($fin) - 1]['end'];
+		$dure = $this->MDC_Pdf->dure($a, $b);
 		$genre = "Homme";
-		if ($data['donnees_client']['genre']==2) {
+		if ($data['donnees_client']['genre'] == 2) {
 			$genre = "Femme";
 		}
 		$profile = [

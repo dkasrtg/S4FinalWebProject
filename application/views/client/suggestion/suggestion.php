@@ -35,7 +35,7 @@
                             <td>
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <input type="text" name="target"  class="form-control">
+                                        <input type="text" name="target" class="form-control">
                                         <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
                                     </div>
                                 </div>
@@ -43,7 +43,7 @@
                             <td>
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <input type="date" name="date_debut"  class="form-control">
+                                        <input type="date" name="date_debut" class="form-control">
                                         <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
                                     </div>
                                 </div>
@@ -58,6 +58,17 @@
         </div>
         <div class="card">
             <div class="card-body">
+                <!-- <div class="container mt-5"> -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <form action="<?php bu2('CTC_Pdf') ?>" method="get"><button type="submit" class="btn btn-primary" style="float:right">Exporter en pdf</button></form>
+                    </div>
+                </div>
+                <!-- </div> -->
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
                 <div class="container mt-5">
                     <div class="row">
                         <div class="col-md-12">
@@ -67,51 +78,40 @@
                 </div>
             </div>
         </div>
-            <div class="card">
-                <div class="card-body">
-                    <!-- <div class="container mt-5"> -->
-                        <div class="row">
-                            <div class="col-md-12">
-                                <form action="<?php bu2('CTC_Pdf') ?>" method="get"><button type="submit" class="btn btn-primary" style="float:right">Exporter en pdf</button></form>
-                            </div>
-                        </div>
-                    <!-- </div> -->
-                </div>
-            </div>
-            <!-- .animated -->
-        </div>
-        <!-- /.content -->
+        <!-- .animated -->
+    </div>
+    <!-- /.content -->
 
 
-        <script src='<?= base_url('assetsClient/dist/index.global.js') ?>'></script>
+    <script src='<?= base_url('assetsClient/dist/index.global.js') ?>'></script>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                var calendarEl = document.getElementById('calendar');
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
 
-                <?php if (isset($suggestionsGson)) { ?>
-                    var event1 = <?= json_encode($suggestionsGson) ?>;
-                <?php } else { ?>
-                    var event1 = [];
+            <?php if (isset($suggestionsGson)) { ?>
+                var event1 = <?= json_encode($suggestionsGson) ?>;
+            <?php } else { ?>
+                var event1 = [];
+            <?php } ?>
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                headerToolbar: {
+                    left: 'prevYear,prev,next,nextYear today',
+                    center: 'title',
+                    right: 'dayGridMonth,dayGridWeek,dayGridDay'
+                },
+
+                <?php if (isset($date_debut)) { ?>
+                    initialDate: '<?= $date_debut; ?>',
                 <?php } ?>
 
-                var calendar = new FullCalendar.Calendar(calendarEl, {
-                    headerToolbar: {
-                        left: 'prevYear,prev,next,nextYear today',
-                        center: 'title',
-                        right: 'dayGridMonth,dayGridWeek,dayGridDay'
-                    },
+                navLinks: true, // can click day/week names to navigate views
+                editable: true,
+                dayMaxEvents: true, // allow "more" link when too many events
 
-                    <?php if (isset($date_debut)) { ?>
-                        initialDate: '<?= $date_debut; ?>',
-                    <?php } ?>
-
-                    navLinks: true, // can click day/week names to navigate views
-                    editable: true,
-                    dayMaxEvents: true, // allow "more" link when too many events
-
-                    events: event1
-                });
-                calendar.render();
+                events: event1
             });
-        </script>
+            calendar.render();
+        });
+    </script>

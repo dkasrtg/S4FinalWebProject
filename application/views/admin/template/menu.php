@@ -58,6 +58,15 @@
           </li>
 
           <li class="nav-item menu-items">
+            <a class="nav-link" href="<?php bu2('CTA_Tableau')?>">
+              <span class="menu-icon">
+                <i class="mdi mdi-chart-bar"></i>
+              </span>
+              <span class="menu-title">Tableau de bord</span>
+            </a>
+          </li>
+
+          <li class="nav-item menu-items">
             <a class="nav-link" href="<?= bu("CTA_Repas/index") ?>">
               <span class="menu-icon">
                 <i class="mdi mdi-table-large"></i>
@@ -91,15 +100,6 @@
                 <i class="mdi mdi-security"></i>
               </span>
               <span class="menu-title">Consultation Code</span>
-            </a>
-          </li>
-
-          <li class="nav-item menu-items">
-            <a class="nav-link" href="#">
-              <span class="menu-icon">
-                <i class="mdi mdi-chart-bar"></i>
-              </span>
-              <span class="menu-title">Statistique de Base</span>
             </a>
           </li>
       
