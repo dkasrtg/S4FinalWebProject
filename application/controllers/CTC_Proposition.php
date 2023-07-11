@@ -10,7 +10,7 @@ class CTC_Proposition extends CI_Controller
         $this->load->model('MDC_Proposition');
         $this->load->model('MDC_Donnee_Client');
 	}
-	private function viewer($page, $data)
+	public function viewer($page, $data)
 	{
 		$v = array(
 			'page' => $page,
@@ -18,7 +18,6 @@ class CTC_Proposition extends CI_Controller
 		);
 		$this->load->view('client/template/BasePage', $v);
 	}
-
 	public function display_IMC()	{ 
 		$idC = 1;
         $lst =   $this->MDC_Donnee_Client->get_latest_donnee($idC);
@@ -27,5 +26,6 @@ class CTC_Proposition extends CI_Controller
         $data['proposition'] = $this->MDC_Proposition->get_proposition($data['imc']);
 		$this->viewer('pages/IMC/imc',$data);
 	}
+
 
 }

@@ -74,9 +74,8 @@
                         <form action="<?= bu("CTC_Donnee_Client/insert_donnee") ?>" method="post" class="form-horizontal">
                             <div class="row form-group">
                                     <div class="col col-md-6"><label for="hf-email" class=" form-control-label">Taille</label><input type="number" name="taille" step="0.01" min="1" id="hf-email" name="hf-email" class="form-control"  placeholder="Entrez votre taille" value="<?= $latest ? $latest['taille'] : '' ?>"></div>
-                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label">Poids</label><input type="number"  name="poids" min="20" id="hf-email" name="hf-email" class="form-control"  placeholder="Entrez votre poids"  value="<?= $latest ? $latest['poids'] : '' ?>"></div>
+                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label">Poids</label><input type="number"  name="poids" step="0.1" min="20" id="hf-email" name="hf-email" class="form-control"  placeholder="Entrez votre poids"  value="<?= $latest ? $latest['poids'] : '' ?>"></div>
                             </div>
-
                             <div class="row form-group">
                                     <div class="col col-md-6">
                                             <label for="hf-email" class=" form-control-label">Taille</label>
@@ -87,8 +86,7 @@
                                     </div>
                                     <div class="col col-md-6"><label for="hf-email" class=" form-control-label">Date</label><input type="date" name="date"  id="hf-email" name="hf-email" class="form-control"  value="<?= $latest ? $latest['date_donnees'] : '' ?>"></div>
                             </div>
-
-                            <div class="form-actions form-group"><button type="submit" class="btn btn-secondary btn-sm">Inserer</button></div>
+                            <div class="form-actions form-group"><button type="submit" class="btn btn-success btn-sm">Inserer</button></div>
                         </form>
                     </div>
                 </div>
@@ -97,10 +95,42 @@
 
 
         <div class="row">
+            <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">Formulaire de Séléction</div>
+                            <div class="card-body card-block">
+                                <form action="<?= bu("CTC_Donnee_Client/select_donnee") ?>" method="post" class="">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input type="number" step="0.01" min="1"  id="username2" name="taille" placeholder="Taille" class="form-control">
+                                            <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input type="number" step="0.1" min="20"   id="email2" name="poids" placeholder="Poids" class="form-control">
+                                            <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input type="date" id="password2" name="date"  class="form-control">
+                                            <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-actions form-group"><button type="submit" class="btn btn-secondary btn-sm">Submit</button></div>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+        </div>
+
+
+        <div class="row">
         <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <strong class="card-title">Table de suivi:</strong>
+                            <strong class="card-title">Tableau de suivi:</strong>
                         </div>
                         <div class="card-body">
                             <table class="table table-bordered">

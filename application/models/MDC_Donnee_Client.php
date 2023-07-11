@@ -27,6 +27,7 @@ class MDC_Donnee_Client extends CI_Model
             $this->db->from('donnees_client');
             $this->db->join('client', 'donnees_client.id_client = client.id_client');
             $this->db->where('donnees_client.id_client', $id_client);
+            $this->db->order_by('date_donnees', 'DESC');
             $query = $this->db->get();
             return $query->result();
         }
@@ -57,6 +58,21 @@ class MDC_Donnee_Client extends CI_Model
         $this->db->where('id_donnees_client', $id_donnees_client);
         $this->db->update('donnees_client', $data);
         return $this->db->affected_rows();
+    }
+    //SELECT
+    public function select_donnee($id_client, $data) {
+            $this->db->select('donnees_client.*, client.nom');
+            $this->db->from('donnees_client');
+            $this->db->join('client', 'donnees_client.id_client = client.id_client');
+            $this->db->where('donnees_client.taille <=', $data['taille']);
+            $this->db->where('donnees_client.poids <=', $data['poids']);
+            $this->db->where('donnees_client.date_donnees <=', $data['date_donnees']);
+            $this->db->where('donnees_client.id_client', $id_client);
+            $this->db->order_by('date_donnees', 'DESC');
+           
+            $query = $this->db->get();
+            echo $this->db->last_query();
+            return $query->result();
     }
     
 }

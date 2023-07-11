@@ -55,6 +55,18 @@ class CTC_Donnee_Client extends CI_Controller
 		$this->MDC_Donnee_Client->update_donnee_client($_POST['update'],$data);
 		redirect('CTC_Donnee_Client/display_donnee');
 	}
-	
+	public function select_donnee(){
+		$idC = 1;
+		$data = array(
+			'id_client' => $idC,
+            'taille' => $this->input->post('taille'),
+            'poids' => $this->input->post('poids'),
+			'date_donnees' => $this->input->post('date')
+        );
+		$data['client'] =  $this->MDC_Client->get_client($idC);
+		$data['latest'] =   $this->MDC_Donnee_Client->get_latest_donnee($idC);
+		$data['donnee'] = $this->MDC_Donnee_Client->select_donnee($idC,$data);
+		$this->viewer('pages/profil/profil',$data);
+	}
    
 }
