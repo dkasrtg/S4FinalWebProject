@@ -60,5 +60,35 @@ class MDA_Tableau extends CI_Model
         }
         return $rs;
     }
+
+
+    public function client(){
+        $clients = $this->db->query("select * from client");
+        $clients = $clients->result_array();
+        for ($i=0; $i < count($clients); $i++) { 
+            $qlast = $this->db->query("select * from donnees_client where id_client=".$clients[$i]['id_client']." order by date_donnees desc limit 1");
+            $last = $qlast->row_array();
+            if($qlast->num_rows()===0){
+                $clients[$i]['poids']='';
+            }
+            else {
+                $clients[$i]['poids']=$last['poids'];
+            }
+            $qlast = $this->db->query("select * from but_client join but on but.id_but=but_client.id_but where but_client.id_client=".$clients[$i]['id_client']);
+            $last = $qlast->row_array();
+            $clients[$i]['but'] = $last['nom'];
+            $qlast = $this->db->query("select * from compte_client where id_client=".$clients[$i]['id_client']);
+            $last = $qlast->row_array();
+            $clients[$i]['solde'] = $last['montant'];
+            $qlast = $this->db->query("select  count(id_commande_client) as c from commande_client where id_client=".$clients[$i]['id_client']);
+            $last = $qlast->row_array();
+            $clients[$i]['commande'] = $last['c'];
+            $qlast = $this->db->query("select coalesce(sum(argent),0) as c from recharge_client join code_argent on code_argent.id_code_argent=recharge_client.id_code_argent where id_client=".$clients[$i]['id_client']." and date_acceptation is not null");
+            $last = $qlast->row_array();
+            $clients[$i]['credit'] = $last['c'];
+        }
+        return $clients;
+    }
+
 }
 ?>

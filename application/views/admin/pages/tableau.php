@@ -14,7 +14,7 @@
             <div class="col-lg-6 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Nombre d utilisateurs : <?= $nombreuser['total']?></h4>
+                        <h4 class="card-title">Nombre d utilisateurs : <?= $nombreuser['total'] ?></h4>
                         <canvas id="user" style="height:250px"></canvas>
                     </div>
                 </div>
@@ -22,7 +22,7 @@
             <div class="col-lg-6 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Solde : <?= $solde['total']?></h4>
+                        <h4 class="card-title">Solde : <?= $solde['total'] ?></h4>
                         <canvas id="solde" style="height:250px"></canvas>
                     </div>
                 </div>
@@ -65,36 +65,22 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Tiger</td>
-                                    <td>Nixon</td>
-                                    <td>Simple</td>
-                                    <td>3000</td>
-                                    <td>3</td>
-                                    <td>20</td>
-                                    <td>40</td>
-                                    <td>Augmenter de 20</td>
-                                </tr>
-                                <tr>
-                                    <td>Tiger</td>
-                                    <td>Nixon</td>
-                                    <td>Gold</td>
-                                    <td>0</td>
-                                    <td>2</td>
-                                    <td>20</td>
-                                    <td>40</td>
-                                    <td>Diminuer de 20</td>
-                                </tr>
-                                <tr>
-                                    <td>Tiger</td>
-                                    <td>Nixon</td>
-                                    <td>Simple</td>
-                                    <td>300</td>
-                                    <td>0</td>
-                                    <td>20</td>
-                                    <td>40</td>
-                                    <td>Atteindre l' IMC</td>
-                                </tr>
+                                <?php
+                                for ($i = 0; $i < count($clients); $i++) {
+                                ?>
+                                    <tr>
+                                        <td><?= $clients[$i]['nom']?></td>
+                                        <td><?= $clients[$i]['prenom']?></td>
+                                        <td>Simple</td>
+                                        <td><?= $clients[$i]['credit']?></td>
+                                        <td><?= $clients[$i]['commande']?></td>
+                                        <td><?= $clients[$i]['solde']?></td>
+                                        <td><?= $clients[$i]['poids']?></td>
+                                        <td><?= $clients[$i]['but']?></td>
+                                    </tr>
+                                <?php
+                                }
+                                ?>
                             </tbody>
                         </table>
                     </div>
@@ -185,7 +171,7 @@
 <script>
     var userdata = {
         datasets: [{
-            data: <?= json_encode($nombreuser['rep'])?>,
+            data: <?= json_encode($nombreuser['rep']) ?>,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.5)',
                 'rgba(54, 162, 235, 0.5)',
@@ -203,7 +189,7 @@
                 'rgba(255, 159, 64, 1)'
             ],
         }],
-        labels: <?= json_encode($nombreuser['field'])?>
+        labels: <?= json_encode($nombreuser['field']) ?>
     };
     var useroption = {
         responsive: true,
@@ -265,7 +251,7 @@
         labels: ["Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Decembre"],
         datasets: [{
             label: '# of Votes',
-            data: <?= json_encode($creditmois)?>,
+            data: <?= json_encode($creditmois) ?>,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -323,7 +309,7 @@
         labels: ["Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Decembre"],
         datasets: [{
             label: '# of Votes',
-            data: <?= json_encode($commandemois)?>,
+            data: <?= json_encode($commandemois) ?>,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',

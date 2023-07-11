@@ -162,6 +162,22 @@ create table donnees_client(
     id_donnees_client int primary key auto_increment,
     id_client int,
     genre int,
+    taille decimal(11,2),
+    poids decimal(11,2),
+    date_donnees date,
+    foreign key(id_client) references client(id_client)
+);
+
+INSERT INTO donnees_client (id_client, genre, taille, poids, date_donnees)
+VALUES (1, 1, 1.75, 55.00, '2023-07-10');
+INSERT INTO donnees_client (id_client, genre, taille, poids, date_donnees)
+VALUES (2, 1, 1.75, 55.00, '2023-07-10');
+
+
+create table donnees_client(
+    id_donnees_client int primary key auto_increment,
+    id_client int,
+    genre int,
     taille decimal(3,2),
     poids decimal(3,2),
     date_donnees date,
