@@ -56,31 +56,32 @@
               </div>
             </div>
           </li>
-          <li class="nav-item nav-category">
-            <span class="nav-link">Menu de navigation :</span>
-          </li>
-          <li class="nav-item menu-items">
-            <a class="nav-link" href="pages/tables/basic-table.html">
-              <span class="menu-icon">
-                <i class="mdi mdi-table-large"></i>
-              </span>
-              <span class="menu-title">Mon travail</span>
-            </a>
-          </li>
-          <li class="nav-item menu-items active">
-            <a class="nav-link" href="index.php">
-              <span class="menu-icon">
-                <i class="mdi mdi-speedometer"></i>
-              </span>
-              <span class="menu-title">Info Societe</span>
-            </a>
-          </li>
+
           <li class="nav-item menu-items">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <span class="menu-icon">
                 <i class="mdi mdi-laptop"></i>
               </span>
-              <span class="menu-title">Info Comptable</span>
+              <span class="menu-title">Consultation Repas</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <!-- Tatamo -->
+                <li class="nav-item"> <a class="nav-link" href="#.php">Journal</a></li>
+                <li class="nav-item"> <a class="nav-link" href="gdLivre.php">Grand  Livre</a></li>
+                <li class="nav-item"> <a class="nav-link" href="balance.php ">Balance</a></li>
+              </ul>
+            </div>
+          </li>
+
+
+          <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <span class="menu-icon">
+                <i class="mdi mdi-laptop"></i>
+              </span>
+              <span class="menu-title">Consultation Activité</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-basic">
@@ -93,19 +94,11 @@
             </div>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="pages/forms/basic_elements.html">
-              <span class="menu-icon">
-                <i class="mdi mdi-playlist-play"></i>
-              </span>
-              <span class="menu-title">Info Employe</span>
-            </a>
-          </li>
-          <li class="nav-item menu-items">
             <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
               <span class="menu-icon">
                 <i class="mdi mdi-security"></i>
               </span>
-              <span class="menu-title">Info Produits</span>
+              <span class="menu-title">Consultation Code</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="auth">
