@@ -23,7 +23,9 @@ class CTA_Tableau extends CI_Controller
             'solde'=>$this->MDA_Tableau->solde(),
             'creditmois'=>$this->MDA_Tableau->creditmois(2023),
             'commandemois'=>$this->MDA_Tableau->commandemois(2023),
-            'clients'=>$this->MDA_Tableau->client()
+            'clients'=>$this->MDA_Tableau->client(),
+            'regimes'=>$this->MDA_Tableau->regime(),
+            'sports'=>$this->MDA_Tableau->sport(),
         );
 		$this->viewer('/tableau', $data);
 	}

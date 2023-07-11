@@ -90,5 +90,27 @@ class MDA_Tableau extends CI_Model
         return $clients;
     }
 
+    public function regime(){
+        $repas = $this->db->query("select * from repas");
+        $repas = $repas->result_array();
+        for ($i=0; $i < count($repas); $i++) { 
+            $c = $this->db->query("select count(id_commande_repas) as c from commande_repas where id_repas=".$repas[$i]['id_repas']);
+            $c = $c->row_array();
+            $repas[$i]['count']=$c['c'];
+        }        
+        return $repas;
+    }
+
+    public function sport(){
+        $sports = $this->db->query("select * from activite_sportive");
+        $sports = $sports->result_array();
+        for ($i=0; $i < count($sports); $i++) { 
+            $c = $this->db->query("select count(id_commande_sport) as c from commande_activite_sportive where id_activite_sportive=".$sports[$i]['id_activite_sportive']);
+            $c = $c->row_array();
+            $sports[$i]['count']=$c['c'];
+        }        
+        return $sports;  
+    }
+
 }
 ?>

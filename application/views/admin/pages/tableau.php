@@ -69,14 +69,14 @@
                                 for ($i = 0; $i < count($clients); $i++) {
                                 ?>
                                     <tr>
-                                        <td><?= $clients[$i]['nom']?></td>
-                                        <td><?= $clients[$i]['prenom']?></td>
+                                        <td><?= $clients[$i]['nom'] ?></td>
+                                        <td><?= $clients[$i]['prenom'] ?></td>
                                         <td>Simple</td>
-                                        <td><?= $clients[$i]['credit']?></td>
-                                        <td><?= $clients[$i]['commande']?></td>
-                                        <td><?= $clients[$i]['solde']?></td>
-                                        <td><?= $clients[$i]['poids']?></td>
-                                        <td><?= $clients[$i]['but']?></td>
+                                        <td><?= $clients[$i]['credit'] ?></td>
+                                        <td><?= $clients[$i]['commande'] ?></td>
+                                        <td><?= $clients[$i]['solde'] ?></td>
+                                        <td><?= $clients[$i]['poids'] ?></td>
+                                        <td><?= $clients[$i]['but'] ?></td>
                                     </tr>
                                 <?php
                                 }
@@ -100,14 +100,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Soucisse</td>
-                                    <td>1000</td>
-                                </tr>
-                                <tr>
-                                    <td>Molex</td>
-                                    <td>500</td>
-                                </tr>
+                                <?php
+                                for ($i = 0; $i < count($regimes); $i++) {
+                                ?>
+                                    <tr>
+                                        <td><?= $regimes[$i]['description']?></td>
+                                        <td><?= $regimes[$i]['count']?></td>
+                                    </tr>
+                                <?php
+                                }
+                                ?>
                             </tbody>
                         </table>
                     </div>
@@ -125,14 +127,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Velo</td>
-                                    <td>1000</td>
-                                </tr>
-                                <tr>
-                                    <td>Natation</td>
-                                    <td>500</td>
-                                </tr>
+                            <?php
+                                for ($i = 0; $i < count($sports); $i++) {
+                                ?>
+                                    <tr>
+                                        <td><?= $sports[$i]['nom']?></td>
+                                        <td><?= $sports[$i]['count']?></td>
+                                    </tr>
+                                <?php
+                                }
+                                ?>
                             </tbody>
                         </table>
                     </div>

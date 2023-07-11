@@ -257,3 +257,14 @@ create table commande_client(
 );
 
 
+create table commande_repas(
+    id_commande_repas int primary key auto_increment,
+    id_repas int,
+    foreign key(id_repas) references repas(id_repas)
+);
+
+create table commande_activite_sportive(
+    id_commande_sport int primary key auto_increment,
+    id_activite_sportive int,
+    foreign key(id_activite_sportive) references activite_sportive(id_activite_sportive)
+);
