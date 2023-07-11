@@ -75,4 +75,10 @@ class CTC_Login extends CI_Controller
             redirect(bu('CTC_Login/index?error=' . urlencode($data['error'])));
         }
     }
+    
+    //DECONNEXION
+    public function deconnect()	{
+        $this->session->unset_userdata('client');
+        redirect(bu('CTC_Login/index'));
+    }
 }

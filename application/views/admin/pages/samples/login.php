@@ -32,11 +32,11 @@
                 <form action="<?= bu('CTA_Login/login')?>" method="post">
                   <div class="form-group">
                     <label>Username or email *</label>
-                    <input type="text"  name='email' class="form-control p_input">
+                    <input type="text"  name='email' class="form-control p_input" value="johan@gmail.com">
                   </div>
                   <div class="form-group">
                     <label>Password *</label>
-                    <input type="text" name='mdp' class="form-control p_input">
+                    <input type="text" name='mdp' class="form-control p_input" value="johan">
                   </div>
                   <div class="text-center">
                     <button type="submit" class="btn btn-primary btn-block enter-btn">Login</button>

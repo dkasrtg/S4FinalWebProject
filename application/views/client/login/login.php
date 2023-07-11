@@ -59,11 +59,11 @@
 
             <div class="form-input">
                 <label for="name">Email</label>
-                <input  type="email" name="email" placeholder="Email">
+                <input  type="email" name="email" placeholder="Email" value="johndoe@example.com">
             </div>
             <div class="form-input">
                 <label for="name">Password</label>
-                <input type="password" name="mdp" placeholder="Password">
+                <input type="password" name="mdp" placeholder="Password" value="password123">
             </div>
             <div class="form-input pt-30">
                 <input type="submit" name="submit" value="login">
