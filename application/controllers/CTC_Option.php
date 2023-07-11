@@ -47,7 +47,7 @@ class CTC_Option extends CI_Controller
 		$prix_gold = 3000;
 		$id_client = 1;
 		$error = $this->MDC_Option->move($id_client,$prix_gold);
-		redirect("CTC_Option/index?error=".$error);
+		redirect(bu("CTC_Option/index?error=".$error));
 	}
 
 
