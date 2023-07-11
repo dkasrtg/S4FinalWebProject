@@ -102,6 +102,15 @@
               <span class="menu-title">Consultation Code</span>
             </a>
           </li>
+
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="<?= bu("CTA_Commande/index") ?>">
+              <span class="menu-icon">
+                <i class="mdi mdi-security"></i>
+              </span>
+              <span class="menu-title">Validation Commande</span>
+            </a>
+          </li>
       
           <li class="nav-item menu-items">
             <a class="nav-link" href="#">
