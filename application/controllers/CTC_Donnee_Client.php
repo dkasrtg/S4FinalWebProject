@@ -23,7 +23,7 @@ class CTC_Donnee_Client extends CI_Controller
 	}
 
 	public function index()	{ 
-		$idC = $this->session->user_data('client');
+		$idC = $this->session->userdata('client');
 		$data['client'] =  $this->MDC_Client->get_client($idC);
 		$data['donnee'] =  $this->MDC_Donnee_Client->get_donnee(null,$idC);
 		$data['latest'] =   $this->MDC_Donnee_Client->get_latest_donnee($idC);
@@ -31,7 +31,7 @@ class CTC_Donnee_Client extends CI_Controller
 	}
 
 	public function insert_donnee(){
-		$idC = $this->session->user_data('client');
+		$idC = $this->session->userdata('client');
 		$data = array(
 			'id_client' => $idC,
             'taille' => $this->input->post('taille'),

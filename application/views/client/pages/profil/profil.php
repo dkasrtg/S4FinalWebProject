@@ -86,7 +86,7 @@
                                     </div>
                                     <div class="col col-md-6"><label for="hf-email" class=" form-control-label">Date</label><input type="date" name="date"  id="hf-email" name="hf-email" class="form-control"  value="<?= $latest ? $latest['date_donnees'] : '' ?>"></div>
                             </div>
-                            <div class="form-actions form-group"><button type="submit" class="btn btn-success btn-sm">Inserer</button></div>
+                            <div class="form-actions form-group"><button type="submit" class="btn btn-success btn-sm">Mettre à jour</button></div>
                         </form>
                     </div>
                 </div>

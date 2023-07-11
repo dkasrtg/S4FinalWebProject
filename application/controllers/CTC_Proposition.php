@@ -23,7 +23,7 @@ class CTC_Proposition extends CI_Controller
 		$this->load->view('client/template/BasePage', $v);
 	}
 	public function index()	{ 
-		$idC = $this->session->user_data('client');
+		$idC = $this->session->userdata('client');
         $lst =   $this->MDC_Donnee_Client->get_latest_donnee($idC);
 		$data['latest'] = $lst;
         $data['imc'] =  round($lst['poids'] / (($lst['taille'])^2),2);

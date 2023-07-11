@@ -5,16 +5,18 @@
     <!-- Animated -->
     <div class="animated fadeIn">
         <div class="card">
+            <div class="card-header">
+                <strong class="card-title pl-2">User information</strong>
+            </div>
             <div class="card-body">
-                <h4 class="card-title text-left my__title">User information</h4>
-                <form action="<?= bu('CTC_Suggestion/new_suggest')?>" method="post">
+                <form action="<?= bu('CTC_Suggestion/new_suggest')?>" method="post" class="form-horizontal">
                     <table class="table my__table">
                         <tr>
                             <th>Taille</th>
                             <th>Poids</th>
                             <th>IMC</th>
                             <th>Poids voulus</th>
-                            <th>Quand</th>
+                            <th>Débuter le</th>
                             <th></th>
                         </tr>
                         <tr>
@@ -22,10 +24,20 @@
                             <td><?= $donnees_client['poids']?> Kg</td>
                             <td>0.0012</td>
                             <td>
-                                <input class="form-input" type="text" name="target" placeholder="... Kg">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input type="text" name="target"  class="form-control">
+                                        <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
+                                    </div>
+                                </div>
                             </td>
                             <td>
-                                <input class="form-input" type="date" name="date_debut" placeholder="Date de debut">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input type="date" name="date_debut"  class="form-control">
+                                        <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
+                                    </div>
+                                </div>
                             </td>
                             <td>
                                 <button class="btn btn-primary" type="submit">Suggérer</button>
