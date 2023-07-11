@@ -31,7 +31,7 @@ class MDA_Tableau extends CI_Model
         $result = $this->db->query("select coalesce(sum(argent),0) as c from code_argent where etat=2");
         $result =  $result->row_array();
         $credit = $result['c'];
-        $result = $this->db->query("select coalesce(sum(montant),0) as c from transactions_client where description like 'paie commande'");
+        $result = $this->db->query("select coalesce(sum(montant),0) as c from transactions_client where description like '%paie commande%'");
         $result =  $result->row_array();
         $commande = $result['c'];
         $sortie = 0;
@@ -54,7 +54,7 @@ class MDA_Tableau extends CI_Model
     public function commandemois($y){
         $rs = [];
         for ($i=1; $i < 13; $i++) { 
-            $result = $this->db->query("select coalesce(count(id_commande_client),0) as c from commande_client where year(date_commande)=".$y." and month(date_commande)=".$i);
+            $result = $this->db->query("select coalesce(count(id_commande_repas),0) as c from commande_repas where year(date_commande)=".$y." and month(date_commande)=".$i);
             $result = $result->row_array();
             array_push($rs,$result['c']);
         }
