@@ -39,10 +39,18 @@ class CTC_Suggestion extends CI_Controller
             'date_debut' => $_dateDebut,
             'target' => $_target,
             'donnees_client' => $this->MDC_Client->get_donnees_client($this->session->userdata('client')),
-            'suggsestions' => $this->MDC_Suggestion->generateListeSuggestion($_dateDebut, $_client, $_target)
+            'suggestions' => $this->MDC_Suggestion->generateListeSuggestion($_dateDebut, $_client, $_target)
         );
 
-        // var_dump($data['suggsestions']);
+        // $suggestions = $data['suggestions'];
+        // foreach($suggestions as $suggestion) { 
+        //     foreach($suggestion->_categories_repas as $_categorie_repas) { 
+        //         echo $_categorie_repas->_repas['description'];
+        //         echo $_categorie_repas->_activite_sportive['nom'];
+        //         echo $suggestion->_date->format('Y-m-d')."T".$_categorie_repas->time_;
+        //         echo "<br><br><br>";
+        //     }
+        // }
 
         $this->viewer('suggestion/suggestion',$data);
     }

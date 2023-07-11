@@ -3,16 +3,16 @@ create database S4FinalWebProject;
 use S4FinalWebProject;
 
 
-
 create table categorie_repas(
     id_categorie_repas int primary key auto_increment,
     nom_categorie varchar(50),
+    time_ TIME,
     ordre int
 );
-insert into categorie_repas(nom_categorie,ordre) values('petit dejeuner',10);
-insert into categorie_repas(nom_categorie,ordre) values('dejeuner',20);
-insert into categorie_repas(nom_categorie,ordre) values('collation',30);
-insert into categorie_repas(nom_categorie,ordre) values('diner',40);
+insert into categorie_repas(nom_categorie,time_,ordre) values('petit dejeuner','07:00:00',10);
+insert into categorie_repas(nom_categorie,time_,ordre) values('dejeuner','11:00:00',20);
+insert into categorie_repas(nom_categorie,time_,ordre) values('collation','16:00:00',30);
+insert into categorie_repas(nom_categorie,time_,ordre) values('diner','20:00:00',40);
 
 
 create table repas(

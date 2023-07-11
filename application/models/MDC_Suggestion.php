@@ -16,7 +16,7 @@ class MDC_Suggestion extends CI_Model
 
     public function setDate($date)
     {
-        $this->_date = $date;
+        $this->_date = &$date;
     }
 
     public function setObjectif($_objectif)
@@ -70,7 +70,7 @@ class MDC_Suggestion extends CI_Model
             {
                 $_List[] = new MDC_Suggestion();
                 $_lastList = end($_List);
-                $_lastList->setDate($date);
+                $_lastList->setDate(clone $date);
                 $_lastList->setObjectif(-1);
                 $_lastList->setClient($_client);
                 $_lastList->setAllCategories_repas();
@@ -78,7 +78,7 @@ class MDC_Suggestion extends CI_Model
                 $_lastList->setActiviteSportiveOfEachCategorie();
 
                 foreach($_lastList->_categories_repas as $_categorie_repas)
-                {   
+                {
                     $_height -= floatval($_categorie_repas->_repas['affectation_poids']);
                 }  
                 foreach($_lastList->_categories_repas as $_categorie_repas)
@@ -94,7 +94,7 @@ class MDC_Suggestion extends CI_Model
             {
                 $_List[] = new MDC_Suggestion();
                 $_lastList = end($_List);
-                $_lastList->setDate($date);
+                $_lastList->setDate(clone $date);
                 $_lastList->setObjectif(1);
                 $_lastList->setClient($_client);
                 $_lastList->setAllCategories_repas();

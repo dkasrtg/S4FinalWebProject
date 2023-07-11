@@ -17,17 +17,14 @@
     </div>
     <!-- /#right-panel -->
 
-    <!-- Scripts -->
     <script src="<?= base_url('assetsClient/tricksjs/jquery.min.js')?>"></script>
     <script src="<?= base_url('assetsClient/tricksjs/popper.min.js')?>"></script>
     <script src="<?= base_url('assetsClient/tricksjs/bootstrap.min.js')?>"></script>
     <script src="<?= base_url('assetsClient/tricksjs/jquery.matchHeight.min.js')?>"></script>
     <script src="<?= base_url('assetsClient/js/main.js')?>"></script>
 
-    <!--  Chart js -->
     <script src="<?= base_url('assetsClient/tricksjs/Chart.bundle.min.js')?>"></script>
 
-    <!--Chartist Chart-->
     <script src="<?= base_url('assetsClient/tricksjs/chartist.min.js')?>"></script>
     <script src="<?= base_url('assetsClient/tricksjs/chartist-plugin-legend.min.js')?>"></script>
 
@@ -37,10 +34,6 @@
 
     <script src="<?= base_url('assetsClient/tricksjs/jquery.simpleWeather.min.js')?>"></script>
     <script src="<?= base_url('assetsClient/js/init/weather-init.js')?>"></script>
-
-    <script src="<?= base_url('assetsClient/tricksjs/moment.min.js')?>"></script>
-    <script src="<?= base_url('assetsClient/tricksjs/fullcalendar.min.js')?>"></script>
-    <script src="<?= base_url('assetsClient/js/init/fullcalendar-init.js')?>"></script>
 
     <script src="<?= base_url('assetsClient/njs/index.js')?>"></script>
 

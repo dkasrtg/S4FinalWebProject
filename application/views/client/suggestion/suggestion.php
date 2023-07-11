@@ -50,34 +50,51 @@
 </div>
 <!-- /.content -->
 
+
+<script src='<?= base_url('assetsClient/dist/index.global.js')?>'></script>
+
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+
+    document.addEventListener('DOMContentLoaded', function() 
+    {
         var calendarEl = document.getElementById('calendar');
 
         var calendar = new FullCalendar.Calendar(calendarEl, {
-            plugins: ['dayGrid'],
-            defaultView: 'dayGridMonth',
-            events: [
-                // Liste des événements
-                {
-                    title: 'Événement 1',
-                    start: '2023-07-11',
-                    end: '2023-07-11'
-                },
-                {
-                    title: 'Événement 2',
-                    start: '2023-07-22',
-                    end: '2023-07-2'
-                },
-                {
-                    title: 'Événement 3',
-                    start: '2023-07-13',
-                    end: '2023-07-13'
-                }
-                // Ajoutez plus d'événements ici
-            ]
-        });
+        headerToolbar: {
+            left: 'prevYear,prev,next,nextYear today',
+            center: 'title',
+            right: 'dayGridMonth,dayGridWeek,dayGridDay'
+        },
+        <?php if(isset($date_debut)) { ?>
+            initialDate: '<?= $date_debut?>',
+        <?php } ?>
+        navLinks: true, // can click day/week names to navigate views
+        editable: true,
+        dayMaxEvents: true, // allow "more" link when too many events
 
+        events: [
+            <?php foreach($suggestions as $suggestion) { ?>
+                <?php foreach($suggestion->_categories_repas as $_categorie_repas) { ?>
+                    {
+                        title: '<?= $_categorie_repas->_repas['description']?>',
+                        start: '<?= $suggestion->_date->format('Y-m-d')?>'
+                    },                    
+                    {
+                        title: '<?= $_categorie_repas->_activite_sportive['nom']?>',
+                        start: '<?= ($suggestion->_date->format('Y-m-d')."T".$_categorie_repas->time_)?>',
+                        backgroundColor: 'green',
+                        borderColor: 'green' // Couleur rouge pour l'activité sportive
+                    },
+                <?php } ?>
+            <?php } ?>
+            {
+            title: 'Click for Google',
+            url: 'http://google.com/',
+            start: '2023-01-28'
+            }
+        ]
+        });
         calendar.render();
     });
+
 </script>
